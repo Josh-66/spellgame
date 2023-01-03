@@ -11,6 +11,11 @@ public class BookClickable : MonoBehaviour,Clickable
     
     new public Rigidbody2D rigidbody2D;
     public Vector3 basePosition;
+
+    float clickTimer=-1f;
+    Vector3 clickMousePosition;
+    public bool held = false;
+
     void Awake(){
         spriteRenderer=GetComponent<SpriteRenderer>();
         rigidbody2D=GetComponent<Rigidbody2D>();
@@ -19,9 +24,34 @@ public class BookClickable : MonoBehaviour,Clickable
     void Update() {
        
         spriteRenderer.material=hovered ? regular:outlined;
+
+        if (clickTimer>=0){
+            clickTimer-=Time.deltaTime;
+            if (clickTimer<0)
+                held=true;
+            if ((Input.mousePosition-clickMousePosition).magnitude>30f){
+                clickTimer=-1;
+                held=true;
+            }
+        }
+        if (MyInput.clickUp){
+            if (clickTimer>0){
+                BookController.ToggleBook();
+            }
+            held=false;
+            clickTimer=-1f;
+        }
         
     }
     void FixedUpdate() {
+        if (held){
+            
+            rigidbody2D.velocity = (Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position) * 10f;
+            rigidbody2D.angularVelocity = -transform.rotation.eulerAngles.z;
+            if (rigidbody2D.angularVelocity <-180f)
+                rigidbody2D.angularVelocity+=360f;
+        }
+
         if (transform.position.y<-50){
             rigidbody2D.velocity=Vector2.zero;
             rigidbody2D.angularVelocity=0;
@@ -38,7 +68,8 @@ public class BookClickable : MonoBehaviour,Clickable
 
     public void OnClick()
     {
-        BookController.ToggleBook();
+        clickTimer=.5f;
+        clickMousePosition=Input.mousePosition;
     }
 
     public void OnHover()

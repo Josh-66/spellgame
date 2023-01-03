@@ -22,6 +22,7 @@ public class CursorController : MonoBehaviour{
             
             image.sprite = ToolController.activeTool switch{
                 Tool.Quill=>quill,
+                Tool.StampQuill=>quill,
                 Tool.Eraser=>eraser,
                 Tool.Stamp=>stamp,
                 _=>null,
@@ -36,8 +37,6 @@ public class CursorController : MonoBehaviour{
                 Vector2 mousePosition;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,Input.mousePosition,Camera.main,out mousePosition);
                 transform.anchoredPosition=mousePosition;
-
-                Debug.Log(CanvasController.transform.rect);
 
                 if (mousePosition.x < CanvasController.transform.rect.xMin || mousePosition.y < CanvasController.transform.rect.yMin || mousePosition.x > CanvasController.transform.rect.xMax || mousePosition.y > CanvasController.transform.rect.yMax)
                     Cursor.visible=true;

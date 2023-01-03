@@ -104,6 +104,7 @@ public class ToolController : MonoBehaviour,Clickable
 public enum Tool{
     None,
     Quill,
+    StampQuill,
     Eraser,
     Stamp,
     Debug,

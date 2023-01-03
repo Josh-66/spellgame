@@ -432,7 +432,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
          //Limit mouse to actually be in scroll
         if (mousePos.x>=5 && mousePos.x<=width/scale-5 && mousePos.y>=5 && mousePos.y<=height/scale-5)
         {
-            if (tool == Tool.Quill || tool==Tool.Debug){
+            if (tool == Tool.Quill || tool==Tool.Debug || tool ==Tool.StampQuill){
                 if (MyInput.click){
                     CreateStroke();
                 }    

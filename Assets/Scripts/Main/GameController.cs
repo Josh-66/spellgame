@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
     public Clickable hoveredObject{get{
         return _hoveredObject;
     }set{
@@ -16,17 +17,23 @@ public class GameController : MonoBehaviour
     }}
     public Clickable _hoveredObject;
 
+    public bool clickablesActive=true;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Glyph.LoadGlyphs();
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateHovered();
-        UpdateClicked();
+        if (clickablesActive)
+        {
+            UpdateHovered();
+            UpdateClicked();
+        }
     }
 
 

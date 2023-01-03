@@ -27,7 +27,7 @@ public class DebugStuff : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.S)){
-            
+            StampPaperController.TogglePaper();
         }
     }
 }
