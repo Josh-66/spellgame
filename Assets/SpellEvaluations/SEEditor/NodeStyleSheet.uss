@@ -1,0 +1,57 @@
+.ds-node__extension-container
+{
+    background-color: #1D1D1E;
+    padding: 8px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.ds-node__custom-data-container
+{
+    background-color: #212325;
+    border-radius: 4px;
+    padding: 8px;
+    justify-content: space-around;
+    margin: 10px;
+
+}
+
+.ds-node__textfield > .unity-text-field__input
+{
+    background-color:#1D1D1E;
+    border-color: #27292C;
+    border-radius: 4px;
+    max-width:240px;
+    min-width:160px;
+    padding:8px;
+
+    text-overflow: ellipsis;
+    max-height:240px;
+}
+
+.ds-node__dropdownfield
+{
+    background-color:#1D1D1E;
+    border-color: #27292C;
+    border-radius: 4px;
+    max-width:240px;
+    min-width:160px;
+    padding:8px;
+
+    text-overflow: ellipsis;
+    max-height:240px;
+}
+
+.ds-node__dropdownfield
+{
+    background-color:#1D1D1E;
+    border-color: #27292C;
+    border-radius: 4px;
+    max-width:240px;
+    min-width:160px;
+    padding:8px;
+
+    text-overflow: ellipsis;
+    max-height:240px;
+}

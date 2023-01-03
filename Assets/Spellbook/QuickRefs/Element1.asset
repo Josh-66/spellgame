@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f57131e58054f1409a131cc66173cd2, type: 3}
+  m_Name: Element1
+  m_EditorClassIdentifier: 
+  glyph1: {fileID: 21300000, guid: 11ba3f41cdd5cd64d89d282653a25993, type: 3}
+  name1: Fire
+  color1: {r: 0.85882354, g: 0.3647059, b: 0.26666668, a: 1}
+  glyph2: {fileID: 21300000, guid: 02661f02bd1588f45a1afcec91ec40c3, type: 3}
+  name2: Water
+  color2: {r: 0.21176471, g: 0.2627451, b: 0.7294118, a: 1}
+  glyph3: {fileID: 21300000, guid: ab2baac0c4eb02c428e31ce405d796cf, type: 3}
+  name3: Air
+  color3: {r: 0.7294118, g: 0.9647059, b: 1, a: 1}
+  glyph4: {fileID: 21300000, guid: 0cf159e1d34475048bad2fe9a59c724d, type: 3}
+  name4: Earth
+  color4: {r: 0.34117648, g: 0.22352941, b: 0.08235294, a: 1}

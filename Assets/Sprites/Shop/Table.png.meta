@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: 7742b793814112b4ab9cde7ef5b57e20
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 5
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 250
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: InkIn
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 2193
+        width: 489
+        height: 1008
+      alignment: 9
+      pivot: {x: 0.40695295, y: 0.14087303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31aabc0192fbdd049a05d19b4be30a33
+      internalID: -1850357865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StampEmpty
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 2625
+        width: 449
+        height: 349
+      alignment: 9
+      pivot: {x: 0.5100223, y: 0.3610315}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506e6d458f92f3f4fa464b8b0b3650a6
+      internalID: -551503118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QuillUp
+      rect:
+        serializedVersion: 2
+        x: 2406
+        y: 2453
+        width: 582
+        height: 779
+      alignment: 9
+      pivot: {x: 0.01718213, y: 0.01283697}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2759c943c68e2f74ea4b3920678fa809
+      internalID: 613489590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QuillTilt1
+      rect:
+        serializedVersion: 2
+        x: 3095
+        y: 2451
+        width: 757
+        height: 600
+      alignment: 9
+      pivot: {x: 0.0135685215, y: 0.01724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d889ed5d0bc37b14dbe4ef3d4015b177
+      internalID: -333474532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QuillTilt2
+      rect:
+        serializedVersion: 2
+        x: 3897
+        y: 2446
+        width: 889
+        height: 371
+      alignment: 9
+      pivot: {x: 0.0115074795, y: 0.02849003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878f68fbb22d14c429ba48658b64f85c
+      internalID: -1933794055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Table_5
+      rect:
+        serializedVersion: 2
+        x: 4283
+        y: 2428
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd460788c9ea1e545b34a284c9d1ca6b
+      internalID: -1412512936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StampIn
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 2002
+        width: 449
+        height: 349
+      alignment: 9
+      pivot: {x: 0.5100223, y: 0.36103153}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7985d9e98366c3145b397446dc3addb7
+      internalID: 1572906263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eraser
+      rect:
+        serializedVersion: 2
+        x: 1917
+        y: 2244
+        width: 175
+        height: 115
+      alignment: 9
+      pivot: {x: 0.12571429, y: 0.13043478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c440ad1999870a46bdcf513e4519a06
+      internalID: -1850692735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InkEmpty
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 2190
+        width: 467
+        height: 642
+      alignment: 9
+      pivot: {x: 0.52248394, y: 0.22585669}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8948d02e7a290d478e0ff2927579a6c
+      internalID: -160163925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EraserIn
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 1895
+        width: 284
+        height: 177
+      alignment: 9
+      pivot: {x: 0.4973067, y: 0.40565413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60c01c39d329c94e994fc6085fdd1f0
+      internalID: 1442240565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll
+      rect:
+        serializedVersion: 2
+        x: 3678
+        y: 1457
+        width: 1171
+        height: 775
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9c5c29516b0854d84911ac6b47e211
+      internalID: -75561400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stamp
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1594
+        width: 252
+        height: 247
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.1902834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224bf155e72af5c4499e296dc7e92982
+      internalID: -111844708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EraserEmpty
+      rect:
+        serializedVersion: 2
+        x: 1907
+        y: 1546
+        width: 284
+        height: 177
+      alignment: 9
+      pivot: {x: 0.4973067, y: 0.4056541}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f70178f75f4a5ee418dc287e0a71196f
+      internalID: -1033342301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Table_13
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 1427
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b6e68844c3e5a46a37c9c4350efa5a
+      internalID: -2031567797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Table
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 172
+        width: 3755
+        height: 1215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b435bd29f8dae2941af0ccc9736e79e7
+      internalID: -204158886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Book
+      rect:
+        serializedVersion: 2
+        x: 4067
+        y: 446
+        width: 709
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -20.719833, y: -263.8113}
+        - {x: 82.5, y: -256}
+        - {x: 273.12784, y: -243.88678}
+        - {x: 322.93253, y: -236.41508}
+        - {x: 342.8544, y: -226.45282}
+        - {x: 345.34464, y: -206.52829}
+        - {x: 345.34464, y: -176.6415}
+        - {x: 342.8544, y: -169.1698}
+        - {x: 290.55948, y: -136.79245}
+        - {x: 285.579, y: -101.92452}
+        - {x: 317.95206, y: -91.96226}
+        - {x: 337.87393, y: -74.5283}
+        - {x: 330.40323, y: -34.679237}
+        - {x: 295.53995, y: 17.622646}
+        - {x: 250.71571, y: 102.301895}
+        - {x: 203.40126, y: 179.50945}
+        - {x: 141.1454, y: 271.66037}
+        - {x: 81.379776, y: 271.66037}
+        - {x: 13.5, y: 264}
+        - {x: 4.182512, y: 306.5283}
+        - {x: -40.64171, y: 306.5283}
+        - {x: -53.09288, y: 301.54718}
+        - {x: -53.09288, y: 289.09433}
+        - {x: -40.64171, y: 271.66037}
+        - {x: -162.6632, y: 261.69812}
+        - {x: -192.546, y: 266.67926}
+        - {x: -209.97765, y: 301.54718}
+        - {x: -224.91905, y: 306.5283}
+        - {x: -232.38976, y: 306.5283}
+        - {x: -257.2921, y: 294.07547}
+        - {x: -272.23352, y: 281.62265}
+        - {x: -272.23352, y: 256.71698}
+        - {x: -289.66516, y: 246.75471}
+        - {x: -334.48938, y: 219.35849}
+        - {x: -344.45032, y: 189.4717}
+        - {x: -344.45032, y: 129.69812}
+        - {x: -307.0968, y: -14.754711}
+        - {x: -267.25305, y: -121.84905}
+        - {x: -237.37022, y: -194.07547}
+        - {x: -204.99718, y: -246.37735}
+        - {x: -147.72179, y: -261.32074}
+        - {x: -101.5, y: -258}
+      tessellationDetail: 0.2
+      bones: []
+      spriteID: cf76fc68835b84b4e9babc87258e7922
+      internalID: -1579868960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      InkEmpty: -160163925
+      Stamp: -111844708
+      EraserIn: 1442240565
+      Scroll: -75561400
+      EraserEmpty: -1033342301
+      Book: -1579868960
+      InkIn: -1850357865
+      StampIn: 1572906263
+      Eraser: -1850692735
+      Table: -204158886
+      QuillTilt1: -333474532
+      Table_13: -2031567797
+      Table_5: -1412512936
+      QuillUp: 613489590
+      StampEmpty: -551503118
+      QuillTilt2: -1933794055
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
