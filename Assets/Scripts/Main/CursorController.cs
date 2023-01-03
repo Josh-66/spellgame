@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour{
-    
+    public static CursorController instance;
     public Sprite eraser,stamp;
     public Sprite quill1,quill2,quill3;
     public Sprite quill {get => ScrollController.instance.inkController.brushTilt switch{
@@ -11,10 +11,11 @@ public class CursorController : MonoBehaviour{
         _ => quill3,
     };}
 
-    public Image image;
+    public Image image,stampPreview;
+
     new RectTransform transform{get{return (RectTransform)base.transform;}}
-    public void Start(){
-        image = GetComponent<Image>();
+    public void Awake(){
+        instance=this;
     }
     void Update(){
         if (ScrollController.isOpen || StampPaperController.isOpen){
@@ -32,7 +33,7 @@ public class CursorController : MonoBehaviour{
                 image.enabled=false;
             }
             else{
-                transform.pivot=new Vector2(image.sprite.pivot.x/image.sprite.textureRect.width,image.sprite.pivot.y/image.sprite.textureRect.height);
+                ((RectTransform)image.transform).pivot=new Vector2(image.sprite.pivot.x/image.sprite.textureRect.width,image.sprite.pivot.y/image.sprite.textureRect.height);
                 Vector2 mousePosition;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,Input.mousePosition,Camera.main,out mousePosition);
                 transform.anchoredPosition=mousePosition;
@@ -44,7 +45,13 @@ public class CursorController : MonoBehaviour{
                 image.SetNativeSize();
                 image.enabled=true;
             }
-        
+
+            if (ToolController.activeTool==Tool.Stamp){
+                stampPreview.enabled=true;
+            }
+            else{
+                stampPreview.enabled=true;
+            }
         }
         else{
             Cursor.visible=true;

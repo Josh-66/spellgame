@@ -9,6 +9,7 @@ public class StampPaperController : MonoBehaviour
     public AudioSource source;
     public AudioClip openSound,closeSound;
     public Texture2D stampTexture = null;
+    public Sprite stampSprite = null;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
     public void Awake(){
         instance=this;
@@ -30,6 +31,12 @@ public class StampPaperController : MonoBehaviour
                         }
                     }
                 }
+                stampTexture.Apply();
+                stampSprite= Sprite.Create(stampTexture,new Rect(0,0,stampTexture.width,stampTexture.height),new Vector2(.5f,.5f),20);
+                inkController.ClearStrokes();
+                CursorController.instance.stampPreview.sprite=stampSprite;
+                CursorController.instance.stampPreview.SetNativeSize();
+                ClosePaper();
 
             }
             
