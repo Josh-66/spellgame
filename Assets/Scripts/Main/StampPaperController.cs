@@ -21,9 +21,14 @@ public class StampPaperController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return)){
             if (inkController.strokes.Count>0){
+                Vector3Int min = Vector3Int.one*int.MaxValue;
+                Vector3Int max = Vector3Int.one*int.MinValue;
+
                 stampTexture = inkController.strokes[0].texture;
                 for (int i = 1 ; i < inkController.strokes.Count;i++){
                     Stroke s = inkController.strokes[i];
+                    min=Vector3Int.Min(min,s.bounds.min);
+                    max=Vector3Int.Max(max,s.bounds.max);
                     for(int x = s.bounds.xMin ; x<=s.bounds.xMax;x++){
                         for(int y = s.bounds.yMin ; y<=s.bounds.yMax;y++){
                             if (s.texture.GetPixel(x,y).a>stampTexture.GetPixel(x,y).a)
@@ -32,10 +37,10 @@ public class StampPaperController : MonoBehaviour
                     }
                 }
                 stampTexture.Apply();
-                stampSprite= Sprite.Create(stampTexture,new Rect(0,0,stampTexture.width,stampTexture.height),new Vector2(.5f,.5f),20);
+                stampSprite= Sprite.Create(stampTexture,new Rect(min.x,min.y,max.x-min.x,max.y-min.y),new Vector2(.5f,.5f),20);
                 inkController.ClearStrokes();
-                CursorController.instance.stampPreview.sprite=stampSprite;
-                CursorController.instance.stampPreview.SetNativeSize();
+                StampPreviewController.instance.image.sprite=stampSprite;
+                StampPreviewController.instance.image.SetNativeSize();
                 ClosePaper();
 
             }

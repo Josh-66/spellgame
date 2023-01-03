@@ -11,7 +11,7 @@ public class CursorController : MonoBehaviour{
         _ => quill3,
     };}
 
-    public Image image,stampPreview;
+    public Image image;
 
     new RectTransform transform{get{return (RectTransform)base.transform;}}
     public void Awake(){
@@ -46,12 +46,7 @@ public class CursorController : MonoBehaviour{
                 image.enabled=true;
             }
 
-            if (ToolController.activeTool==Tool.Stamp){
-                stampPreview.enabled=true;
-            }
-            else{
-                stampPreview.enabled=true;
-            }
+            
         }
         else{
             Cursor.visible=true;

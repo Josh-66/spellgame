@@ -98,7 +98,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         strokes.Clear();
     }    
 
-    void CreateStroke(){
+    Stroke CreateStroke(){
         //Create new Stroke
         GameObject g = new GameObject($"Stroke{strokes.Count}");
         g.AddComponent<RectTransform>();
@@ -133,6 +133,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 
 
         lastMousePos=mousePos;
+
+        return activeStroke;
     }
     void EndStroke(){
 
