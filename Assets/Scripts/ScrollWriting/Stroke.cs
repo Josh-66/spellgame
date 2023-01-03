@@ -16,7 +16,8 @@ public class Stroke : MonoBehaviour
     public void Awake(){
         rectTransform=GetComponent<RectTransform>();
 
-        strokeOnTable= ScrollClickable.instance.AddStroke(GetComponent<Image>().sprite);
+        if (ToolController.activeTool!=Tool.StampQuill)
+            strokeOnTable= ScrollClickable.instance.AddStroke(GetComponent<Image>().sprite);
     }
     public void Disappear(){
         StartCoroutine("DisappearCR");

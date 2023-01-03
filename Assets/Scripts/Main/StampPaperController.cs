@@ -8,19 +8,42 @@ public class StampPaperController : MonoBehaviour
     public static StampPaperController instance;
     public AudioSource source;
     public AudioClip openSound,closeSound;
+    public Texture2D stampTexture = null;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
     public void Awake(){
         instance=this;
         ClosePaper();
     }
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.R)){
+            inkController.ClearStrokes();
+        }
+        if (Input.GetKeyDown(KeyCode.Return)){
+            if (inkController.strokes.Count>0){
+                stampTexture = inkController.strokes[0].texture;
+                for (int i = 1 ; i < inkController.strokes.Count;i++){
+                    Stroke s = inkController.strokes[i];
+                    for(int x = s.bounds.xMin ; x<=s.bounds.xMax;x++){
+                        for(int y = s.bounds.yMin ; y<=s.bounds.yMax;y++){
+                            if (s.texture.GetPixel(x,y).a>stampTexture.GetPixel(x,y).a)
+                                stampTexture.SetPixel(x,y,s.texture.GetPixel(x,y));
+                        }
+                    }
+                }
 
+            }
+            
+        }
+    }
     public static void OpenPaper(){
         instance.gameObject.SetActive(true);
         ToolController.activeTool=Tool.StampQuill;
         instance.source.clip=instance.openSound;
         instance.source.Play();
 
+        ToolController.activeTool=Tool.StampQuill;
         GameController.instance.clickablesActive=false;
+
         
     }
     public static void ClosePaper(bool silent = false){
@@ -30,15 +53,17 @@ public class StampPaperController : MonoBehaviour
         if (!silent)
             instance.source.Play();
 
+        ToolController.activeTool=Tool.None;
+        
+        GameController.instance.clickablesActive=true;
+        
+
     }
     public static void TogglePaper(){
-        instance.gameObject.SetActive(!isOpen);
-        ToolController.ClearTool();
-    
-        instance.source.clip=isOpen ? instance.openSound : instance.closeSound;
-        
-        GameController.instance.clickablesActive=!isOpen;
-        instance.source.Play();
+        if (isOpen)
+            ClosePaper();
+        else 
+            OpenPaper();
         
     }
 }

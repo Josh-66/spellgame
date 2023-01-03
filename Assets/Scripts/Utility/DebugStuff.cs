@@ -29,5 +29,8 @@ public class DebugStuff : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)){
             StampPaperController.TogglePaper();
         }
+        if (Input.GetKeyDown(KeyCode.D)){
+            ToolController.activeTool=Tool.Debug;
+        }
     }
 }

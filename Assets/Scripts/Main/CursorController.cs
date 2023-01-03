@@ -17,8 +17,7 @@ public class CursorController : MonoBehaviour{
         image = GetComponent<Image>();
     }
     void Update(){
-        if (ScrollController.isOpen){
-            
+        if (ScrollController.isOpen || StampPaperController.isOpen){
             
             image.sprite = ToolController.activeTool switch{
                 Tool.Quill=>quill,

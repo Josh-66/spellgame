@@ -7,9 +7,9 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 {
     
     public Tool tool {get{return ToolController.activeTool;}}
-    List<Stroke> strokes;
+    public List<Stroke> strokes;
     Stroke activeStroke;
-    int width = 700, height = 800,scale=5;
+    public int width = 700, height = 800,scale=5;
     Vector2 lastMousePos;
     Vector2 mousePos{get{
 
@@ -44,6 +44,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public float brushTilt = 0;
     bool erasing = false;
     bool dragging = false;
+
+
     Vector2 dragOffset;
     void Awake()
     {
@@ -73,21 +75,10 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             EndStroke();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-            Reset();
-        if (Input.GetKeyDown(KeyCode.C)){
-            foreach(Stroke s in strokes){
-                s.ChangeColor(Color.blue);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.D)){
-            ToolController.activeTool=Tool.Debug;
-        }
-        if (Input.GetKeyDown(KeyCode.P)){
-            Debug.Log(spell);
-        }
 
-        if (spell.element!=GlyphType.Invalid){
+        
+
+        if (spell.element!=GlyphType.Invalid && ToolController.activeTool!=Tool.StampQuill){
             particleTimer-=Time.deltaTime;
             if (particleTimer<0)
             {
@@ -100,7 +91,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         }
         
     }
-    void Reset(){
+    public void ClearStrokes(){
         for (int i = strokes.Count-1; i >= 0;i--){
             DeleteStroke(strokes[i],true);
         } 
@@ -154,17 +145,16 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             activeStroke=null;
             return;
         }
-        activeStroke.SetType();
-        ActivateStroke(activeStroke);
+        if (ToolController.activeTool!=Tool.StampQuill){
+            activeStroke.SetType();
+            ActivateStroke(activeStroke);
 
-        Vector3 textPosition = activeStroke.bounds.max*scale + activeStroke.transform.position - (Vector3)((RectTransform)activeStroke.transform).sizeDelta/2 + Vector3.up*40;
-        PopupText.Create(inkColor,
-                        transform,
-                        textPosition,
-                        activeStroke.type.ToString()); 
-        
-        
-        
+            Vector3 textPosition = activeStroke.bounds.max*scale + activeStroke.transform.position - (Vector3)((RectTransform)activeStroke.transform).sizeDelta/2 + Vector3.up*40;
+            PopupText.Create(inkColor,
+                            transform,
+                            textPosition,
+                            activeStroke.type.ToString()); 
+        }
 
         if (tool==Tool.Debug)
             DrawBoxOnStroke();
