@@ -33,6 +33,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     Color inkColor;
 
     public Spell spell;
+    public bool isStampPad = false;
     public bool stamped=false;
     public GlyphType lastGlyph;
     public float particleTimer=1;
@@ -116,6 +117,17 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                 int sy = y+localPreviewPos.y;
 
                 s.texture.SetPixel(sx,sy,stampColor);   
+                
+                
+                if (Random.value<.2f){
+                    Vector2 position=new Vector2(sx,sy);
+                    position*=scale;
+                    position-=transform.sizeDelta/2;
+                    position+=Vector2.one*scale/2;
+                    PixController pix = PixController.CreatePix(transform.parent,position,scale*3,inkColor);
+                    pix.velocity=new Vector2(x,y)-stampSprite.pivot;
+                }
+
 
 
             }
@@ -353,12 +365,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 
 
             GameObject g = Prefabs.Load("Pix");
-            RectTransform rt = (RectTransform)g.transform;
-            rt.SetParent(transform.parent);
-            rt.anchoredPosition=new Vector2(x,y);
-            rt.sizeDelta=scale*Vector2.one*2;
-            rt.localScale=Vector3.one;
-            g.GetComponent<Image>().color=inkColor;
+            PixController.CreatePix(transform.parent,new Vector2(x,y),2*scale,inkColor);
         }
     }
 
@@ -457,7 +464,14 @@ public class InkController : MonoBehaviour,IPointerDownHandler
          //Limit mouse to actually be in scroll
         if (mousePos.x>=5 && mousePos.x<=width/scale-5 && mousePos.y>=5 && mousePos.y<=height/scale-5)
         {
-            if (tool == Tool.Quill || tool==Tool.Debug || tool ==Tool.StampQuill){
+            if (isStampPad){
+                if(tool == Tool.StampQuill)
+                    if (MyInput.click){
+                    CreateStroke();
+                } 
+                return;
+            }
+            if ((tool&Tool.Quill)!=Tool.None){
                 if (MyInput.click){
                     CreateStroke();
                 }    

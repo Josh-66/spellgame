@@ -43,17 +43,15 @@ public class Stroke : MonoBehaviour
                     continue;
                 }
 
+                Vector2 position=new Vector2(x,y);
+                position*=scale;
+                position-=rectTransform.sizeDelta/2;
+                position+=Vector2.one*scale/2;
 
-                GameObject g = Prefabs.Load("Pix");
-                RectTransform rt = (RectTransform)g.transform;
-                rt.SetParent(transform.parent.parent);
-                rt.anchoredPosition=new Vector2(x,y);
-                rt.anchoredPosition*=scale;
-                rt.anchoredPosition-=rectTransform.sizeDelta/2;
-                rt.anchoredPosition+=Vector2.one*scale/2;
-                rt.sizeDelta=scale*Vector2.one;
-                rt.localScale=Vector3.one;
-                g.GetComponent<Image>().color=c;
+
+                PixController.CreatePix(transform.parent.parent,position,scale,c);
+
+
                 texture.SetPixel(x,y,Color.clear);
 
             }
