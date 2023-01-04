@@ -33,6 +33,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     Color inkColor;
 
     public Spell spell;
+    public bool stamped=false;
     public GlyphType lastGlyph;
     public float particleTimer=1;
     new RectTransform transform {get{return (RectTransform)base.transform;}}
@@ -97,6 +98,36 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         } 
         strokes.Clear();
     }    
+    Stroke CreateStamp(){
+        Stroke s = CreateStroke();
+        activeStroke=null;
+        Sprite stampSprite = StampPaperController.instance.stampSprite;
+        Rect spriteRect = stampSprite.rect;
+        Texture2D stampTexture = StampPaperController.instance.stampTexture;
+        Vector2 previewPos = (StampPreviewController.instance.transform.anchoredPosition-Vector2.one*2.5f+transform.sizeDelta/2)/5;
+        Vector2Int localPreviewPos= Vector2Int.FloorToInt(previewPos-stampSprite.pivot-spriteRect.min); 
+    
+        for (int y = Mathf.FloorToInt(spriteRect.yMin);y<=spriteRect.yMax;y++){
+            for (int x = Mathf.FloorToInt(spriteRect.xMin);x<=spriteRect.xMax;x++){
+                Color stampColor = stampTexture.GetPixel(x,y);      
+                if (stampColor.a==0)
+                    continue;
+                int sx = x+localPreviewPos.x;   
+                int sy = y+localPreviewPos.y;
+
+                s.texture.SetPixel(sx,sy,stampColor);   
+
+
+            }
+        }
+        s.texture.Apply();
+        s.isStamp=true;
+        s.CalculateBoxes(false);
+        s.ChangeColor(inkColor);
+        stamped=true;
+        return s;
+
+    }
 
     Stroke CreateStroke(){
         //Create new Stroke
@@ -248,6 +279,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         foreach (Stroke s in strokes){
             if (s.texture.GetPixel(localMousePosition.x,localMousePosition.y).a!=0){
                 strokesToRemove.Add(s);
+                if(s.isStamp)
+                    stamped=false;
             }
         }
         for (int i = strokesToRemove.Count-1; i >= 0;i--){
@@ -428,6 +461,11 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                 if (MyInput.click){
                     CreateStroke();
                 }    
+            }
+            else if (tool==Tool.Stamp && !stamped){
+                if (MyInput.click){
+                    CreateStamp();
+                }
             }
             else if (tool == Tool.Eraser){
                 if (MyInput.click){

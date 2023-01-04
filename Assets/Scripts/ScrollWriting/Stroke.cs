@@ -9,6 +9,7 @@ public class Stroke : MonoBehaviour
     public GlyphType type=GlyphType.Invalid;
     public BoundsInt bounds;
     public float scale;
+    public bool isStamp=false;
     public RectTransform rectTransform;
 
     GameObject strokeOnTable;
@@ -120,7 +121,7 @@ public class Stroke : MonoBehaviour
         }       
         texture.Apply();
     }
-    public bool CalculateBoxes(){
+    public bool CalculateBoxes(bool setGlyph=true){
         BoundsInt strokeBounds = new BoundsInt(0,0,0,0,0,0);
         glyph=ScriptableObject.CreateInstance<Glyph>();
         bool pixelExists=false;
@@ -143,6 +144,10 @@ public class Stroke : MonoBehaviour
         }
 
         strokeBounds.SetMinMax(min,max);
+        
+        bounds=strokeBounds;
+        if (!setGlyph) 
+            return true;
         //Save actual size before squaring
         Vector3Int originalSize = strokeBounds.size; 
 
@@ -214,11 +219,11 @@ public class Stroke : MonoBehaviour
         }
 
         if (highScore<60){
-            Debug.Log($"Invalid Glyph::{type} with score of {highScore}");
+            //Debug.Log($"Invalid Glyph::{type} with score of {highScore}");
             type=GlyphType.Invalid;
         }
         else{
-            Debug.Log($"Glyph::{type} with score of {highScore}");
+//            Debug.Log($"Glyph::{type} with score of {highScore}");
         }
     }
 

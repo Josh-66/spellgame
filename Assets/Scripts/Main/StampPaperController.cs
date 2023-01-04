@@ -21,10 +21,10 @@ public class StampPaperController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return)){
             if (inkController.strokes.Count>0){
-                Vector3Int min = Vector3Int.one*int.MaxValue;
-                Vector3Int max = Vector3Int.one*int.MinValue;
 
                 stampTexture = inkController.strokes[0].texture;
+                Vector3Int min =inkController.strokes[0].bounds.min;
+                Vector3Int max =inkController.strokes[0].bounds.max;
                 for (int i = 1 ; i < inkController.strokes.Count;i++){
                     Stroke s = inkController.strokes[i];
                     min=Vector3Int.Min(min,s.bounds.min);
@@ -33,7 +33,7 @@ public class StampPaperController : MonoBehaviour
                         for(int y = s.bounds.yMin ; y<=s.bounds.yMax;y++){
                             if (s.texture.GetPixel(x,y).a>stampTexture.GetPixel(x,y).a)
                                 stampTexture.SetPixel(x,y,s.texture.GetPixel(x,y));
-                        }
+                        }  
                     }
                 }
                 stampTexture.Apply();

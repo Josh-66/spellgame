@@ -8,6 +8,7 @@ public class StampPreviewController : MonoBehaviour
     public Image image;
     public RectTransform parent;
     new public RectTransform transform;
+    public bool good;
     void Awake(){
         transform=(RectTransform)base.transform;
         parent=(RectTransform)transform.parent.transform;
@@ -15,24 +16,25 @@ public class StampPreviewController : MonoBehaviour
         image=GetComponent<Image>();
     }
     public void Update(){
-        if (ToolController.activeTool==Tool.Stamp){
+        if (ToolController.activeTool==Tool.Stamp && !ScrollController.instance.inkController.stamped){
             image.enabled=true;
             Vector2 mousePos = Input.mousePosition;
             //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parent,mousePos,Camera.main,out mousePos);
-            transform.anchoredPosition=mousePos;
+            transform.anchoredPosition=Vector2Int.RoundToInt(mousePos/5)*5 + 2.5f*Vector2.one;
             transform.SetAsLastSibling();
 
             Vector2 max = transform.anchoredPosition+transform.sizeDelta/2;
             Vector2 min = transform.anchoredPosition-transform.sizeDelta/2;
 
-            bool good = false;
+            good = false;
             if (Vector2.Max(max,parent.sizeDelta/2)==parent.sizeDelta/2 && Vector2.Min(min,-parent.sizeDelta/2)==-parent.sizeDelta/2){
                 good=true;
             }
             image.color = good ? new Color(1,1,1) : new Color(1,.7f,.7f);
         }
         else{
+            good = false;
             image.enabled=false;
         }
     }
