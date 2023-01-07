@@ -603,11 +603,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacd45d56104f634eba6abd90232c452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hovered: 0
   spriteRenderer: {fileID: 0}
   outlined: {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
   regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
   rigidbody2D: {fileID: 0}
   basePosition: {x: 0, y: 0, z: 0}
+  clickTimer: -1
+  clickMousePosition: {x: 0, y: 0, z: 0}
   held: 0
 --- !u!50 &345432693
 Rigidbody2D:
@@ -1880,6 +1883,7 @@ GameObject:
   - component: {fileID: 734878275}
   - component: {fileID: 734878276}
   - component: {fileID: 734878277}
+  - component: {fileID: 734878278}
   m_Layer: 7
   m_Name: Book
   m_TagString: Untagged
@@ -1895,7 +1899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734878270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.016, y: -0.025, z: 0}
+  m_LocalPosition: {x: 4.83, y: -0.187, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1923,7 +1927,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
+  - {fileID: 2100000, guid: c463a673e506b3145b1de67f68b6070d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1973,6 +1977,8 @@ MonoBehaviour:
   regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
   rigidbody2D: {fileID: 0}
   basePosition: {x: 0, y: 0, z: 0}
+  clickTimer: -1
+  clickMousePosition: {x: 0, y: 0, z: 0}
   held: 0
 --- !u!50 &734878276
 Rigidbody2D:
@@ -2088,6 +2094,33 @@ PolygonCollider2D:
       - {x: -0.5909658, y: -1.045283}
       - {x: -0.40605405, y: -1.032}
   m_UseDelaunayMesh: 0
+--- !u!114 &734878278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734878270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1912c7e8fd54e0c900000000fba3793d4f6033f7115365c2
+  m_ShapePath:
+  - {x: -1.418, y: -1.2640002, z: 0}
+  - {x: -1.418, y: 1.264, z: 0}
+  - {x: 1.4180002, y: 1.264, z: 0}
+  - {x: 1.4180002, y: -1.2640002, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 1203674081}
+  m_InstanceId: -47134
 --- !u!1 &796158480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,16 +3019,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f696de77ee1c141bc8ac89313c5ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tool: 4
+  hovered: 0
   spriteRenderer: {fileID: 0}
-  rigidbody2D: {fileID: 0}
-  basePosition: {x: 0, y: 0, z: 0}
-  active: {fileID: -551503118, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
-  inactive: {fileID: 1572906263, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   outlined: {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
   regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
-  hovered: 0
+  rigidbody2D: {fileID: 0}
+  basePosition: {x: 0, y: 0, z: 0}
+  clickTimer: -1
+  clickMousePosition: {x: 0, y: 0, z: 0}
   held: 0
+  tool: 4
+  active: {fileID: -551503118, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
+  inactive: {fileID: 1572906263, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   clicked: 0
 --- !u!212 &1075403108
 SpriteRenderer:
@@ -3646,16 +3681,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f696de77ee1c141bc8ac89313c5ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tool: 1
+  hovered: 0
   spriteRenderer: {fileID: 0}
-  rigidbody2D: {fileID: 0}
-  basePosition: {x: 0, y: 0, z: 0}
-  active: {fileID: -160163925, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
-  inactive: {fileID: -1850357865, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   outlined: {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
   regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
-  hovered: 0
+  rigidbody2D: {fileID: 0}
+  basePosition: {x: 0, y: 0, z: 0}
+  clickTimer: -1
+  clickMousePosition: {x: 0, y: 0, z: 0}
   held: 0
+  tool: 1
+  active: {fileID: -160163925, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
+  inactive: {fileID: -1850357865, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   clicked: 0
 --- !u!50 &1120194282
 Rigidbody2D:
@@ -4018,6 +4055,171 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146823437}
   m_CullTransparentMesh: 1
+--- !u!43 &1203674081
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 42
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 16
+    localAABB:
+      m_Center: {x: 0.00000011920929, y: -0.000000059604645, z: 0}
+      m_Extent: {x: 1.4180001, y: 1.2640002, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 00000100020003000100000003000400010005000400030006000400050004000600070002000800000000000900030001000a00020004000b00010003000c00050007000d00040005000e00060006000f000700
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 704
+    _typelessdata: 0881b53fc2caa1bf000000000000803f0000008000000080000000800881b53fc2caa1bf0881b53fc2caa1bf0881b53fc1caa13f00000000000000800000803f00000080000000800881b53fc1caa13f0881b53fc1caa13f0881b53f000080b3000000000000803f0000008000000080000000800881b53fc1caa13f0881b53fc2caa1bf00000034c2caa1bf0000000000000080000080bf00000000000000800881b53fc2caa1bf0681b5bfc2caa1bf00000034c1caa13f00000000000000800000803f00000080000000800681b5bfc1caa13f0881b53fc1caa13f0681b5bfc2caa1bf0000000000000080000080bf00000000000000800681b5bfc2caa1bf0681b5bfc2caa1bf0681b5bf000080b300000000000080bf0000008000000080000000800681b5bfc2caa1bf0681b5bfc1caa13f0681b5bfc1caa13f00000000000080bf0000008000000080000000800681b5bfc1caa13f0681b5bfc1caa13f0881b53f000080b3000000000000803f0000008000000080000000800881b53fc1caa13f0881b53fc2caa1bf0881b53fc2caa1bf0000000000000080000080bf00000000000000800881b53fc2caa1bf0881b53fc2caa1bf0881b53fc1caa13f000000000000803f0000008000000080000000800881b53fc1caa13f0881b53fc1caa13f00000034c1caa13f00000000000000800000803f00000080000000800681b5bfc1caa13f0881b53fc1caa13f00000034c2caa1bf0000000000000080000080bf00000000000000800881b53fc2caa1bf0681b5bfc2caa1bf0681b5bfc1caa13f00000000000000800000803f00000080000000800681b5bfc1caa13f0681b5bfc1caa13f0681b5bfc2caa1bf00000000000080bf0000008000000080000000800681b5bfc2caa1bf0681b5bfc2caa1bf0681b5bf000080b300000000000080bf0000008000000080000000800681b5bfc2caa1bf0681b5bfc1caa13f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0.00000011920929, y: -0.000000059604645, z: 0}
+    m_Extent: {x: 1.4180001, y: 1.2640002, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1210113716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6244,16 +6446,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f696de77ee1c141bc8ac89313c5ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tool: 2
+  hovered: 0
   spriteRenderer: {fileID: 0}
-  rigidbody2D: {fileID: 0}
-  basePosition: {x: 0, y: 0, z: 0}
-  active: {fileID: -1033342301, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
-  inactive: {fileID: 1442240565, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   outlined: {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
   regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
-  hovered: 0
+  rigidbody2D: {fileID: 0}
+  basePosition: {x: 0, y: 0, z: 0}
+  clickTimer: -1
+  clickMousePosition: {x: 0, y: 0, z: 0}
   held: 0
+  tool: 2
+  active: {fileID: -1033342301, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
+  inactive: {fileID: 1442240565, guid: 7742b793814112b4ab9cde7ef5b57e20, type: 3}
   clicked: 0
 --- !u!212 &1984723729
 SpriteRenderer:
