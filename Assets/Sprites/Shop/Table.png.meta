@@ -505,7 +505,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 6af07f762501ca947bf9ded39c5aa544, type: 3}
+      name: _NormalMap
     nameFileIdTable:
       InkEmpty: -160163925
       Stamp: -111844708

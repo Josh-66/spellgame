@@ -6,7 +6,7 @@ public class ToolController : DeskObject
 {
     public static Tool activeTool;//{get{return _activeTool.tool;}}
 
-    private static ToolController _activeTool;
+    private static ToolController activeToolController;
     public Tool tool;
     public Sprite active,inactive;
     public bool clicked = false;
@@ -23,29 +23,27 @@ public class ToolController : DeskObject
     }
 
     public static void ClearTool(){
-        if (_activeTool!=null){
-            _activeTool.Deactivate();
+        if (activeToolController!=null){
+            activeToolController.Deactivate();
         }
     }
     public void Deactivate(){
-        if (_activeTool=this){
-            _activeTool=null;
+        if (activeToolController=this){
+            activeToolController=null;
             activeTool=Tool.None;
         }
     }
     public override void Activate(){
-        Debug.Log(_activeTool);
-        if (_activeTool=this){
-            _activeTool=null;
+        if (activeToolController==this){
+            activeToolController=null;
             activeTool=Tool.None;
             return;
         }
-        if (_activeTool!=null){
-            _activeTool.Deactivate();
+        if (activeToolController!=null){
+            activeToolController.Deactivate();
         }
-        _activeTool=this;
+        activeToolController=this;
         activeTool=this.tool;
-        Debug.Log("here2"+activeTool);
     }
 }
 
