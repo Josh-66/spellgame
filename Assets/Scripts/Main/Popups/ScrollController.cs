@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollController : MonoBehaviour
 {
     public static ScrollController instance;
+    public static Color inkColor {get{return instance.inkController.inkColor;}}
     public InkController inkController;
 
     public AudioSource source;
@@ -22,14 +23,12 @@ public class ScrollController : MonoBehaviour
 
     public static void OpenScroll(){
         instance.gameObject.SetActive(true);
-        ToolController.ClearTool();
         instance.source.clip=instance.pickUp;
         instance.source.Play();
         
     }
     public static void CloseScroll(bool silent = false){
         instance.gameObject.SetActive(false);
-        ToolController.ClearTool();
         instance.source.clip=instance.putDown;
 
         if (!silent)
@@ -38,7 +37,6 @@ public class ScrollController : MonoBehaviour
     }
     public static void ToggleScroll(){
         instance.gameObject.SetActive(!isOpen);
-        ToolController.ClearTool();
     
         instance.source.clip=isOpen ? instance.pickUp : instance.putDown;
         instance.source.Play();

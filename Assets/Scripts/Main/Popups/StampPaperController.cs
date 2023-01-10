@@ -49,7 +49,6 @@ public class StampPaperController : MonoBehaviour
     }
     public static void OpenPaper(){
         instance.gameObject.SetActive(true);
-        ToolController.activeTool=Tool.StampQuill;
         instance.source.clip=instance.openSound;
         instance.source.Play();
 

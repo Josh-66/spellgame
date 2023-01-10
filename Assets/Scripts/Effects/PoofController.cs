@@ -21,5 +21,6 @@ public class PoofController : MonoBehaviour
         GameObject poof = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Poof"));
         poof.transform.position=worldPos;
         poof.transform.localScale=Vector3.one*scale;
+
     }
 }

@@ -14,7 +14,7 @@ public class PoofParticle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        color = Color.white * Random.Range(.8f,1f);
+        color = Random.Range(.9f,1.1f) * ScrollController.instance.inkController.inkColor;
         scale = Random.Range(1,2);
         rotationSpeed=Random.Range(-180f,180f);
         transform.localPosition=Random.insideUnitCircle*.5f;

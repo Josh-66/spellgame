@@ -18,39 +18,32 @@ public class CursorController : MonoBehaviour{
         instance=this;
     }
     void Update(){
-        if (ScrollController.isOpen || StampPaperController.isOpen){
-            
-            image.sprite = ToolController.activeTool switch{
-                Tool.Quill=>quill,
-                Tool.StampQuill=>quill,
-                Tool.Eraser=>eraser,
-                Tool.Stamp=>stamp,
-                _=>null,
-            };
 
-            if (image.sprite==null){
-                Cursor.visible=true;
-                image.enabled=false;
-            }
-            else{
-                ((RectTransform)image.transform).pivot=new Vector2(image.sprite.pivot.x/image.sprite.textureRect.width,image.sprite.pivot.y/image.sprite.textureRect.height);
-                Vector2 mousePosition;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,Input.mousePosition,Camera.main,out mousePosition);
-                transform.anchoredPosition=mousePosition;
+        image.sprite = ToolController.activeTool switch{
+            Tool.Quill=>quill,
+            Tool.StampQuill=>quill,
+            Tool.Eraser=>eraser,
+            Tool.Stamp=>stamp,
+            _=>null,
+        };
 
-                if (mousePosition.x < CanvasController.transform.rect.xMin || mousePosition.y < CanvasController.transform.rect.yMin || mousePosition.x > CanvasController.transform.rect.xMax || mousePosition.y > CanvasController.transform.rect.yMax)
-                    Cursor.visible=true;
-                else
-                    Cursor.visible=false;
-                image.SetNativeSize();
-                image.enabled=true;
-            }
-
-            
-        }
-        else{
+        if (image.sprite==null){
             Cursor.visible=true;
             image.enabled=false;
         }
+        else{
+            ((RectTransform)image.transform).pivot=new Vector2(image.sprite.pivot.x/image.sprite.textureRect.width,image.sprite.pivot.y/image.sprite.textureRect.height);
+            Vector2 mousePosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,Input.mousePosition,Camera.main,out mousePosition);
+            transform.anchoredPosition=mousePosition;
+
+            if (mousePosition.x < CanvasController.transform.rect.xMin || mousePosition.y < CanvasController.transform.rect.yMin || mousePosition.x > CanvasController.transform.rect.xMax || mousePosition.y > CanvasController.transform.rect.yMax)
+                Cursor.visible=true;
+            else
+                Cursor.visible=false;
+            image.SetNativeSize();
+            image.enabled=true;
+        }
+
     }
 }

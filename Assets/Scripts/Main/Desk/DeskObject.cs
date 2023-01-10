@@ -5,15 +5,15 @@ using UnityEngine;
 public class DeskObject : MonoBehaviour, Clickable
 {
     public bool hovered;
-    public SpriteRenderer spriteRenderer;
-    public Material outlined,regular;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    public static Material outlined,regular;
 
     
-    new public Rigidbody2D rigidbody2D;
-    public Vector3 basePosition;
+    [HideInInspector] new public Rigidbody2D rigidbody2D;
+    [HideInInspector] public Vector3 basePosition;
 
-    public float clickTimer=-1f;
-    public Vector3 clickMousePosition;
+    [HideInInspector] public float clickTimer=-1f;
+    [HideInInspector] public Vector3 clickMousePosition;
     public bool held = false;
     public virtual void Awake()
     {

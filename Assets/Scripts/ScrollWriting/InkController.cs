@@ -30,7 +30,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public Sprite grid,gridsquare; 
     public Material inkMaterial;
     Color baseColor = new Color(.8f,.8f,.8f);
-    Color inkColor;
+    public Color inkColor;
 
     public Spell spell;
     public bool isStampPad = false;
