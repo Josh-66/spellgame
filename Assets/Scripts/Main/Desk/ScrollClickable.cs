@@ -6,7 +6,7 @@ public class ScrollClickable : DeskObject
 {
     public static ScrollClickable instance;
     
-    
+    public Material scrollInkMaterial;
     public override void Awake(){
         base.Awake();
         instance=this;
@@ -29,13 +29,13 @@ public class ScrollClickable : DeskObject
         MeshRenderer mr = stroke.AddComponent<MeshRenderer>();
         MeshFilter mf = stroke.AddComponent<MeshFilter>();
         mf.mesh=m;
-        mr.material=ScrollController.instance.inkController.inkMaterial;
+        mr.material=scrollInkMaterial;
         mr.material.mainTexture=s.texture;
         mr.sortingLayerID=spriteRenderer.sortingLayerID;
         mr.sortingOrder=spriteRenderer.sortingOrder;
         
-        stroke.transform.localPosition=Vector3.back*.01f;
-
+        stroke.transform.localPosition=Vector3.back*.05f;
+        stroke.transform.localRotation=Quaternion.identity;
 
         return stroke;
     }

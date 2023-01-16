@@ -8,15 +8,18 @@ public class CanvasController : MonoBehaviour
     public static UnityEngine.UI.CanvasScaler scaler;
     new public static RectTransform transform;
     public static RectTransform textLayer;
+
+
+    public WindowController[] toActivate;
     public static Vector2 canvasMousePos{get{
-        Vector2 mousePos = Input.mousePosition;
+        Vector2 mousePos = MyInput.mousePosition;
         //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,mousePos,Camera.main,out mousePos);
         return mousePos;
         }
     }
     public static Vector2 clampedCanvasMousePos{get{
-        Vector2 mousePos = Input.mousePosition;
+        Vector2 mousePos = MyInput.mousePosition;
         //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,mousePos,Camera.main,out mousePos);
         mousePos.x = Mathf.Max(mousePos.x,transform.rect.xMin+40); 
@@ -31,6 +34,10 @@ public class CanvasController : MonoBehaviour
         scaler=GetComponent<UnityEngine.UI.CanvasScaler>();
         transform=GetComponent<RectTransform>();
         textLayer=(RectTransform)transform.Find("TextLayer");
+
+        foreach(WindowController wc in toActivate){
+            wc.Activate();
+        }
     }
 
 }

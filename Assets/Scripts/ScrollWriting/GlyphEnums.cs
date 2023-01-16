@@ -32,6 +32,7 @@ public enum GlyphType{
 
     //Strength
     Low,
+    Medium,
     High,
     Ludicrous,
 
@@ -67,6 +68,7 @@ public enum GlyphTypeForm{
 }
 public enum GlyphTypeStrength{
     Low= GlyphType.Low,
+    Medium = GlyphType.Medium,
     High= GlyphType.High,
     Ludicrous= GlyphType.Ludicrous,
     Invalid = GlyphType.Invalid,

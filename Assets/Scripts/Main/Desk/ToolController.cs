@@ -14,12 +14,12 @@ public class ToolController : DeskObject
     public override void Update(){
         base.Update();
 
-        Sprite oldSprite = spriteRenderer.sprite;
+        // Sprite oldSprite = spriteRenderer.sprite;
         spriteRenderer.sprite = (int)(activeTool&tool)>0 ? active:inactive;
-        if (oldSprite!=spriteRenderer.sprite){
-            GameObject.Destroy(GetComponent<PolygonCollider2D>());
-            gameObject.AddComponent<PolygonCollider2D>();
-        }
+        // if (oldSprite!=spriteRenderer.sprite){
+        //     GameObject.Destroy(GetComponent<PolygonCollider2D>());
+        //     gameObject.AddComponent<PolygonCollider2D>();
+        // }
     }
 
     public static void ClearTool(){

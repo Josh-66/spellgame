@@ -24,23 +24,28 @@ public class GameController : MonoBehaviour
     {
         Glyph.LoadGlyphs();
         instance = this;
-    }
 
+        
+    }
+    void Start(){
+        AudioUtility.SetAllVolumes();
+    }
     // Update is called once per frame
     void Update()
     {
+
         if (clickablesActive)
         {
-            UpdateHovered();
             UpdateClicked();
+            UpdateHovered();
         }
     }
 
 
     void UpdateHovered(){
-        Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 point = MyInput.WorldMousePos();
 
-        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()){
+        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() || MyInput.clickHeld){
             hoveredObject=null;
         }
         else{

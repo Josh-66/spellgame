@@ -4,15 +4,10 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-public class BookController : MonoBehaviour, IPointerDownHandler
+public class BookController : WindowController
 {
     public static BookController instance;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
-    public bool dragging = false;
-    public Vector2 dragOffset;
-    
-    public AudioSource source;
-    public AudioClip pickUp,putDown;
     public AudioSource pageSource;
     public AudioClip pageTurn;
 
@@ -21,12 +16,18 @@ public class BookController : MonoBehaviour, IPointerDownHandler
             return _pageNumber;
         }
         set{
+            if (_pageNumber!=value){
+                pageHistory.Add(_pageNumber);
+                if (pageHistory.Count>20)
+                    pageHistory.RemoveAt(0);
+            }
             _pageNumber=value;
             LoadPage(_pageNumber);
         }
     }
     int _pageNumber;
     public BookInfo bookInfo;
+    public List<int> pageHistory = new List<int>();
 
     public MonoBehaviour activePageController{
         set{
@@ -37,42 +38,33 @@ public class BookController : MonoBehaviour, IPointerDownHandler
         }
     }
     MonoBehaviour _activePageController;
+    public TextPageBookController textPageBookController;
     public QuickRefBookController quickRefBookController;
     public IndexPageBookController indexPageBookController;
+    public SettingsPageController settingsPageController;
+    public GameObject backButton;
     public static void OpenBook(){
-        instance.gameObject.SetActive(true);
-        instance.dragging=false;
-        
-        instance.source.clip=instance.pickUp;
-        instance.source.Play();
+        instance.Open();
     }
     public static void CloseBook(bool silent = false){
-        instance.gameObject.SetActive(false);
-        instance.source.clip=instance.putDown;
-        if (!silent)
-            instance.source.Play();
+        instance.Close(silent);
     }
     public static void ToggleBook(){
-        instance.gameObject.SetActive(!isOpen);
-        instance.source.clip=isOpen ? instance.pickUp : instance.putDown;
-        instance.source.Play();
-
+        instance.Toggle();
     }
-    void Awake(){
+    public override void Activate(){
         
         instance=this;
         pageNumber=0;
         CloseBook(true);
     }
-    void Update() {
-        ControlDrag();
-
-        
-    }
+    
     void LoadPage(int number){
         bookInfo.pages[number].Activate(this);
-        pageSource.clip=pageTurn;
-        pageSource.Play();
+        if (pageSource.isActiveAndEnabled){
+            pageSource.clip=pageTurn;
+            pageSource.Play();
+        }
     }
     public void CloseButton(){
         if (!MyInput.click)
@@ -92,56 +84,31 @@ public class BookController : MonoBehaviour, IPointerDownHandler
             pageNumber++;
         }
     }
-    public void ElementTab(){
+    public void GoToPage(int page){
         if (!MyInput.click)
             return;
-        pageNumber=0;
-    }
-    public void FormTab(){
-        if (!MyInput.click)
-            return;
-        pageNumber=2;
-    }
-    public void StrengthTab(){
-        if (!MyInput.click)
-            return;
-        pageNumber=4;
-    }
-    public void StyleTab(){
-        if (!MyInput.click)
-            return;
-        pageNumber=5;
-    }
-    public void RulesTab(){
-        if (!MyInput.click)
-            return;
-    }
-    public void IndexTab(){
-        if (!MyInput.click)
-            return;
+        pageNumber=page;
     }
 
-
-    public void OnPointerDown(PointerEventData ped){
-        // Vector2 scrollMousePos;
-        // RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform,Input.mousePosition,Camera.main,out scrollMousePos);
-
-        // if (((RectTransform)transform).rect.Contains(scrollMousePos)){
-            if (MyInput.click)
-            {
-                dragOffset = ((RectTransform)transform).anchoredPosition - CanvasController.clampedCanvasMousePos;
-                dragging=true;
-            }
-        // }
+    public void GoToPageByName(BookInfo.PageTabs page){
+        GoToPage(bookInfo.PageOf(page));
     }
-    void ControlDrag(){
-        
-        if (dragging){
-            ((RectTransform)transform).anchoredPosition = CanvasController.clampedCanvasMousePos + dragOffset;
-            if (MyInput.clickUp)
-                dragging=false;
-        }
+    public void GoToPageByName(string page){
+        GoToPage(bookInfo.PageOf(System.Enum.Parse<BookInfo.PageTabs>(page)));
     }
 
+    public void GoBack(){
+        if (pageHistory.Count==0)
+            return;
 
+        int toGoTo = pageHistory[pageHistory.Count-1];
+        pageHistory.RemoveAt(pageHistory.Count-1);
+        pageNumber=toGoTo;
+        pageHistory.RemoveAt(pageHistory.Count-1);//Remove new added page
+    }
+
+    public override void Update(){
+        base.Update();
+        backButton.SetActive(pageHistory.Count>0);
+    }
 }

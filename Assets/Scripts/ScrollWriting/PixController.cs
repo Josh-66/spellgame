@@ -30,7 +30,7 @@ public class PixController : MonoBehaviour{
         GameObject g = Prefabs.Load("Pix");
         RectTransform rt = (RectTransform)g.transform;
         rt.SetParent(parent);
-        rt.anchoredPosition=position;
+        rt.anchoredPosition3D=position;
         rt.sizeDelta=size*Vector2.one;
         rt.localScale=Vector3.one;
         g.GetComponent<Image>().color=color;

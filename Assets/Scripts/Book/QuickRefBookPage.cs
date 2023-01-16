@@ -5,16 +5,16 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "QuickRef", menuName = "BookPage/QuickRef", order = 1)]
 public class QuickRefBookPage:BookPage{
     public Sprite glyph1;
-    public string name1;
+    public GlyphType name1;
     public Color color1 = new Color(.8f,.8f,.8f);
     public Sprite glyph2;
-    public string name2;
+    public GlyphType name2;
     public Color color2 = new Color(.8f,.8f,.8f);
     public Sprite glyph3;
-    public string name3;
+    public GlyphType name3;
     public Color color3 = new Color(.8f,.8f,.8f);
     public Sprite glyph4;
-    public string name4;
+    public GlyphType name4;
     public Color color4 = new Color(.8f,.8f,.8f);
 
     public override void Activate(BookController bc){
@@ -37,10 +37,10 @@ public class QuickRefBookPage:BookPage{
         qr.image3.color=color3;
         qr.image4.color=color4;
 
-        qr.text1.text=name1;
-        qr.text2.text=name2;
-        qr.text3.text=name3;
-        qr.text4.text=name4;
+        qr.text1.text=name1.ToString();
+        qr.text2.text=name2.ToString();
+        qr.text3.text=name3.ToString();
+        qr.text4.text=name4.ToString();
 
     }
 }

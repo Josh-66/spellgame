@@ -73,9 +73,9 @@ Material:
     - _QueueOffset: 0
     - _SrcBlend: 5
     - _StrokeDarkVariance: 0.25
-    - _StrokeNoiseScale: 10
-    - _StrokeNoiseSpeed: 0.25
-    - _StrokeNoiseVariance: 0.1
+    - _StrokeNoiseScale: 0.04
+    - _StrokeNoiseSpeed: 20
+    - _StrokeNoiseVariance: 0.5
     - _Surface: 1
     - _ZTest: 4
     - _ZWrite: 0

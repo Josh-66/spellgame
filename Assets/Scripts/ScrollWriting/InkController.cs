@@ -9,11 +9,12 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public Tool tool {get{return ToolController.activeTool;}}
     public List<Stroke> strokes;
     Stroke activeStroke;
-    public int width = 700, height = 800,scale=5;
+    public int width = 700, height = 800;
+    public static int scale=5;
     Vector2 lastMousePos;
     Vector2 mousePos{get{
 
-        Vector2 localMousePosition = Input.mousePosition;
+        Vector2 localMousePosition = MyInput.mousePosition;
         //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform,localMousePosition,Camera.main,out localMousePosition);
         //localMousePosition-=(Vector2)((RectTransform)transform).position;
@@ -29,7 +30,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 
     public Sprite grid,gridsquare; 
     public Material inkMaterial;
-    Color baseColor = new Color(.8f,.8f,.8f);
+    Color baseColor = new Color(.18f,.18f,.18f);
     public Color inkColor;
 
     public Spell spell;
@@ -105,7 +106,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         Sprite stampSprite = StampPaperController.instance.stampSprite;
         Rect spriteRect = stampSprite.rect;
         Texture2D stampTexture = StampPaperController.instance.stampTexture;
-        Vector2 previewPos = (StampPreviewController.instance.transform.anchoredPosition-Vector2.one*2.5f+transform.sizeDelta/2)/5;
+        Vector2 previewPos = (StampPreviewController.instance.transform.anchoredPosition+transform.sizeDelta/2)/InkController.scale;
         Vector2Int localPreviewPos= Vector2Int.FloorToInt(previewPos-stampSprite.pivot-spriteRect.min); 
     
         for (int y = Mathf.FloorToInt(spriteRect.yMin);y<=spriteRect.yMax;y++){
@@ -148,6 +149,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         g.transform.SetParent(transform);
         ((RectTransform)g.transform).anchoredPosition3D=Vector3.zero;
         ((RectTransform)g.transform).localScale=Vector3.one;
+        g.transform.localRotation=Quaternion.identity;
         Image image = g.AddComponent<Image>();
         image.raycastTarget=false;
         //Initialize Texture
@@ -364,7 +366,6 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             float y = Random.Range(-transform.sizeDelta.y/2,transform.sizeDelta.y/2);
 
 
-            GameObject g = Prefabs.Load("Pix");
             PixController.CreatePix(transform.parent,new Vector2(x,y),2*scale,inkColor);
         }
     }
@@ -378,7 +379,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         rt.SetParent(activeStroke.transform);
         Vector2 gridPos = activeStroke.bounds.center*scale;
         gridPos-=new Vector2(width,height)/2;
-        rt.anchoredPosition=gridPos;
+        rt.anchoredPosition3D=gridPos;
         rt.sizeDelta=((Vector2Int)activeStroke.bounds.size)*scale;
         rt.localScale=Vector3.one;
         float stepSize = 1f/Glyph.size;
@@ -409,7 +410,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                     rt.SetParent(activeStroke.transform);
                     gridPos = boxBounds.center*scale;
                     gridPos-=new Vector2(width,height)/2;
-                    rt.anchoredPosition=gridPos;
+                    rt.anchoredPosition3D=gridPos;
                     rt.sizeDelta=((Vector2Int)boxBounds.size)*scale;
                     rt.localScale=Vector3.one;
                 }
@@ -452,7 +453,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     }
     void GetClickInputs(){
         Vector2 scrollMousePos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform.parent,Input.mousePosition,Camera.main,out scrollMousePos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform.parent,MyInput.mousePosition,Camera.main,out scrollMousePos);
 
         if (tool == Tool.None && ((RectTransform)transform.parent).rect.Contains(scrollMousePos)){
             if (MyInput.click)
@@ -476,7 +477,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                     CreateStroke();
                 }    
             }
-            else if (tool==Tool.Stamp && !stamped){
+            else if (tool==Tool.Stamp && !stamped && StampPreviewController.good){
                 if (MyInput.click){
                     CreateStamp();
                 }

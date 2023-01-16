@@ -1,46 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ScrollController : MonoBehaviour
+public class ScrollController : WindowController
 {
     public static ScrollController instance;
     public static Color inkColor {get{return instance.inkController.inkColor;}}
     public InkController inkController;
-
-    public AudioSource source;
-    public AudioClip pickUp,putDown;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
-    void Awake(){
-        instance=this;
-        CloseScroll(true);        
-    }
-
-
-    void Update(){
-
-    }
 
     public static void OpenScroll(){
-        instance.gameObject.SetActive(true);
-        instance.source.clip=instance.pickUp;
-        instance.source.Play();
+        instance.Open();
         
     }
     public static void CloseScroll(bool silent = false){
-        instance.gameObject.SetActive(false);
-        instance.source.clip=instance.putDown;
-
-        if (!silent)
-            instance.source.Play();
-
+        instance.Close(silent);
     }
     public static void ToggleScroll(){
-        instance.gameObject.SetActive(!isOpen);
-    
-        instance.source.clip=isOpen ? instance.pickUp : instance.putDown;
-        instance.source.Play();
-        
+        instance.Toggle();
     }
-    
+    public override void Activate()
+    {
+        instance=this;
+        CloseScroll(true);   
+    }
+    public override void OnPointerDown(PointerEventData ped)
+    {
+        //Do nothing;
+    }
 }

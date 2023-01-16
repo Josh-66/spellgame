@@ -9,7 +9,7 @@ public class BookClickable : DeskObject
 
     public override void Activate()
     {
-        BookController.OpenBook();
+        BookController.ToggleBook();
     }
 
 }

@@ -34,7 +34,7 @@ public class CursorController : MonoBehaviour{
         else{
             ((RectTransform)image.transform).pivot=new Vector2(image.sprite.pivot.x/image.sprite.textureRect.width,image.sprite.pivot.y/image.sprite.textureRect.height);
             Vector2 mousePosition;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,Input.mousePosition,Camera.main,out mousePosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasController.transform,MyInput.mousePosition,Camera.main,out mousePosition);
             transform.anchoredPosition=mousePosition;
 
             if (mousePosition.x < CanvasController.transform.rect.xMin || mousePosition.y < CanvasController.transform.rect.yMin || mousePosition.x > CanvasController.transform.rect.xMax || mousePosition.y > CanvasController.transform.rect.yMax)

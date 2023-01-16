@@ -2,26 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StampPaperController : MonoBehaviour
+public class StampPaperController : WindowController
 {
     public InkController inkController;
     public static StampPaperController instance;
-    public AudioSource source;
-    public AudioClip openSound,closeSound;
+    public StampPreviewController previewController;
     public Texture2D stampTexture = null;
     public Sprite stampSprite = null;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
-    public void Awake(){
+    public override void Activate(){
         instance=this;
         ClosePaper();
     }
-    void Update(){
+    public override void Update(){
+        base.Update();
         if (Input.GetKeyDown(KeyCode.R)){
-            inkController.ClearStrokes();
+            Clear();
         }
         if (Input.GetKeyDown(KeyCode.Return)){
-            if (inkController.strokes.Count>0){
-
+            SaveStamp();
+        }
+    }
+    public void Clear(){
+        inkController.ClearStrokes();
+    }
+    public void SaveStamp(){
+        if (inkController.strokes.Count>0){
                 stampTexture = inkController.strokes[0].texture;
                 Vector3Int min =inkController.strokes[0].bounds.min;
                 Vector3Int max =inkController.strokes[0].bounds.max;
@@ -37,20 +43,19 @@ public class StampPaperController : MonoBehaviour
                     }
                 }
                 stampTexture.Apply();
-                stampSprite= Sprite.Create(stampTexture,new Rect(min.x,min.y,max.x-min.x,max.y-min.y),new Vector2(.5f,.5f),20);
+                float width =  Mathf.Floor((max.x-min.x+1)/2)*2;
+                float height = Mathf.Floor((max.y-min.y+1)/2)*2;
+                stampSprite= Sprite.Create(stampTexture,new Rect(min.x,min.y,width,height),new Vector2(.5f,.5f),20);
+
                 inkController.ClearStrokes();
-                StampPreviewController.instance.image.sprite=stampSprite;
-                StampPreviewController.instance.image.SetNativeSize();
+                previewController.image.sprite=stampSprite;
+                previewController.image.SetNativeSize();
                 ClosePaper();
 
-            }
-            
         }
     }
     public static void OpenPaper(){
-        instance.gameObject.SetActive(true);
-        instance.source.clip=instance.openSound;
-        instance.source.Play();
+        instance.Open();
 
         ToolController.activeTool=Tool.StampQuill;
         GameController.instance.clickablesActive=false;
@@ -58,23 +63,17 @@ public class StampPaperController : MonoBehaviour
         
     }
     public static void ClosePaper(bool silent = false){
-        instance.gameObject.SetActive(false);
-        instance.source.clip=instance.closeSound;
-
-        if (!silent)
-            instance.source.Play();
-
+        instance.Close(silent);
         ToolController.activeTool=Tool.None;
-        
         GameController.instance.clickablesActive=true;
-        
-
     }
     public static void TogglePaper(){
-        if (isOpen)
+        if (isOpen){
             ClosePaper();
-        else 
+        }
+        else{
             OpenPaper();
+        }
         
     }
 }

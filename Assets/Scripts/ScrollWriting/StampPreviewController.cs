@@ -8,7 +8,7 @@ public class StampPreviewController : MonoBehaviour
     public Image image;
     public RectTransform parent;
     new public RectTransform transform;
-    public bool good;
+    public static bool good = false;
     void Awake(){
         transform=(RectTransform)base.transform;
         parent=(RectTransform)transform.parent.transform;
@@ -16,12 +16,12 @@ public class StampPreviewController : MonoBehaviour
         image=GetComponent<Image>();
     }
     public void Update(){
-        if (ToolController.activeTool==Tool.Stamp && !ScrollController.instance.inkController.stamped){
+        if (ToolController.activeTool==Tool.Stamp ){
             image.enabled=true;
-            Vector2 mousePos = Input.mousePosition;
+            Vector2 mousePos = MyInput.mousePosition;
             //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parent,mousePos,Camera.main,out mousePos);
-            transform.anchoredPosition=Vector2Int.RoundToInt(mousePos/5)*5 + 2.5f*Vector2.one;
+            transform.anchoredPosition=Vector2Int.RoundToInt(mousePos/InkController.scale)*InkController.scale + 2.5f*Vector2.one;
             transform.SetAsLastSibling();
 
             Vector2 max = transform.anchoredPosition+transform.sizeDelta/2;

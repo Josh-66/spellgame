@@ -67,15 +67,15 @@ Material:
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
     - _OutlineIntensity: 0.2
-    - _OutlineScale: 1
+    - _OutlineScale: 0.02
     - _OutlineSpeed: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
     - _StrokeDarkVariance: 0.25
-    - _StrokeNoiseScale: 6
-    - _StrokeNoiseSpeed: 0.25
-    - _StrokeNoiseVariance: 0.2
+    - _StrokeNoiseScale: 0.02
+    - _StrokeNoiseSpeed: 30
+    - _StrokeNoiseVariance: 0.75
     - _Surface: 1
     - _ZTest: 4
     - _ZWrite: 0

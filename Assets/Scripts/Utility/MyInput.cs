@@ -6,6 +6,9 @@ public class MyInput : MonoBehaviour{
         return _instance;
     }}
     static MyInput _instance;
+    public static Vector3 mousePosition{get{
+        return Input.mousePosition;
+    }}
 
     public static bool click{
         get{
@@ -25,5 +28,16 @@ public class MyInput : MonoBehaviour{
 
         _click = (Input.GetMouseButtonDown(0));
         clickUp=Input.GetMouseButtonUp(0);
+        clickHeld=Input.GetMouseButton(0);
+    }
+    public static Vector3 WorldMousePos(float z = 0){
+        
+        Ray ray;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, z));
+        float distance;
+        xy.Raycast(ray, out distance);
+        return new Vector3(ray.GetPoint(distance).x,ray.GetPoint(distance).y,z);
     }
 }

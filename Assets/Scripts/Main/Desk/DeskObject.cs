@@ -26,13 +26,13 @@ public class DeskObject : MonoBehaviour, Clickable
     // Update is called once per frame
     public virtual void Update()
     {
-        spriteRenderer.material=hovered ? regular:outlined; 
+        spriteRenderer.material=(hovered|held|clickTimer>=0) ? regular:outlined; 
 
         if (clickTimer>=0){
             clickTimer-=Time.deltaTime;
             if (clickTimer<0)
                 held=true;
-            if ((Input.mousePosition-clickMousePosition).magnitude>10f){
+            if ((MyInput.mousePosition-clickMousePosition).magnitude>10f){
                 clickTimer=-1;
                 held=true;
             }
@@ -49,7 +49,7 @@ public class DeskObject : MonoBehaviour, Clickable
     void FixedUpdate() {
         if (held){
             
-            rigidbody2D.velocity = (Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position) * 10f;
+            rigidbody2D.velocity = (MyInput.WorldMousePos()-transform.position) * 10f;
             rigidbody2D.angularVelocity = -transform.rotation.eulerAngles.z;
             if (rigidbody2D.angularVelocity <-180f)
                 rigidbody2D.angularVelocity+=360f;
@@ -71,7 +71,7 @@ public class DeskObject : MonoBehaviour, Clickable
     public void OnClick()
     {
         clickTimer=.5f;
-        clickMousePosition=Input.mousePosition;
+        clickMousePosition=MyInput.mousePosition;
     }
 
     public void OnHover()
