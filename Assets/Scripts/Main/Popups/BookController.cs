@@ -85,8 +85,8 @@ public class BookController : WindowController
         }
     }
     public void GoToPage(int page){
-        if (!MyInput.click)
-            return;
+        // if (!MyInput.click)
+        //     return;
         pageNumber=page;
     }
 
@@ -96,7 +96,22 @@ public class BookController : WindowController
     public void GoToPageByName(string page){
         GoToPage(bookInfo.PageOf(System.Enum.Parse<BookInfo.PageTabs>(page)));
     }
-
+    public void GoToIndexPage(int position){
+        GlyphType type = position switch{
+            0=>quickRefBookController.type1,
+            1=>quickRefBookController.type2,
+            2=>quickRefBookController.type3,
+            3=>quickRefBookController.type4,
+            _=>GlyphType.Gag,
+        };
+        for (int i = bookInfo.PageOf(BookInfo.PageTabs.Index); i < bookInfo.pages.Count;i++){
+            IndexPageBookPage page = bookInfo.pages[i] as IndexPageBookPage;
+            if (page!=null && page.type==type){
+                GoToPage(i);
+                break;
+            }
+        }
+    }
     public void GoBack(){
         if (pageHistory.Count==0)
             return;

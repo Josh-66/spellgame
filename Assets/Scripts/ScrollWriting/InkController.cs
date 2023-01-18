@@ -10,7 +10,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public List<Stroke> strokes;
     Stroke activeStroke;
     public int width = 700, height = 800;
-    public static int scale=5;
+    public static int scale=4;
     Vector2 lastMousePos;
     Vector2 mousePos{get{
 
@@ -30,8 +30,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 
     public Sprite grid,gridsquare; 
     public Material inkMaterial;
-    Color baseColor = new Color(.18f,.18f,.18f);
-    public Color inkColor;
+    Color baseColor ;
+    public Color inkColor= new Color(.18f,.18f,.18f,1);
 
     public Spell spell;
     public bool isStampPad = false;
@@ -52,7 +52,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     Vector2 dragOffset;
     void Awake()
     {
-        inkColor=baseColor;
+        baseColor=inkColor;
 
         strokes=new List<Stroke>();
         RectTransform rt = GetComponent<RectTransform>();
@@ -99,13 +99,22 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             DeleteStroke(strokes[i],true);
         } 
         strokes.Clear();
-    }    
+    } 
+    public void HardClearStrokes(){
+        for (int i = strokes.Count-1; i >= 0;i--){
+            strokes[i].HardDelete();
+        } 
+        spell=new Spell();
+        UpdateInkColor();
+        stamped=false;
+        strokes.Clear();
+    }   
     Stroke CreateStamp(){
         Stroke s = CreateStroke();
         activeStroke=null;
-        Sprite stampSprite = StampPaperController.instance.stampSprite;
+        Sprite stampSprite = StampPaperController.stampSprite;
         Rect spriteRect = stampSprite.rect;
-        Texture2D stampTexture = StampPaperController.instance.stampTexture;
+        Texture2D stampTexture = StampPaperController.stampTexture;
         Vector2 previewPos = (StampPreviewController.instance.transform.anchoredPosition+transform.sizeDelta/2)/InkController.scale;
         Vector2Int localPreviewPos= Vector2Int.FloorToInt(previewPos-stampSprite.pivot-spriteRect.min); 
     
@@ -117,7 +126,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                 int sx = x+localPreviewPos.x;   
                 int sy = y+localPreviewPos.y;
 
-                s.texture.SetPixel(sx,sy,stampColor);   
+                s.texture.SetPixel(sx,sy,stampColor * baseColor);   
                 
                 
                 if (Random.value<.2f){
@@ -125,7 +134,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                     position*=scale;
                     position-=transform.sizeDelta/2;
                     position+=Vector2.one*scale/2;
-                    PixController pix = PixController.CreatePix(transform.parent,position,scale*3,inkColor);
+                    PixController pix = PixController.CreatePix(transform.parent,position+transform.anchoredPosition,scale*3,inkColor);
                     pix.velocity=new Vector2(x,y)-stampSprite.pivot;
                 }
 
@@ -164,6 +173,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         //Make and initialize sprite
         image.sprite=Sprite.Create(texture,new Rect(0,0,width/scale,height/scale),new Vector2(.5f,.5f),20);
         image.SetNativeSize();
+        ((RectTransform)image.transform).sizeDelta *=scale/5f;
         image.material=inkMaterial;
 
         
@@ -434,7 +444,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             inkColor=baseColor;
         }
         foreach(Stroke s in strokes){
-            s.ChangeColor(inkColor);
+            if (s.isActiveAndEnabled)
+                s.ChangeColor(inkColor);
         }
     }
 
@@ -465,14 +476,14 @@ public class InkController : MonoBehaviour,IPointerDownHandler
          //Limit mouse to actually be in scroll
         if (mousePos.x>=5 && mousePos.x<=width/scale-5 && mousePos.y>=5 && mousePos.y<=height/scale-5)
         {
-            if (isStampPad){
-                if(tool == Tool.StampQuill)
-                    if (MyInput.click){
+            if(tool == Tool.StampQuill){
+                if (!isStampPad){
+                    return;
+                }
+                if (MyInput.click)
                     CreateStroke();
-                } 
-                return;
-            }
-            if ((tool&Tool.Quill)!=Tool.None){
+            } 
+            else if ((tool&Tool.Quill)!=Tool.None){
                 if (MyInput.click){
                     CreateStroke();
                 }    

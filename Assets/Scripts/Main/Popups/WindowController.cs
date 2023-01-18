@@ -44,6 +44,8 @@ public abstract class WindowController : MonoBehaviour, IPointerDownHandler
         source.Play();
     }
     public void Close(bool silent = false){
+        if (!gameObject.activeSelf)
+            return;
         gameObject.SetActive(false);
         source.clip=putDown;
         if (!silent)

@@ -86,11 +86,11 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: f3df1477dce624544b08ba920d98902b
-  position: {x: 597.6001, y: -1065.6}
+  position: {x: 597.60004, y: -1085.6}
   next:
   - {fileID: 913160785517540005}
   result: {fileID: 0}
-  filterTypes: 130000001200000000000000
+  filterTypes: 130000001200000014000000
 --- !u!114 &-1965182131198090365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: StyleFilterNode
   m_EditorClassIdentifier: 
   guid: 70af62001861503468929ee462157fda
-  position: {x: 868.0002, y: -1047.8975}
+  position: {x: 885, y: -1065.6}
   next:
   - {fileID: 0}
   result: {fileID: 3036882833029568018}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 5669a5a7479390e4fab38fb88cc40536
-  position: {x: 1154.4003, y: -1020.05}
+  position: {x: 1182.3999, y: -1037}
   next: []
   result: {fileID: 0}
   evaluationKey: great
@@ -263,7 +263,7 @@ MonoBehaviour:
   next:
   - {fileID: 0}
   result: {fileID: 4502694998112019294}
-  filterTypes: 14000000
+  filterTypes: 15000000
 --- !u!114 &4502694998112019294
 MonoBehaviour:
   m_ObjectHideFlags: 0

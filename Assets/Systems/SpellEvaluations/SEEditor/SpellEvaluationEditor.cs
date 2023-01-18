@@ -25,13 +25,13 @@ public class SpellEvaluationEditor : EditorWindow
         root.Add(sev);
         sev.StretchToParentSize();
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/SpellEvaluations/SEEditor/SpellEvaluationEditor.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Systems/SpellEvaluations/SEEditor/SpellEvaluationEditor.uxml");
         visualTree.CloneTree(root);
         
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/SpellEvaluations/SEEditor/SpellEvaluationEditor.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Systems/SpellEvaluations/SEEditor/SpellEvaluationEditor.uss");
         root.styleSheets.Add(styleSheet);
 
         treeView=root.Q<SpellEvaluationView>();

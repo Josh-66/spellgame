@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SERootNode : SENode
 {
+    [HideInInspector]
     public List<SENode> bonusNext = new List<SENode>();
     public override void AddChild(SENode n){
         if (n is EvaluationNode){

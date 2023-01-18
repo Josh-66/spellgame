@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e45978984216b4c9ead5baf71c1085, type: 3}
+  m_Name: PranksterSpellEval
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 7000838211883521369}
+  nodes:
+  - {fileID: 7000838211883521369}
+--- !u!114 &7000838211883521369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22afd67f45149eb4990f2392212d7c87, type: 3}
+  m_Name: SERootNode
+  m_EditorClassIdentifier: 
+  guid: 7b5d2d125dda8824580f195454a165d1
+  position: {x: 0, y: 0}
+  next: []
+  result: {fileID: 0}
+  bonusNext: []

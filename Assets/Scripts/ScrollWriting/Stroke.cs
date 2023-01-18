@@ -20,6 +20,10 @@ public class Stroke : MonoBehaviour
         if (ToolController.activeTool!=Tool.StampQuill)
             strokeOnTable= ScrollClickable.instance.AddStroke(GetComponent<Image>().sprite);
     }
+    public void HardDelete(){
+        GameObject.Destroy(strokeOnTable);
+        GameObject.Destroy(gameObject);
+    }
     public void Disappear(){
         StartCoroutine("DisappearCR");
     }
@@ -49,7 +53,15 @@ public class Stroke : MonoBehaviour
                 position+=Vector2.one*scale/2;
 
 
-                PixController.CreatePix(transform.parent.parent,position,scale,c);
+                // PixController.CreatePix(transform.parent.parent,position,scale,c);
+                GameObject g = Prefabs.Load("Pix");
+                RectTransform rt = (RectTransform)g.transform;
+                rt.SetParent(transform.parent);
+                rt.anchoredPosition3D=position;
+                rt.sizeDelta=scale*Vector2.one;
+                rt.localScale=Vector3.one;
+                g.GetComponent<Image>().color=c;
+                rt.SetParent(transform.parent.parent,true);
 
 
                 texture.SetPixel(x,y,Color.clear);

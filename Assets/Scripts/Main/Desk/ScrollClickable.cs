@@ -7,12 +7,50 @@ public class ScrollClickable : DeskObject
     public static ScrollClickable instance;
     
     public Material scrollInkMaterial;
+    public Sprite open,rolled;
+    public int baseSortingOrder;
+    public bool beingGiven;
     public override void Awake(){
         base.Awake();
         instance=this;
-        
+        baseSortingOrder=spriteRenderer.sortingOrder;
     }
-
+    public override void Update(){
+        base.Update();
+        spriteRenderer.material=(hovered|held|clickTimer>=0|beingGiven) ? regular:outlined; 
+        
+        if (transform.localPosition.y>4.5f && held && ScrollController.instance.inkController.stamped && GameController.submittable){
+            if (spriteRenderer.sprite!=rolled){
+                ScrollController.CloseScroll();
+                spriteRenderer.sprite=rolled;
+                foreach(Transform child in transform){
+                    child.gameObject.SetActive(false);
+                }
+                GameObject.Destroy(GetComponent<PolygonCollider2D>());
+                gameObject.AddComponent<PolygonCollider2D>();
+            }
+        }
+        else if (transform.localPosition.y<1.5f && !beingGiven){
+            if (spriteRenderer.sprite!=open){
+                spriteRenderer.sprite=open;
+                foreach(Transform child in transform){
+                    child.gameObject.SetActive(true);
+                }
+                spriteRenderer.sprite=open;
+                GameObject.Destroy(GetComponent<PolygonCollider2D>());
+                gameObject.AddComponent<PolygonCollider2D>();
+            }
+        }
+        if (spriteRenderer.sprite==rolled && MyInput.clickUp){
+            foreach(Collider2D col in GetComponents<Collider2D>()){
+                col.enabled=false;
+            }
+            spriteRenderer.sortingOrder=-1;
+            beingGiven=true;
+            GameController.instance.SubmitSpell(ScrollController.instance.inkController.spell);
+            ScrollController.instance.inkController.HardClearStrokes();
+        }
+    }
     public GameObject AddStroke(Sprite s){
         GameObject stroke = new GameObject("Stroke");
         stroke.transform.parent=transform;
@@ -41,6 +79,20 @@ public class ScrollClickable : DeskObject
     }
     public override void Activate()
     {
-        ScrollController.ToggleScroll();
+        if (spriteRenderer.sprite==open){
+            ScrollController.ToggleScroll();
+        }
+    }
+    public override void Respawn()
+    {
+        base.Respawn();
+        if (beingGiven){
+            beingGiven=false;
+            foreach(Collider2D col in GetComponents<Collider2D>()){
+                col.enabled=true;
+            }
+            spriteRenderer.sortingOrder=baseSortingOrder;
+
+        }
     }
 }

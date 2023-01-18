@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
     public Vector3 targShake;
     public Vector3 targPosition;
     public Vector3 velocity;
     public float t;
     Animator animator;
-    public bool shake=false;
+    public bool shake=true;
+    public bool arrived = false;
+    void Awake(){
+        instance=this;
+    }
     void Start()
     {
         animator=GetComponent<Animator>();
@@ -19,7 +24,7 @@ public class CameraShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shake){
+        if (arrived && shake){
             velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.position,Time.deltaTime*.35f);
             transform.position+=Time.deltaTime*velocity;
             if (Vector3.Distance(transform.position-targPosition,targShake)<.1f){
@@ -35,14 +40,14 @@ public class CameraShake : MonoBehaviour
 
         
     }
-    public void EnableShake(){
-        shake=true;
+    public void Arrive(){
+        arrived=true;
         animator.enabled=false;
         targPosition=transform.position;
 
     }
-    public void DisableShake(){
-        shake=false;
+    public void UnArrive(){
+        arrived=false;
 
     }
 }

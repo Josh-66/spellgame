@@ -496,6 +496,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Table_0
+      rect:
+        serializedVersion: 2
+        x: 2461
+        y: 1452
+        width: 971
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b92fd747d386946b16ff6c885adcc8
+      internalID: 30902273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -516,6 +537,7 @@ TextureImporter:
       EraserEmpty: -1033342301
       Book: -1579868960
       InkIn: -1850357865
+      Table_0: 30902273
       StampIn: 1572906263
       Eraser: -1850692735
       Table: -204158886

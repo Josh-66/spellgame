@@ -95,7 +95,7 @@ public class Glyph : ScriptableObject
         
     }
     private static float Diff(Glyph g1, Glyph g2){
-        if (Mathf.Abs(g1.count-g2.count)>20)
+        if (Mathf.Abs(g1.count-g2.count)>30)
             return 0;
 
         float total = 0;
@@ -115,24 +115,28 @@ public class Glyph : ScriptableObject
                         score+=60f;
                     }
                     //Diagonal
-                    // else if (g2[x+1,y+1]||g2[x+1,y-1]||g2[x-1,y+1]||g2[x-1,y-1]){
-                    //     score+=50f;
-                    // }
-                    // //2 Away
-                    // else if (g2[x+2,y]||g2[x-2,y]||g2[x,y+2]||g2[x,y-2]){
-                    //     score+=25f;
-                    // }
-                    // //2 away diagonal
-                    // else if (g2[x+2,y+2]||g2[x+2,y-2]||g2[x-2,y+2]||g2[x-2,y-2]){
-                    //     score+=0f;
-                    // }
-                    //Really far away
-                    else
-                    {
+                    else{
                         bads++;
-                        if (bads>6)
+                        
+                        if (g2[x+1,y+1]||g2[x+1,y-1]||g2[x-1,y+1]||g2[x-1,y-1]){
+                            score+=50f;
+                        }
+                        //2 Away
+                        else if (g2[x+2,y]||g2[x-2,y]||g2[x,y+2]||g2[x,y-2]){
+                            score+=25f;
+                        }
+                        //2 away diagonal
+                        else if (g2[x+2,y+2]||g2[x+2,y-2]||g2[x-2,y+2]||g2[x-2,y-2]){
+                            score+=0f;
+                        }
+                        else{
+                            //Really far away
+                            bads+=4;
+                            if (bads>8)
                             return 0;
-                        //score-=500f;
+                        }
+                        if (bads>8)
+                            return 0;
                     }
                 }
             }

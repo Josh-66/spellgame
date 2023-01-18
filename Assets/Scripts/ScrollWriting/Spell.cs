@@ -6,6 +6,7 @@ public class Spell
 {
     public GlyphType element = GlyphType.Invalid;
     public GlyphType form = GlyphType.Invalid;
+
     public GlyphType strength = GlyphType.Invalid;
     public GlyphType style = GlyphType.Invalid;
     public GlyphType bonus = GlyphType.Invalid;
@@ -51,7 +52,7 @@ public class Spell
         return false;
     }
     public override string ToString(){
-        string s = $"Element: {(element==GlyphType.Invalid ? "None":element)}, Form: {(form==GlyphType.Invalid ? "None":form)}, Strength: {(strength==GlyphType.Invalid ? "Regular":strength)}, Style: {(style==GlyphType.Invalid ? "None":style)}";
+        string s = $"Element: {(element==GlyphType.Invalid ? "None":element)}, Form: {(form==GlyphType.Invalid ? "None":form)}, Strength: {(strength==GlyphType.Invalid ? "Medium":strength)}, Style: {(style==GlyphType.Invalid ? "None":style)}";
 
         if (bonus!=GlyphType.Invalid){
             s+=$", Bonus: {bonus}";

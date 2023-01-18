@@ -23,8 +23,6 @@ public class SettingsPageController : MonoBehaviour
         soundSlider.value=AudioUtility.GetChannelVolumeNormalized("SoundVol");
     }
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Backspace)){
-            SetSliders();
-        }
+
     }
 }

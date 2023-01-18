@@ -21,7 +21,7 @@ public class StampPreviewController : MonoBehaviour
             Vector2 mousePos = MyInput.mousePosition;
             //localMousePosition = Camera.main.ScreenToWorldPoint(localMousePosition);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parent,mousePos,Camera.main,out mousePos);
-            transform.anchoredPosition=Vector2Int.RoundToInt(mousePos/InkController.scale)*InkController.scale + 2.5f*Vector2.one;
+            transform.anchoredPosition=Vector2Int.FloorToInt(mousePos/InkController.scale)*InkController.scale;
             transform.SetAsLastSibling();
 
             Vector2 max = transform.anchoredPosition+transform.sizeDelta/2;
@@ -31,7 +31,7 @@ public class StampPreviewController : MonoBehaviour
             if (Vector2.Max(max,parent.sizeDelta/2)==parent.sizeDelta/2 && Vector2.Min(min,-parent.sizeDelta/2)==-parent.sizeDelta/2){
                 good=true;
             }
-            image.color = good ? new Color(1,1,1) : new Color(1,.7f,.7f);
+            image.color = good ? new Color(0,0,0,.5f) : new Color(1,.25f,.25f,.5f);
         }
         else{
             good = false;

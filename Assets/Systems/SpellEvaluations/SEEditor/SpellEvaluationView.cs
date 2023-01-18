@@ -23,8 +23,8 @@ public class SpellEvaluationView : GraphView
         this.AddManipulator(new RectangleSelector());
 
         
-        styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/SpellEvaluations/SEEditor/NodeStyleSheet.uss"));
-        styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/SpellEvaluations/SEEditor/SpellEvaluationEditor.uss"));
+        styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Systems/SpellEvaluations/SEEditor/NodeStyleSheet.uss"));
+        styleSheets.Add(AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Systems/SpellEvaluations/SEEditor/SpellEvaluationEditor.uss"));
     }
 
     NodeView FindNodeView(SENode node){

@@ -50,13 +50,15 @@ public class SpellEvaluationTree : ScriptableObject
     #endif 
     
     
-    public EvaluationNode EvaluateSpell(Spell spell){
+    public Evaluation EvaluateSpell(Spell spell){
         SENode currentNode = rootNode;
         SERootNode root = (SERootNode)rootNode;
         List<SENode> nextOptions = root.next;
         if (spell.bonus!=GlyphType.Invalid){
             nextOptions=root.bonusNext;
         }
+        if (spell.strength==GlyphType.Invalid)
+            spell.strength=GlyphType.Medium;
         
         EvaluationNode lastEval = null;
         bool deadEnd=false;
@@ -79,7 +81,7 @@ public class SpellEvaluationTree : ScriptableObject
             }
         }            
 
-        return lastEval;
+        return lastEval.GetEvaluation();
     }
 
     public static SpellEvaluationTree Get(string name){

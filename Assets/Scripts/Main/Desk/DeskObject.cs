@@ -55,14 +55,16 @@ public class DeskObject : MonoBehaviour, Clickable
                 rigidbody2D.angularVelocity+=360f;
         }
         if (transform.position.y<-50){
-            rigidbody2D.velocity=Vector2.zero;
-            rigidbody2D.angularVelocity=0;
-            transform.rotation=Quaternion.Euler(0,0,0);
-            transform.position=basePosition;
-            PoofController.Create(transform.position,2);
+            Respawn();
         }
     }
-
+    public virtual void Respawn(){
+        rigidbody2D.velocity=Vector2.zero;
+        rigidbody2D.angularVelocity=0;
+        transform.rotation=Quaternion.Euler(0,0,0);
+        transform.position=basePosition;
+        PoofController.Create(transform.position,2);
+    }
     public void OffHover()
     {
         hovered=false;

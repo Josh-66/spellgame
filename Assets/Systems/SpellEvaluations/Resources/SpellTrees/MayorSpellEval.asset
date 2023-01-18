@@ -1,0 +1,438 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8937006602950452419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 4b2554829a50063418ccca666411e36e
+  position: {x: 1362.3995, y: -26.400051}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Strong
+  returns: 0
+  starRating: 5
+  review: Was a very potent spell and cleaned the city's water very quickly.
+--- !u!114 &-8070019722811897590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 8d2624d571a3d5e4fba0d71742c5d7c3
+  position: {x: 1362.3999, y: 360.8}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Ludicrous
+  returns: 0
+  starRating: 5
+  review: Was an extremely potent spell and cleaned the city's water almost instantly.
+--- !u!114 &-5059711224849379023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 319a33274d3cedf42b04ff9c17bce4a2
+  position: {x: -97.857574, y: 498.40005}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Broken
+  returns: 0
+  starRating: 1
+  review: Nothing happened.
+--- !u!114 &-4923973076780049115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 330c16cded5b66b4a8fb64e2bd8c3103
+  position: {x: 1032.7999, y: -121.600075}
+  next:
+  - {fileID: -4235205090728123301}
+  result: {fileID: -8937006602950452419}
+  filterTypes: 14000000
+--- !u!114 &-4519622630214316232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22afd67f45149eb4990f2392212d7c87, type: 3}
+  m_Name: SERootNode
+  m_EditorClassIdentifier: 
+  guid: 44ac831b85273074cae941999e11fbac
+  position: {x: -58.000027, y: 0.000017166138}
+  next:
+  - {fileID: 4982595459853249895}
+  - {fileID: -883930313818676410}
+  - {fileID: -562290778294652122}
+  result: {fileID: 0}
+  bonusNext: []
+--- !u!114 &-4235205090728123301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e923dc7a961e54284d1fd08008b773, type: 3}
+  m_Name: StyleFilterNode
+  m_EditorClassIdentifier: 
+  guid: 887a246cdb62d5a4a8901920bddb5507
+  position: {x: 1660.4468, y: -71.55311}
+  next: []
+  result: {fileID: 7114329324042215924}
+  filterTypes: 16000000
+--- !u!114 &-3194597331529384069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: d9412071d7aae1147a4ba82e2ee471d7
+  position: {x: 590.4, y: 1066.7699}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Explosion
+  returns: 1
+  starRating: 0
+  review: I was given a spell that exploded and damaged the city's dam. Be prepared
+    to evacuate.
+--- !u!114 &-2263202909943581352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 4685e41f5427d33479e577d9bbbcf855
+  position: {x: 1362.3999, y: -396.80002}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Weak
+  returns: 0
+  starRating: 3
+  review: Was alright, but it seemed really slow and weak.
+--- !u!114 &-1138686927290388856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: cfa7fa0525c97bd4594be3a83ec4d30d
+  position: {x: 1066.8, y: 163.19994}
+  next:
+  - {fileID: 2483037022690240884}
+  result: {fileID: -8070019722811897590}
+  filterTypes: 15000000
+--- !u!114 &-1002629000393216585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: d6f328be92f09d04abed54971a375c8d
+  position: {x: 680.44006, y: 773.6}
+  next: []
+  result: {fileID: 0}
+  filterTypes: 15000000
+--- !u!114 &-883930313818676410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: a445039034091f142955c2228aaa524d
+  position: {x: 346.40002, y: 215.40396}
+  next: []
+  result: {fileID: 4544795985080926796}
+  filterTypes: 07000000
+--- !u!114 &-562290778294652122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: 3c8feea1e3642924a865da9e026a89cd
+  position: {x: 318.6276, y: 786.8143}
+  next:
+  - {fileID: -1002629000393216585}
+  result: {fileID: -3194597331529384069}
+  filterTypes: 0d000000
+--- !u!114 &-422956188419686132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: d8993e0dbd7fbbf43bf3c4cb6403120a
+  position: {x: 653.4, y: -108.14641}
+  next:
+  - {fileID: 4796207433491521776}
+  - {fileID: -4923973076780049115}
+  - {fileID: -1138686927290388856}
+  result: {fileID: 3827583544003108912}
+  filterTypes: 0e000000
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e45978984216b4c9ead5baf71c1085, type: 3}
+  m_Name: MayorSpellEval
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: -4519622630214316232}
+  nodes:
+  - {fileID: -4519622630214316232}
+  - {fileID: 4982595459853249895}
+  - {fileID: 3827583544003108912}
+  - {fileID: -422956188419686132}
+  - {fileID: 4796207433491521776}
+  - {fileID: -2263202909943581352}
+  - {fileID: -4923973076780049115}
+  - {fileID: -8937006602950452419}
+  - {fileID: -4235205090728123301}
+  - {fileID: 7114329324042215924}
+  - {fileID: -1138686927290388856}
+  - {fileID: -8070019722811897590}
+  - {fileID: 2483037022690240884}
+  - {fileID: 4063364785112966331}
+  - {fileID: -5059711224849379023}
+  - {fileID: -883930313818676410}
+  - {fileID: 4544795985080926796}
+  - {fileID: -562290778294652122}
+  - {fileID: -3194597331529384069}
+  - {fileID: -1002629000393216585}
+  - {fileID: 8085484313906685898}
+--- !u!114 &2483037022690240884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e923dc7a961e54284d1fd08008b773, type: 3}
+  m_Name: StyleFilterNode
+  m_EditorClassIdentifier: 
+  guid: 355dd768fb46efd4181f47da13d1e687
+  position: {x: 1693.0253, y: 267.19998}
+  next: []
+  result: {fileID: 4063364785112966331}
+  filterTypes: 16000000
+--- !u!114 &3827583544003108912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: ffd3522452f389e41b731015079069c1
+  position: {x: 945.19995, y: 438.40002}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Good
+  returns: 0
+  starRating: 4
+  review: Worked pretty well for purifying the reservoir! Could be stronger though.
+--- !u!114 &4063364785112966331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 0d3ba960b1233a34cba9efada451213e
+  position: {x: 1997.4525, y: 321.06}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Perfect
+  returns: 1
+  starRating: 6
+  review: Got an extremely strong and fast acting spell to clean the water supply
+    and make it sparkle. Perfect!
+--- !u!114 &4544795985080926796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: bf107ae8360fe114188109cd0978afbb
+  position: {x: 617, y: 386.40002}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Blood
+  returns: 1
+  starRating: 0
+  review: If you taste blood in your water, blame this shop! The wrong spell was
+    given to me.
+--- !u!114 &4796207433491521776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 099bfa20aa99b924392d82a6e03be4d2
+  position: {x: 1032.6001, y: -396.4}
+  next: []
+  result: {fileID: -2263202909943581352}
+  filterTypes: 12000000
+--- !u!114 &4982595459853249895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 6df2482c37cfaaa46b8d441e59fef8c0
+  position: {x: 345.80002, y: -45.600006}
+  next:
+  - {fileID: -422956188419686132}
+  result: {fileID: 0}
+  filterTypes: 03000000
+--- !u!114 &7114329324042215924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: c92a726e77802c1488ac90182edf5cbe
+  position: {x: 1955.741, y: -72.000015}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: StrongSparkle
+  returns: 0
+  starRating: 0
+  review: Was a very potent spell and cleaned the city's water very quickly. Also
+    it sparkles now!
+--- !u!114 &8085484313906685898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 128bd32a1e2e979439c97d9da394703a
+  position: {x: 0, y: 0}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: 
+  returns: 0
+  starRating: 0
+  review: 

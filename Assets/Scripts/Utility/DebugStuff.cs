@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugStuff : MonoBehaviour
 {
+    public Character character;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,24 +14,28 @@ public class DebugStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)){
-            Time.timeScale=.1f;
-        }
-        else{
-            Time.timeScale=1f;
-        }
-        if (Input.GetKeyDown(KeyCode.V)){
-            Spell s = FindObjectOfType<InkController>().spell;
+        // if (Input.GetKey(KeyCode.Space)){
+        //     Time.timeScale=.1f;
+        // }
+        // else{
+        //     Time.timeScale=1f;
+        // }
 
-            SpellEvaluationTree tree = SpellEvaluationTree.Get("Testing");
-            Debug.Log(tree.EvaluateSpell(s));
-        }
 
-        if (Input.GetKeyDown(KeyCode.S)){
-            StampPaperController.TogglePaper();
-        }
-        if (Input.GetKeyDown(KeyCode.D)){
-            ToolController.activeTool=Tool.Debug;
-        }
+        // if (Input.GetKeyDown(KeyCode.S)){
+        //     StampPaperController.TogglePaper();
+        // }
+        // if (Input.GetKeyDown(KeyCode.D)){
+        //     ToolController.activeTool=Tool.Debug;
+        // }
+
+
+        // if (Input.GetKeyDown(KeyCode.K)){
+        //     SaveData.Save();
+        // }
+        // if (Input.GetKeyDown(KeyCode.L)){
+        //     SaveData.Load();
+        // }
+        
     }
 }

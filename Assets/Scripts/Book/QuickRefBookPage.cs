@@ -42,5 +42,10 @@ public class QuickRefBookPage:BookPage{
         qr.text3.text=name3.ToString();
         qr.text4.text=name4.ToString();
 
+        qr.type1=name1;
+        qr.type2=name2;
+        qr.type3=name3;
+        qr.type4=name4;
+
     }
 }
