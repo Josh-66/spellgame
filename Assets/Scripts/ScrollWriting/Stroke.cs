@@ -212,20 +212,15 @@ public class Stroke : MonoBehaviour
 
         float highScore = 0;
         foreach(Glyph g in Glyph.glyphs){
-            if (g.type==type)
-                continue;
-            try{
-                float score = g.Compare(glyph);
-                // Debug.Log($"{g.type}:{score} || {g.count}:{glyph.count}");
-                if (score>highScore){
-                    type=g.type;
-                    highScore=score;
-                    matchedGlyph=g;
-                }
+            
+            float score = g.Compare(glyph);
+            // Debug.Log($"{g.type}:{score} || {g.count}:{glyph.count}");
+            if (score>highScore){
+                type=g.type;
+                highScore=score;
+                matchedGlyph=g;
             }
-            catch{
-
-            }
+            
         }
 
         if (highScore<60){

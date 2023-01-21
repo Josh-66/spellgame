@@ -20,3 +20,4 @@ MonoBehaviour:
   happy: {fileID: 21300000, guid: 7241e508b3cf8b144aa36ec15cfb879a, type: 3}
   angry: {fileID: 21300000, guid: 7241e508b3cf8b144aa36ec15cfb879a, type: 3}
   special: {fileID: 21300000, guid: 7241e508b3cf8b144aa36ec15cfb879a, type: 3}
+  profileIcon: {fileID: 21300000, guid: d3dc4f461b7fff2429594c2e117ee192, type: 3}

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2768691831599668166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2768691831599668167}
+  - component: {fileID: 2768691831599668217}
+  - component: {fileID: 2768691831599668216}
+  m_Layer: 0
+  m_Name: ResourceStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2768691831599668167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768691831599668166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2768691831599668217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768691831599668166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8b5eac8472e9446a27e7737ac571ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stroke: {fileID: 2100000, guid: 889dee080b073134593d459048c55f92, type: 2}
+  outlined: {fileID: 2100000, guid: 691cef34f8ff23445a7151dffc07c782, type: 2}
+  regular: {fileID: 2100000, guid: e7face9d4f2dfd04d9a4e370ab4c9f0f, type: 2}
+  thickOutline: {fileID: 2100000, guid: 45da4c67cebb4d746a148f5c494a3639, type: 2}
+--- !u!114 &2768691831599668216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768691831599668166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722c71e9f56264a4593b2f531beab927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  florist: {fileID: 11400000, guid: fc487205625e1604cb14966872e82adc, type: 2}
+  mayor: {fileID: 11400000, guid: 382b4a7421293dc49959b1b6cea103ac, type: 2}
+  prankster: {fileID: 11400000, guid: 5f1032fd545c67a4b80fa0ae6f0234bf, type: 2}

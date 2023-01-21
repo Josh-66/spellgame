@@ -10,6 +10,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public List<Stroke> strokes;
     Stroke activeStroke;
     public int width = 700, height = 800;
+    public float border;
     public static int scale=4;
     Vector2 lastMousePos;
     Vector2 mousePos{get{
@@ -248,7 +249,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                 Vector2Int pixelPosition=new Vector2Int((Mathf.FloorToInt(lerpPosition.x)),Mathf.FloorToInt(lerpPosition.y));
 
                 //Limit pixel to actually be in scroll
-                if (pixelPosition.x<5||pixelPosition.x>width/scale-5||pixelPosition.y<5||pixelPosition.y>height/scale-5)
+                if (pixelPosition.x<border||pixelPosition.x>width/scale-border||pixelPosition.y<border||pixelPosition.y>height/scale-border)
                     continue;
                 
 
@@ -474,7 +475,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             }
         }
          //Limit mouse to actually be in scroll
-        if (mousePos.x>=5 && mousePos.x<=width/scale-5 && mousePos.y>=5 && mousePos.y<=height/scale-5)
+        if (mousePos.x>=border && mousePos.x<=width/scale-border && mousePos.y>=border && mousePos.y<=height/scale-border)
         {
             if(tool == Tool.StampQuill){
                 if (!isStampPad){

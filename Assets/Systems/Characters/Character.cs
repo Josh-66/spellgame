@@ -16,6 +16,7 @@ public class Character : ScriptableObject{
     public AudioClip textSound;
     public SpellEvaluationTree spellEvalTree;
     public Sprite baseSprite,happy,angry,special;
+    public Sprite profileIcon;
     public CharacterDialouge dialogue{
         get{
             if (_characterDialogue==null){

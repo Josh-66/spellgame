@@ -126,4 +126,8 @@ public class BookController : WindowController
         base.Update();
         backButton.SetActive(pageHistory.Count>0);
     }
+    public static void OpenOptions(){
+        OpenBook();
+        instance.GoToPageByName(BookInfo.PageTabs.Options);
+    }
 }

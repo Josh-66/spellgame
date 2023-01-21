@@ -46,4 +46,7 @@ public class CursorController : MonoBehaviour{
         }
 
     }
+    void OnDisable() {
+        Cursor.visible=true;
+    }
 }

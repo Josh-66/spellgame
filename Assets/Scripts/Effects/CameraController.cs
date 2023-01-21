@@ -9,45 +9,41 @@ public class CameraController : MonoBehaviour
     public Vector3 targPosition;
     public Vector3 velocity;
     public float t;
-    Animator animator;
+    public Animator animator;
     public bool shake=true;
-    public bool arrived = false;
+    public bool rotate= true;
+    public bool arrived {get{return transform.position.x>-1;}}
     void Awake(){
         instance=this;
     }
     void Start()
     {
-        animator=GetComponent<Animator>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (arrived && shake){
-            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.position,Time.deltaTime*.35f);
-            transform.position+=Time.deltaTime*velocity;
-            if (Vector3.Distance(transform.position-targPosition,targShake)<.1f){
+
+        if (shake)
+            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.localPosition,Time.deltaTime*.35f);
+            transform.localPosition+=Time.deltaTime*velocity;
+            if (Vector3.Distance(transform.localPosition-targPosition,targShake)<.1f){
                 targPosition=Random.insideUnitCircle*.2f;
-                targPosition.z=-10;
-            }
+                targPosition.z=0;
+        }
+        if (rotate){
             transform.rotation=Quaternion.Euler(0,0,Mathf.Sin(t)/2);
             t+=Time.deltaTime*.2f;
             t %=2 * Mathf.PI;
         }
-
-
-
-        
     }
     public void Arrive(){
-        arrived=true;
-        animator.enabled=false;
-        targPosition=transform.position;
+        targPosition=transform.localPosition;
 
     }
     public void UnArrive(){
-        arrived=false;
+        animator.SetTrigger("Exit");
 
     }
 }

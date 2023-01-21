@@ -63,6 +63,9 @@ public class DeskObject : MonoBehaviour, Clickable
         rigidbody2D.angularVelocity=0;
         transform.rotation=Quaternion.Euler(0,0,0);
         transform.position=basePosition;
+        CreatePoof();
+    }
+    public void CreatePoof(){
         PoofController.Create(transform.position,2);
     }
     public void OffHover()

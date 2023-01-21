@@ -15,7 +15,6 @@ public class DialogueController : MonoBehaviour
     public static bool playing = false;
     public int lineIndex= -1;
     public float charIndex=0;
-    public float textSpeed=20f;
     public float soundTimer = .1f;
     float soundCD = .10f;
 
@@ -51,7 +50,7 @@ public class DialogueController : MonoBehaviour
                 InitializeLine(line);
                 lineInitialized=true;
             }
-            charIndex+=Time.deltaTime * textSpeed;
+            charIndex+=Time.deltaTime * 10 * TextSpeed.textSpeed;
             targetText.text=line.text.Substring(0,Mathf.FloorToInt(Mathf.Min(charIndex,line.text.Length)));
             
             if (charIndex<line.text.Length){

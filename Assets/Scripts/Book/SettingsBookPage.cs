@@ -7,5 +7,6 @@ public class SettingsBookPage:BookPage{
     public override void Activate(BookController bc){
         bc.activePageController=bc.settingsPageController;
         bc.settingsPageController.SetSliders();
+        bc.settingsPageController.SetToggles();
     }
 }

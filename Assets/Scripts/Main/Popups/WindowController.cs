@@ -14,15 +14,13 @@ public abstract class WindowController : MonoBehaviour, IPointerDownHandler
 
 
     public virtual void OnPointerDown(PointerEventData ped){
-        // Vector2 scrollMousePos;
-        // RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform,MyInput.mousePosition,Camera.main,out scrollMousePos);
-
-        // if (((RectTransform)transform).rect.Contains(scrollMousePos)){
-            if (MyInput.click)
-            {
-                dragOffset = ((RectTransform)transform).anchoredPosition - CanvasController.clampedCanvasMousePos;
-                dragging=true;
-            }
+        
+        dragOffset = ((RectTransform)transform).anchoredPosition - CanvasController.clampedCanvasMousePos;
+        dragging=true;
+        // foreach(var i in ped.hovered)
+        //     Debug.Log(i);
+        // if (ped.hovered[ped.hovered.Count]==gameObject)
+        // {
         // }
     }
     public virtual void Update() {

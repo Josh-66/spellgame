@@ -13,7 +13,7 @@ public class Glyph : ScriptableObject
             return _glyphs; 
         }
     }
-    private static Glyph[] _glyphs;
+    private static Glyph[] _glyphs = null;
     public static void ClearGlyphs(){_glyphs=null;}
     public static void LoadGlyphs(){_glyphs = Resources.LoadAll<Glyph>("Glyphs");}
     public GlyphType type=GlyphType.Invalid;
@@ -85,7 +85,6 @@ public class Glyph : ScriptableObject
     public float Compare(Glyph other){
         // if (Mathf.Abs(count-other.count)>5)
         //     return 0;
-
         //Check this against other
         float diff1 = Diff(this,other);
         //Check other against this

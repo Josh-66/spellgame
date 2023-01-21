@@ -52,24 +52,22 @@ public static class PremadeDialogues{
         CharacterDialouge cd = new CharacterDialouge();
 
         cd.entry = new Dialogue("Entry",
-            cust("Hello"),
-            player("What do you want?"),
-            cust("Flower powers"),
-            player("Sure, I can do that. Just wait a momento"),
-            cust("Thanks so much! Youre my favorite person in the world"),
-            cust("I feel like i can trust you so much"),
+            player("Hello, What do you want?"),
+            cust("I want something to help me out with my garden"),
+            player("Sure, I can do that."),
+            cust("Thanks so much! Youre my favorite person in the world."),
+            cust("I feel like I can trust you so much."),
             setSprite(Expression.Happy)
         );
         cd.chats = new Dialogue[]{
             new Dialogue("Chat1",
-                setSprite(Expression.Angry),
-                cust( "You make me sick"),
-                player("Great! I have a spell to fix that")
+                cust( "Do you like flowers?"),
+                player("They're alright.")
 
             ),
             new Dialogue("Chat2",
                 cust( "I like my garden"),
-                player("I sure hope nothing happens to it")
+                player("I sure hope nothing happens to it.")
             ),
         };
 
@@ -160,33 +158,61 @@ public static class PremadeDialogues{
         CharacterDialouge cd = new CharacterDialouge();
 
         cd.entry = new Dialogue("Entry",
-            cust("Hello"),
-            player("Hello")
+            cust("Yoo."),
+            player("Hello, what can I do for you?"),
+            cust("I need a new spell to prank some people with."),
+            cust("Just get me something harmless and funny."),
+            player("Sure! That should be easy enough.")
         );
         cd.chats = new Dialogue[]{
             new Dialogue("Chat1",
-                cust("Chat"),
-                player("Yay")
+                cust("You always pull through for me. My tiktok is so popular."),
+                player("Good for you!")
 
             ),
             new Dialogue("Chat2",
-                cust( "More"),
-                player("Yay again!")
+                player("What's up with the chicken?"),
+                cust("Don't worry about it.")
             ),
         };
 
         cd.exit = new Dialogue("Exit",
             player("Here"),
-            cust("Cool")
+            cust("Thanks! I can't wait to pull an epic PRANK! HAHA.")
         );
         cd.returnings = new Dialogue[]{
-            new Dialogue("UsedFire",
-                cust( "Why?"),
-                player("Oops lol")
+            new Dialogue("Blood",
+                cust( "Hey, uh, I wasn't really expecting to cover someone in blood"),
+                player("Oh? Must have been a miscommunication."),
+                cust("Yeah... my fans didn't like that one so much."),
+                player("Next time.")
             ),
-            new Dialogue("TooWeak",
-                cust( "its not great"),
-                player("next time")
+            new Dialogue("Electric",
+                cust( "Yo! I love what you did. The shock was so unexpected and funny."),
+                player("Haha, no prob my man."),
+                cust("See ya!")
+            ),
+            new Dialogue("Gag",
+                cust( "Haha! I didn't even know fart magic was a thing!"),
+                cust( "You're pretty funny!"),
+                player("Hehe, thanks."),
+                cust("See ya!")
+            ),
+            new Dialogue("Fire",
+                cust( "Uhh, shooting fire at someone isn't exactly funny."),
+                player("Oh? Maybe you need a sense of humor."),
+                cust("It was pretty scary, try to tone it down in the future.")
+            ),
+            new Dialogue("Water",
+                cust("The water was pretty funny, but its kinda boring"),
+                player("Oh? I thought you'd like it."),
+                cust("Step it up next time!")
+            ),
+            new Dialogue("GagTooStrong",
+                cust( "Hey... the spell was a little strong."),
+                player("Oh? Is there a problem?"),
+                cust( "Yeah... I think I killed a man."),
+                player("That's on you.")
             ),            
         };
 

@@ -11,6 +11,9 @@ public class MaterialSetter : MonoBehaviour
         DeskObject.outlined=outlined;        
         DeskObject.regular=regular;
 
+        BedroomObject.outlined=outlined;
+        BedroomObject.regular=regular;
+
         CustomerController.outlined=thickOutline;        
         CustomerController.regular=regular;
     }

@@ -15,7 +15,7 @@ public class TableLightClickable : DeskObject
     {
         base.Update();
         Color targetColor = Color.Lerp(ScrollController.inkColor,Color.white,.5f);
-        color=Color.Lerp(color,targetColor,Time.deltaTime*20f);
+        color=Color.Lerp(color,targetColor,Time.deltaTime*10f);
 
         candleLight.color=color;
         candleSprite.color=color;

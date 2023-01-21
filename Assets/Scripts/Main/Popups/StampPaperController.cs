@@ -61,6 +61,8 @@ public class StampPaperController : WindowController
 
                 ClosePaper();
 
+                GameController.instance.DrewStamp();
+
         }
     }
     public void UpdatePreview(){
@@ -72,14 +74,12 @@ public class StampPaperController : WindowController
         instance.Open();
 
         ToolController.activeTool=Tool.StampQuill;
-        GameController.instance.clickablesActive=false;
 
         
     }
     public static void ClosePaper(bool silent = false){
         instance.Close(silent);
         ToolController.activeTool=Tool.None;
-        GameController.instance.clickablesActive=true;
     }
     public static void TogglePaper(){
         if (isOpen){

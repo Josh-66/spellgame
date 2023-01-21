@@ -24,7 +24,7 @@ public class GlyphGenerator : MonoBehaviour
                 s.CalculateBoxes();
                 Glyph g = s.glyph;
                 g.type=Enum.Parse<GlyphType>(Regex.Replace(t.name,pattern,"")); 
-                AssetDatabase.CreateAsset(g, $"Assets/Glyphs/Resources/Glyphs/{category}/{t.name}.asset");
+                AssetDatabase.CreateAsset(g, $"Assets/Systems/Glyphs/Resources/Glyphs/{category}/{t.name}.asset");
             }
         }
 

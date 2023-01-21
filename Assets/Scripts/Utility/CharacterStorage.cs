@@ -10,6 +10,6 @@ public class CharacterStorage:MonoBehaviour{
         "Florist" => instance.florist,
         "Mayor" => instance.mayor,
         "Prankster" => instance.prankster,
-        _=> throw new System.Exception("Invalid name"),
+        _=> null,
     } ;
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SettingsPageController : MonoBehaviour
 {
     public Slider musicSlider,soundSlider;
+    public ToggleGroup textSpeedToggle;
+    public Toggle slow,med,fast;
     void OnDisable() {
         AudioUtility.SaveToPrefs();
     }
@@ -21,6 +23,18 @@ public class SettingsPageController : MonoBehaviour
     public void SetSliders(){
         musicSlider.value=AudioUtility.GetChannelVolumeNormalized("MusicVol");
         soundSlider.value=AudioUtility.GetChannelVolumeNormalized("SoundVol");
+    }
+    public void UpdateTextSpeed(int speed){
+        TextSpeed.textSpeed=speed;
+    }
+    public void SetToggles(){
+        Toggle activeSpeedToggle = TextSpeed.textSpeed switch{
+            1=>slow,
+            2=>med,
+            3=>fast,
+            _=>med
+        };
+        activeSpeedToggle.isOn=true;
     }
     void Update(){
 

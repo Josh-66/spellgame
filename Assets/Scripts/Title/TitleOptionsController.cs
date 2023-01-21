@@ -14,16 +14,18 @@ public class TitleOptionsController : MonoBehaviour
         GameController.loadData=false;
         StampPaperController.stampTexture=null;
         AsyncOperation ao = SceneManager.LoadSceneAsync("Shop");
+        ao.allowSceneActivation=false;
+
         BlackFade.FadeInAndAcion(()=>{ao.allowSceneActivation=true;});
     }   
     public void Continue(){
         GameController.loadData=true;
         AsyncOperation ao = SceneManager.LoadSceneAsync("Shop");
+        ao.allowSceneActivation=false;
         BlackFade.FadeInAndAcion(()=>{ao.allowSceneActivation=true;});
     }
     public void Options(){
-        BookController.OpenBook();
-        BookController.instance.GoToPageByName(BookInfo.PageTabs.Options);
-        Debug.Log(BookController.instance.pageNumber);
+        BookController.OpenOptions();
     }
+    
 }

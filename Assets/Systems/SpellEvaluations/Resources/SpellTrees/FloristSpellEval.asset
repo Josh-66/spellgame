@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 66d0273da02c03443808794288f887dc
-  position: {x: 1227.512, y: -1185.1477}
+  position: {x: 1228.0002, y: -1279.9}
   next: []
   result: {fileID: 2389645670687845015}
   filterTypes: 12000000
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: 2668256a62a88724aa72a8114cf8685d
-  position: {x: 969.2001, y: 521.8315}
+  position: {x: 969.60004, y: 499.19995}
   next: []
-  result: {fileID: 4772323270162395452}
+  result: {fileID: 0}
   filterTypes: 0d000000
 --- !u!114 &-7588159355396740852
 MonoBehaviour:
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: cd5dc0a61b2f4394ea266f3147ed9f66
-  position: {x: 909, y: -360.80002}
+  position: {x: 937.60004, y: -340.80002}
   next: []
   result: {fileID: 0}
   evaluationKey: PrettyGood
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 2b20aa3410f6f1642a6380fb16291e8a
-  position: {x: 700.4001, y: 722.6315}
+  position: {x: 696.8002, y: 871.0502}
   next: []
   result: {fileID: 0}
   evaluationKey: UsedFire
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 7a14e96424e078d468b68479e61ddc4d
-  position: {x: -0.000045776367, y: 257.60007}
+  position: {x: 45, y: 257.59998}
   next: []
   result: {fileID: 0}
   evaluationKey: Broken
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 5b6b3b57a26e66e4f8d22048c35bfd41
-  position: {x: 1512.312, y: -1299.5479}
+  position: {x: 1506.3999, y: -1332}
   next: []
   result: {fileID: 0}
   evaluationKey: GoodWeak
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: b27066264ed21994eb6407a8537643a4
-  position: {x: 969.2001, y: 768.2315}
+  position: {x: 969.6, y: 781.3002}
   next: []
   result: {fileID: 4772323270162395452}
   filterTypes: 1400000015000000
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: a718f4cb9cd310a4a8203116d1f60e61
-  position: {x: 1280.4001, y: 722.6315}
+  position: {x: 1357.8501, y: 596.0001}
   next: []
   result: {fileID: 0}
   evaluationKey: UsedFireWorse
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: SERootNode
   m_EditorClassIdentifier: 
   guid: 611ebdaefab53364f974c5ac17c0143d
-  position: {x: -35.707497, y: -14.400053}
+  position: {x: -208, y: -14.400024}
   next:
   - {fileID: -3084665176372477587}
   - {fileID: 6667170066382349138}
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: f03a90a456c36154e9b895eff7080e35
-  position: {x: 1902.7122, y: -580.34796}
+  position: {x: 1903.2, y: -574.8}
   next: []
   result: {fileID: 0}
   evaluationKey: GoodSparkles

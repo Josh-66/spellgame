@@ -26,8 +26,6 @@ public static class AudioUtility{
         PlayerPrefs.SetFloat("MasterVol",GetChannelVolumeNormalized("MasterVol"));
     }
     public static float GetChannelVolumeFromPrefs(string channel){
-        if (!PlayerPrefs.HasKey(channel))
-            PlayerPrefs.SetFloat(channel,.8f);
-        return PlayerPrefs.GetFloat(channel);
+        return PlayerPrefs.GetFloat(channel,.8f);
     }
 }   

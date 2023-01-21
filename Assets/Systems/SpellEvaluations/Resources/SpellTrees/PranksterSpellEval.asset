@@ -1,5 +1,156 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9071188480809807281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 1e4b16b59a2cc114dbbdbbbbe44ec6be
+  position: {x: 325.6, y: 80.399994}
+  next: []
+  result: {fileID: -1141685895804860469}
+  filterTypes: 07000000
+--- !u!114 &-8361928114552066296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: d6fa01c789c3e9342948dbacee6b0258
+  position: {x: 1287, y: -574.4}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: GagTooStrong
+  returns: 1
+  starRating: 3
+  review: Was funny, but a bit too strong and I may have put someone in a coma.
+--- !u!114 &-6415969964092055476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 41da8911075111948af9d700517e48ac
+  position: {x: 325.6, y: 579.2791}
+  next: []
+  result: {fileID: -5053600001350693042}
+  filterTypes: 01000000
+--- !u!114 &-5053600001350693042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 16bd429237f27054691b61247938c0a3
+  position: {x: 628.96704, y: 824.17615}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Fire
+  returns: 1
+  starRating: 1
+  review: Was given something dangerous when I wanted something harmless. That's
+    not good at all.
+--- !u!114 &-4482503853703632554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 391df96cbe5e5d643bab1cbae0cfbb2c
+  position: {x: 976.1001, y: -195.20018}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Gag
+  returns: 1
+  starRating: 5
+  review: Very funny! Ask for fart magic when you go here.
+--- !u!114 &-4232514435506490913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: c901b0854765cbe438cc8f8aa7a31097
+  position: {x: 639.20013, y: -326.8}
+  next:
+  - {fileID: 5532631306540159878}
+  result: {fileID: -4482503853703632554}
+  filterTypes: 0d0000000a00000009000000
+--- !u!114 &-2484846129751393330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: e13605c3f64c39e45a693edc37a162ba
+  position: {x: 325.6, y: 970.1043}
+  next: []
+  result: {fileID: 5813304312330008103}
+  filterTypes: 03000000
+--- !u!114 &-1141685895804860469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 76d64de8e9ae66b438bfdd44de3a50e6
+  position: {x: 702.8, y: 115.600006}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Blood
+  returns: 1
+  starRating: 2
+  review: Must have been a miscommunication. I was given blood to prank someone with
+    and that's a bit serious.
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,6 +166,132 @@ MonoBehaviour:
   rootNode: {fileID: 7000838211883521369}
   nodes:
   - {fileID: 7000838211883521369}
+  - {fileID: 413499025116687749}
+  - {fileID: -4232514435506490913}
+  - {fileID: -4482503853703632554}
+  - {fileID: 5532631306540159878}
+  - {fileID: -8361928114552066296}
+  - {fileID: -9071188480809807281}
+  - {fileID: -1141685895804860469}
+  - {fileID: 809850308361023267}
+  - {fileID: 5749783814945499792}
+  - {fileID: 3894713782304249819}
+  - {fileID: -6415969964092055476}
+  - {fileID: -5053600001350693042}
+  - {fileID: -2484846129751393330}
+  - {fileID: 5813304312330008103}
+--- !u!114 &413499025116687749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 1ae0c7b14ff1c4b48898f1ed9049a38b
+  position: {x: 325.2, y: -188.19998}
+  next:
+  - {fileID: -4232514435506490913}
+  result: {fileID: 0}
+  filterTypes: 08000000
+--- !u!114 &809850308361023267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 18215d9b676d3264fa1a3939df4e05d6
+  position: {x: -31.04, y: 374.94}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Broken
+  returns: 0
+  starRating: 0
+  review: Nothihng happened
+--- !u!114 &3894713782304249819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 580c445378c51b548b0cc3cc6ee1b720
+  position: {x: 640.4, y: 481.8}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Electric
+  returns: 1
+  starRating: 4
+  review: Got to shock the shit out of someone. Very funny!
+--- !u!114 &5532631306540159878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 8c28084c672ed194b9becd5f0dedcf80
+  position: {x: 959.8, y: -574.4}
+  next: []
+  result: {fileID: -8361928114552066296}
+  filterTypes: 15000000
+--- !u!114 &5749783814945499792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 8d2080d59d75f6f45bb6cf23fde402d9
+  position: {x: 325.6, y: 326.74323}
+  next: []
+  result: {fileID: 3894713782304249819}
+  filterTypes: 04000000
+--- !u!114 &5813304312330008103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 3696cce4246b8cd44bd21051ded5053f
+  position: {x: 607.8, y: 1146.4}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Water
+  returns: 1
+  starRating: 3
+  review: Got something alright, but it was a little uninspired.
 --- !u!114 &7000838211883521369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,6 +306,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guid: 7b5d2d125dda8824580f195454a165d1
   position: {x: 0, y: 0}
-  next: []
-  result: {fileID: 0}
+  next:
+  - {fileID: 413499025116687749}
+  - {fileID: -9071188480809807281}
+  - {fileID: 809850308361023267}
+  - {fileID: 5749783814945499792}
+  - {fileID: -6415969964092055476}
+  - {fileID: -2484846129751393330}
+  result: {fileID: 809850308361023267}
   bonusNext: []

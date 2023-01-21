@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
+    static MusicPlayer instance;
     public AudioClip[] soundtrack;
     public AudioSource source;
     public float songDelay = 1f;
     public int lastIndex;
+    public bool shouldPlay;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        instance=this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (!source.isPlaying){
+        if (source.isPlaying && !shouldPlay){
+            source.Stop();
+        }
+        if (!source.isPlaying && shouldPlay){
             songDelay-=Time.deltaTime;
 
             if (songDelay<0){
@@ -37,5 +41,11 @@ public class MusicPlayer : MonoBehaviour
         }
         lastIndex=nextIndex;
         return soundtrack[nextIndex];
+    }
+    public static void Start(){
+        instance.shouldPlay=true;
+    }
+    public static void Stop(){
+        instance.shouldPlay=false;
     }
 }
