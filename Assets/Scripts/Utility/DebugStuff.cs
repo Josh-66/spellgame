@@ -14,17 +14,17 @@ public class DebugStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)){
+        if (Input.GetKey(KeyCode.Space))
             Time.timeScale=.1f;
-        }
-        else{
+        else if (Input.GetKey(KeyCode.V))
+            Time.timeScale=10f;
+        else
             Time.timeScale=1f;
+        
+
+        if (Input.GetKeyDown(KeyCode.S)){
+            StampPaperController.TogglePaper();
         }
-
-
-        // if (Input.GetKeyDown(KeyCode.S)){
-        //     StampPaperController.TogglePaper();
-        // }
         if (Input.GetKeyDown(KeyCode.D)){
             ToolController.activeTool=Tool.Debug;
         }

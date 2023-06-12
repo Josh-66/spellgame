@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 66d0273da02c03443808794288f887dc
-  position: {x: 1228.0002, y: -1279.9}
+  position: {x: 1063.2, y: -1503.6001}
   next: []
   result: {fileID: 2389645670687845015}
   filterTypes: 12000000
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 987ec110a0b1bea49bb1077e13ae5056
-  position: {x: 696.5875, y: 95.72}
+  position: {x: 671.6873, y: 208.92369}
   next: []
   result: {fileID: 0}
   evaluationKey: Blood
@@ -51,10 +51,44 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: 2668256a62a88724aa72a8114cf8685d
-  position: {x: 969.60004, y: 499.19995}
+  position: {x: 1231.2002, y: 414.40002}
   next: []
   result: {fileID: 0}
   filterTypes: 0d000000
+--- !u!114 &-8405655032748264168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 1d05fda64489b5d4097b338ea927fc2c
+  position: {x: 1009.93695, y: 1128}
+  next: []
+  result: {fileID: -1597866315590569267}
+  filterTypes: 15000000
+--- !u!114 &-7661226114911277935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 0cd53bb0505ea2b4c8e83d138b419081
+  position: {x: 1016.8, y: -222.80002}
+  next: []
+  result: {fileID: -1870372539432418694}
+  filterTypes: 15000000
 --- !u!114 &-7588159355396740852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,13 +102,34 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: e81a4a6edb8c8a741a00634f88b43330
-  position: {x: 1560.312, y: -881.14795}
+  position: {x: 1395.9998, y: -1105.2}
   next: []
   result: {fileID: 0}
   evaluationKey: GoodStrong
   returns: 0
   starRating: 5
   review: Gave me a very effective spell!
+--- !u!114 &-6082513800047423599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 76e45a01e87fc6346897f7d2d22f6cb9
+  position: {x: 691, y: -111.20001}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Water
+  returns: 0
+  starRating: 2
+  review: I wanted magic to help me grow the garden, but I just got a spell to water
+    it. Maybe useful but not what I wanted.
 --- !u!114 &-5875939861423496399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,13 +143,34 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: cd5dc0a61b2f4394ea266f3147ed9f66
-  position: {x: 937.60004, y: -340.80002}
+  position: {x: 772.7998, y: -564.40015}
   next: []
   result: {fileID: 0}
   evaluationKey: PrettyGood
   returns: 0
   starRating: 4
   review: Got an effective and easy to use spell!
+--- !u!114 &-5744591059121246803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: f89658dce41eff540b0ea8a014c46273
+  position: {x: 719.30255, y: -1540.7231}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: LudicrousUp
+  returns: 0
+  starRating: 3
+  review: My backyard became a dense thicket of flowers. I can't complain too much,
+    but its a hassle.
 --- !u!114 &-5232223667125860007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,10 +184,28 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: b749329525fc1db4f900d770bc0519de
-  position: {x: 1227.512, y: -351.54782}
+  position: {x: 1063.2, y: -575.6001}
   next: []
   result: {fileID: 5800963170641163327}
   filterTypes: 15000000
+--- !u!114 &-5096534895011599083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: efeaa3bb977ee124cb340f7834d20fe3
+  position: {x: 250.52753, y: -1141.6}
+  next:
+  - {fileID: 927780754808883097}
+  result: {fileID: 1611494027295470565}
+  filterTypes: 10000000
 --- !u!114 &-4605641744342141021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,13 +219,34 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 133c749420fac1945aac9791e339aa60
-  position: {x: 593.26605, y: -250.40004}
+  position: {x: 424.80002, y: -459.40002}
   next: []
   result: {fileID: 0}
   evaluationKey: GotNature
   returns: 0
   starRating: 3
   review: I got a spell that helped my plants, but It was not easy to use.
+--- !u!114 &-4254973575795298756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 1319ff7411c33f74d85603cd5c60f156
+  position: {x: 648.5725, y: 1213.6}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: EarthPurify
+  returns: 0
+  starRating: 4
+  review: I can tell that this spell really enhanced the soil in my garden. Not what
+    I expected, but I'm pleased with the result.
 --- !u!114 &-3084665176372477587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,9 +260,11 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 17b3e4257622f0d41baf113080bbeb6b
-  position: {x: 308.80002, y: -479.44748}
+  position: {x: 43.50776, y: -623.9999}
   next:
   - {fileID: 4929120070157157841}
+  - {fileID: -5096534895011599083}
+  - {fileID: 2946564227423105219}
   result: {fileID: -4605641744342141021}
   filterTypes: 06000000
 --- !u!114 &-2944653548479045203
@@ -163,10 +280,31 @@ MonoBehaviour:
   m_Name: StyleFilterNode
   m_EditorClassIdentifier: 
   guid: 490e78416f017cf4989bbd4db629274f
-  position: {x: 1539.512, y: -533.1479}
+  position: {x: 1375.2, y: -757.2001}
   next: []
   result: {fileID: 6665770983562661772}
   filterTypes: 16000000
+--- !u!114 &-2382846811285424973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 0513f4c6df0ada74e8b33aea2e20e08a
+  position: {x: 667.20013, y: -1974.0002}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: NatureExplosion
+  returns: 0
+  starRating: 2
+  review: I wanted to grow my garden, and the spell I got just exploded and scattered
+    new plants around.
 --- !u!114 &-2109827190309006537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +318,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 20723bcafea331644ab9cc11b422ccb0
-  position: {x: 2146.712, y: -917.1479}
+  position: {x: 1982.4, y: -1141.2}
   next: []
   result: {fileID: 0}
   evaluationKey: Perfect
@@ -188,6 +326,46 @@ MonoBehaviour:
   starRating: 6
   review: I got a spell that really helped my plants grow. They even sparkle now!
     Beautiful!
+--- !u!114 &-1870372539432418694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: b0c0fa50fd4f4134592ab208e390062e
+  position: {x: 1361.7999, y: -128.2}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: WaterLudicrous
+  returns: 1
+  starRating: 0
+  review: My garden is now a lake. Why?
+--- !u!114 &-1597866315590569267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: edb19aeae10cfdb47b0144a799808bc3
+  position: {x: 1330.737, y: 1212.8}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: EarthPurifyLudicrous
+  returns: 1
+  starRating: 6
+  review: My garden instantly grows any seeds I plant. This is beyond what I expected.
 --- !u!114 &-1136410032011353508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,10 +379,10 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 2b20aa3410f6f1642a6380fb16291e8a
-  position: {x: 696.8002, y: 871.0502}
+  position: {x: 935.20013, y: 801.6001}
   next: []
   result: {fileID: 0}
-  evaluationKey: UsedFire
+  evaluationKey: Fire
   returns: 1
   starRating: 1
   review: Gave me fire when I wanted a spell for my plants! Horrible!
@@ -246,6 +424,24 @@ MonoBehaviour:
   - {fileID: 6394470887756725531}
   - {fileID: -9021756185197239743}
   - {fileID: 619136771166829078}
+  - {fileID: -5096534895011599083}
+  - {fileID: 1611494027295470565}
+  - {fileID: 927780754808883097}
+  - {fileID: -5744591059121246803}
+  - {fileID: 2946564227423105219}
+  - {fileID: -2382846811285424973}
+  - {fileID: 2195964388739830323}
+  - {fileID: -6082513800047423599}
+  - {fileID: -7661226114911277935}
+  - {fileID: -1870372539432418694}
+  - {fileID: 6768921289790686102}
+  - {fileID: 970199842700752179}
+  - {fileID: 8353978310877359625}
+  - {fileID: 8603529426703482972}
+  - {fileID: 8043630057128547104}
+  - {fileID: -4254973575795298756}
+  - {fileID: -8405655032748264168}
+  - {fileID: -1597866315590569267}
 --- !u!114 &619136771166829078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,13 +455,88 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 7a14e96424e078d468b68479e61ddc4d
-  position: {x: 45, y: 257.59998}
+  position: {x: -638, y: 139.20007}
   next: []
   result: {fileID: 0}
   evaluationKey: Broken
   returns: 0
   starRating: 1
   review: The spell really didn't do anything, what's the point?
+--- !u!114 &927780754808883097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: 52be38cc8c5c86148a072e9c568834ce
+  position: {x: 422.80002, y: -1556.0002}
+  next: []
+  result: {fileID: -5744591059121246803}
+  filterTypes: 15000000
+--- !u!114 &970199842700752179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: cfcdecf11852056428ecafe17093377e
+  position: {x: -235.41219, y: 1282.9934}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: BloodNature
+  returns: 1
+  starRating: 6
+  review: I can finally understand the needs of my beautiful plants. My life is complete.
+--- !u!114 &1611494027295470565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 0b85975a9277ee845ac474ab2852dd18
+  position: {x: 544.9001, y: -1123.2}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: NatureUp
+  returns: 0
+  starRating: 4
+  review: I'm very pleased, my plants grew big and tall.
+--- !u!114 &2195964388739830323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 53ee58a5e3d4ea94590936429fc748c5
+  position: {x: 354.54074, y: -111.199936}
+  next:
+  - {fileID: -7661226114911277935}
+  result: {fileID: -6082513800047423599}
+  filterTypes: 03000000
 --- !u!114 &2389645670687845015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +550,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 5b6b3b57a26e66e4f8d22048c35bfd41
-  position: {x: 1506.3999, y: -1332}
+  position: {x: 1341.5997, y: -1555.6001}
   next: []
   result: {fileID: 0}
   evaluationKey: GoodWeak
@@ -299,7 +570,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 7d627e0a59250b84ebea0297e4d7639d
-  position: {x: 1227.512, y: -917.1479}
+  position: {x: 1063.2, y: -1141.2}
   next:
   - {fileID: 8134786749695044308}
   result: {fileID: -7588159355396740852}
@@ -317,10 +588,27 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: b27066264ed21994eb6407a8537643a4
-  position: {x: 969.6, y: 781.3002}
+  position: {x: 1231.2002, y: 696.00006}
   next: []
   result: {fileID: 4772323270162395452}
   filterTypes: 1400000015000000
+--- !u!114 &2946564227423105219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: 2ae6b9b45ced1ea48acea9dff0594e63
+  position: {x: 264.40005, y: -1835.5002}
+  next: []
+  result: {fileID: -2382846811285424973}
+  filterTypes: 0d000000
 --- !u!114 &4772323270162395452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,10 +622,10 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: a718f4cb9cd310a4a8203116d1f60e61
-  position: {x: 1357.8501, y: 596.0001}
+  position: {x: 1586.4, y: 713.6001}
   next: []
   result: {fileID: 0}
-  evaluationKey: UsedFireWorse
+  evaluationKey: FireWorse
   returns: 1
   starRating: 0
   review: Thanks to this shop, I no longer have a garden. Or a house. Goodbye cruel
@@ -355,7 +643,7 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: 99bcb046750ea17469ca8a349d58ae22
-  position: {x: 617.7475, y: -512.76764}
+  position: {x: 452.79996, y: -736.4}
   next:
   - {fileID: 2662166665647035155}
   - {fileID: -9161117976989465693}
@@ -376,7 +664,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 6d2303b3a72b1da43b67c771dbf580fc
-  position: {x: 1540, y: -265.6}
+  position: {x: 1375.2, y: -489.20013}
   next: []
   result: {fileID: 0}
   evaluationKey: TooStrong
@@ -397,14 +685,17 @@ MonoBehaviour:
   m_Name: SERootNode
   m_EditorClassIdentifier: 
   guid: 611ebdaefab53364f974c5ac17c0143d
-  position: {x: -208, y: -14.400024}
+  position: {x: -759.941, y: -160.19533}
   next:
   - {fileID: -3084665176372477587}
-  - {fileID: 6667170066382349138}
   - {fileID: 6394470887756725531}
   - {fileID: 619136771166829078}
+  - {fileID: 6667170066382349138}
+  - {fileID: 2195964388739830323}
+  - {fileID: 8353978310877359625}
   result: {fileID: 619136771166829078}
-  bonusNext: []
+  bonusNext:
+  - {fileID: 6768921289790686102}
 --- !u!114 &6394470887756725531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +709,7 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: a4ffd5ef5f113a04ba2a121906b8b881
-  position: {x: 406.87473, y: 74.312126}
+  position: {x: 382.08743, y: 188.12364}
   next: []
   result: {fileID: -9021756185197239743}
   filterTypes: 07000000
@@ -435,7 +726,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: f03a90a456c36154e9b895eff7080e35
-  position: {x: 1903.2, y: -574.8}
+  position: {x: 1738.3997, y: -798.8001}
   next: []
   result: {fileID: 0}
   evaluationKey: GoodSparkles
@@ -455,12 +746,49 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 21739c64ffa946d46b6d142ca36b3de9
-  position: {x: 430.8001, y: 533.0315}
+  position: {x: 354.40005, y: 534.39996}
   next:
   - {fileID: -8888475127354105532}
   - {fileID: 2918827424344000708}
   result: {fileID: -1136410032011353508}
   filterTypes: 01000000
+--- !u!114 &6768921289790686102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c9d682861f583478df3fe4828bdd2b, type: 3}
+  m_Name: BonusFilterNode
+  m_EditorClassIdentifier: 
+  guid: 30ae1a40a4a425b4087128c13044b54e
+  position: {x: -357.19995, y: 800.8002}
+  next: []
+  result: {fileID: 970199842700752179}
+  filterTypes: 0700000006000000
+--- !u!114 &8043630057128547104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 459c75187b008974f87a7a540191c833
+  position: {x: 242.40001, y: 1128}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: Earth
+  returns: 0
+  starRating: 1
+  review: The spell I got covered my plants in dirt instead of actually helping them.
 --- !u!114 &8134786749695044308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,10 +802,46 @@ MonoBehaviour:
   m_Name: StyleFilterNode
   m_EditorClassIdentifier: 
   guid: a448a1e69b608ff478a9ed17462f0b0c
-  position: {x: 1836.3119, y: -961.9479}
+  position: {x: 1671.9999, y: -1186}
   next: []
   result: {fileID: -2109827190309006537}
   filterTypes: 16000000
+--- !u!114 &8353978310877359625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: 87942154f1fb85b449b0659af8b1a4be
+  position: {x: 128.4, y: 820.8}
+  next:
+  - {fileID: 8603529426703482972}
+  result: {fileID: 8043630057128547104}
+  filterTypes: 05000000
+--- !u!114 &8603529426703482972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180c3d7118b49145a9b25864ae5de5b, type: 3}
+  m_Name: FormFilterNode
+  m_EditorClassIdentifier: 
+  guid: dc61206e5c6b8af4c8aba9f726c792e3
+  position: {x: 428.20004, y: 869.8}
+  next:
+  - {fileID: -8405655032748264168}
+  result: {fileID: -4254973575795298756}
+  filterTypes: 0e000000
 --- !u!114 &8627273293680398864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +855,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 495e47f5d87faa04dae4ddc5fc61404e
-  position: {x: 1227.512, y: -623.54785}
+  position: {x: 1063.2, y: -847.60004}
   next:
   - {fileID: -2944653548479045203}
   result: {fileID: 0}

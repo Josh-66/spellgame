@@ -86,4 +86,8 @@ public class DeskObject : MonoBehaviour, Clickable
     public virtual void Activate(){
 
     }
+    public void OnCollisionEnter2D(Collision2D other) {
+        ThudController.PlayThud();
+        
+    }
 }

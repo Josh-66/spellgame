@@ -7,7 +7,7 @@ public abstract class SENode : ScriptableObject
     [HideInInspector] public string guid;
 
     [HideInInspector] public Vector2 position;
-    [HideInInspector]public List<SENode> next;
+    [HideInInspector]public List<SENode> next = new List<SENode>();
     [HideInInspector] public EvaluationNode result;
     public static string contextFolder="";
     public virtual void Initialize(){

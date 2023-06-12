@@ -25,16 +25,19 @@ public class CameraController : MonoBehaviour
     void Update()
     {
 
-        if (shake)
-            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.localPosition,Time.deltaTime*.35f);
-            transform.localPosition+=Time.deltaTime*velocity;
+        if (shake && Time.timeScale!=0)
+            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.localPosition,Time.unscaledDeltaTime*.35f);
+            transform.localPosition+=Time.unscaledDeltaTime*velocity;
             if (Vector3.Distance(transform.localPosition-targPosition,targShake)<.1f){
                 targPosition=Random.insideUnitCircle*.2f;
                 targPosition.z=0;
+            if (Vector3.Distance(transform.localPosition,targPosition)>1f){
+                transform.localPosition= (targPosition) + (transform.localPosition-targPosition).normalized;
+            }
         }
         if (rotate){
             transform.rotation=Quaternion.Euler(0,0,Mathf.Sin(t)/2);
-            t+=Time.deltaTime*.2f;
+            t+=Time.unscaledDeltaTime*.2f;
             t %=2 * Mathf.PI;
         }
     }

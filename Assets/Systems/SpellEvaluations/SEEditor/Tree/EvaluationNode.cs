@@ -13,8 +13,6 @@ public class EvaluationNode : SENode
     public float starRating;
     [TextArea(3,5)]
     public string review;
-    VisualElement customDataContainer;
-
 
     public override Color GetColor()
     {
@@ -43,5 +41,8 @@ public class Evaluation{
         starRating=s;
         review=rv;
         returns=rt;
+    }
+    public Evaluation(){
+        
     }
 }

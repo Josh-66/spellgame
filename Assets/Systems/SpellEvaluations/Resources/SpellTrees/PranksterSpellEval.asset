@@ -13,10 +13,48 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 1e4b16b59a2cc114dbbdbbbbe44ec6be
-  position: {x: 325.6, y: 80.399994}
+  position: {x: 412.7296, y: -298.40002}
   next: []
   result: {fileID: -1141685895804860469}
   filterTypes: 07000000
+--- !u!114 &-8656423454551832574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: b795d0195567c9742b30c2739c2f4944
+  position: {x: 337.64502, y: 997.10004}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: GagGag
+  returns: 1
+  starRating: 6
+  review: The spell I got made me laugh like nothing ever before. It was so incredibly
+    funny. Check out the results on my tiktok!
+--- !u!114 &-8634736417143895378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: e350a78b571b79e40abc6c5c4fbeb43b
+  position: {x: 772.00006, y: -45.600002}
+  next: []
+  result: {fileID: -1994799284971679149}
+  filterTypes: 15000000
 --- !u!114 &-8361928114552066296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,13 +68,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: d6fa01c789c3e9342948dbacee6b0258
-  position: {x: 1287, y: -574.4}
+  position: {x: 1358.3999, y: -1091.7247}
   next: []
   result: {fileID: 0}
   evaluationKey: GagTooStrong
   returns: 1
   starRating: 3
-  review: Was funny, but a bit too strong and I may have put someone in a coma.
+  review: Was funny, but a bit too strong and I may have put someone in a coma. Be
+    careful when you come here.
 --- !u!114 &-6415969964092055476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,10 +89,28 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 41da8911075111948af9d700517e48ac
-  position: {x: 325.6, y: 579.2791}
-  next: []
+  position: {x: 396.7999, y: 262.39996}
+  next:
+  - {fileID: -5327454597193456848}
   result: {fileID: -5053600001350693042}
   filterTypes: 01000000
+--- !u!114 &-5327454597193456848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: ed82408250a8ce740b17954fdde5e83e
+  position: {x: 772, y: 285.59998}
+  next: []
+  result: {fileID: -175084384061838458}
+  filterTypes: 15000000
 --- !u!114 &-5053600001350693042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +124,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 16bd429237f27054691b61247938c0a3
-  position: {x: 628.96704, y: 824.17615}
+  position: {x: 771.9841, y: 592.4761}
   next: []
   result: {fileID: 0}
   evaluationKey: Fire
@@ -88,7 +145,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 391df96cbe5e5d643bab1cbae0cfbb2c
-  position: {x: 976.1001, y: -195.20018}
+  position: {x: 1047.2, y: -712.5247}
   next: []
   result: {fileID: 0}
   evaluationKey: Gag
@@ -108,7 +165,7 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: c901b0854765cbe438cc8f8aa7a31097
-  position: {x: 639.20013, y: -326.8}
+  position: {x: 710.40015, y: -844.5247}
   next:
   - {fileID: 5532631306540159878}
   result: {fileID: -4482503853703632554}
@@ -126,10 +183,31 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: e13605c3f64c39e45a693edc37a162ba
-  position: {x: 325.6, y: 970.1043}
+  position: {x: 396.80002, y: 682.4001}
   next: []
   result: {fileID: 5813304312330008103}
   filterTypes: 03000000
+--- !u!114 &-1994799284971679149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 10f1a0eec1ff05d4985f1dcf8b1470c1
+  position: {x: 1071, y: -29.600021}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: ElectricLudicrous
+  returns: 1
+  starRating: 1
+  review: At first I thought a shock prank would be funny, but my target's heart
+    stopped. That's not funny.
 --- !u!114 &-1141685895804860469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +221,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 76d64de8e9ae66b438bfdd44de3a50e6
-  position: {x: 702.8, y: 115.600006}
+  position: {x: 790.3296, y: -350.40002}
   next: []
   result: {fileID: 0}
   evaluationKey: Blood
@@ -151,6 +229,27 @@ MonoBehaviour:
   starRating: 2
   review: Must have been a miscommunication. I was given blood to prank someone with
     and that's a bit serious.
+--- !u!114 &-175084384061838458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: eaec41503ca083448923a53c5c9c4bcf
+  position: {x: 1120.2625, y: 592.8001}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: FireLudicrous
+  returns: 1
+  starRating: 0
+  review: I just wanted to prank some and this shop gave me a deadly fire spell.
+    Not funny.
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +279,12 @@ MonoBehaviour:
   - {fileID: -5053600001350693042}
   - {fileID: -2484846129751393330}
   - {fileID: 5813304312330008103}
+  - {fileID: -8634736417143895378}
+  - {fileID: -1994799284971679149}
+  - {fileID: 7916378231650213121}
+  - {fileID: -8656423454551832574}
+  - {fileID: -5327454597193456848}
+  - {fileID: -175084384061838458}
 --- !u!114 &413499025116687749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +298,7 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 1ae0c7b14ff1c4b48898f1ed9049a38b
-  position: {x: 325.2, y: -188.19998}
+  position: {x: 395.80002, y: -693.2001}
   next:
   - {fileID: -4232514435506490913}
   result: {fileID: 0}
@@ -211,13 +316,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 18215d9b676d3264fa1a3939df4e05d6
-  position: {x: -31.04, y: 374.94}
+  position: {x: -28.554989, y: 285.79257}
   next: []
   result: {fileID: 0}
   evaluationKey: Broken
   returns: 0
   starRating: 0
-  review: Nothihng happened
+  review: I had a sick idea to prank people with magic, but apparently this place
+    is too lame. The spell was bunk af.
 --- !u!114 &3894713782304249819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +337,7 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 580c445378c51b548b0cc3cc6ee1b720
-  position: {x: 640.4, y: 481.8}
+  position: {x: 1193.2, y: 262.4}
   next: []
   result: {fileID: 0}
   evaluationKey: Electric
@@ -251,7 +357,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 8c28084c672ed194b9becd5f0dedcf80
-  position: {x: 959.8, y: -574.4}
+  position: {x: 1031.2001, y: -1091.7247}
   next: []
   result: {fileID: -8361928114552066296}
   filterTypes: 15000000
@@ -268,8 +374,9 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 8d2080d59d75f6f45bb6cf23fde402d9
-  position: {x: 325.6, y: 326.74323}
-  next: []
+  position: {x: 396.80005, y: -45.599976}
+  next:
+  - {fileID: -8634736417143895378}
   result: {fileID: 3894713782304249819}
   filterTypes: 04000000
 --- !u!114 &5813304312330008103
@@ -285,13 +392,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 3696cce4246b8cd44bd21051ded5053f
-  position: {x: 607.8, y: 1146.4}
+  position: {x: 748.7999, y: 1014.4706}
   next: []
   result: {fileID: 0}
   evaluationKey: Water
   returns: 1
   starRating: 3
-  review: Got something alright, but it was a little uninspired.
+  review: Got something alright, but it was a little uninspired. I didn't need magic
+    for this.
 --- !u!114 &7000838211883521369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,4 +422,22 @@ MonoBehaviour:
   - {fileID: -6415969964092055476}
   - {fileID: -2484846129751393330}
   result: {fileID: 809850308361023267}
-  bonusNext: []
+  bonusNext:
+  - {fileID: 7916378231650213121}
+--- !u!114 &7916378231650213121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c9d682861f583478df3fe4828bdd2b, type: 3}
+  m_Name: BonusFilterNode
+  m_EditorClassIdentifier: 
+  guid: 954f729a8a45cb34c8d04bc820b4984c
+  position: {x: 69, y: 981.39996}
+  next: []
+  result: {fileID: -8656423454551832574}
+  filterTypes: 0800000008000000

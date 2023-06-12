@@ -15,7 +15,7 @@ public class ReviewController : MonoBehaviour
     public Evaluation evaluation{set{
         text.text = value.review;
         
-        for(int i = 0 ; i < 5 ; i++){
+        for(int i = 0 ; i < stars.Length ; i++){
             stars[i].fillAmount = value.starRating-i;
         }
     }}

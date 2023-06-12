@@ -5,16 +5,13 @@ using UnityEngine.UIElements;
 using System;
 using UnityEditor;
 using System.Linq;
-public class BonusFilterNode : SENode
+public class BonusFilterNode : FilterNode
 {
-    public List<GlyphType> filterTypes;
-    VisualElement customDataContainer;
-
-
-    
     public override bool MatchSpell(Spell spell){
         bool match = true;
         foreach(GlyphType g in filterTypes){
+            if(g==GlyphType.Invalid)
+                continue;
             if (!spell.Contains(g))
             {
                 match=false;

@@ -14,7 +14,8 @@ public abstract class WindowController : MonoBehaviour, IPointerDownHandler
 
 
     public virtual void OnPointerDown(PointerEventData ped){
-        
+        if (ped.button!=PointerEventData.InputButton.Left)
+            return;
         dragOffset = ((RectTransform)transform).anchoredPosition - CanvasController.clampedCanvasMousePos;
         dragging=true;
         // foreach(var i in ped.hovered)

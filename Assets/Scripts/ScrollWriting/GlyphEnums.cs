@@ -6,7 +6,8 @@ public enum GlyphCategory{
     Strength,
     Style
 }
-public enum GlyphType{
+[System.Serializable]
+public enum GlyphType:byte{
     Invalid,
 
     //Elements
@@ -43,7 +44,7 @@ public enum GlyphType{
 
 
 }
-public enum GlyphTypeElement{
+public enum GlyphTypeElement:byte{
     Fire = GlyphType.Fire,
     Air = GlyphType.Air,
     Water = GlyphType.Water,
@@ -54,7 +55,7 @@ public enum GlyphTypeElement{
     Gag = GlyphType.Gag,
     Invalid = GlyphType.Invalid,
 }
-public enum GlyphTypeForm{
+public enum GlyphTypeForm:byte{
     Ball = GlyphType.Ball,
     Spray= GlyphType.Spray,
     Strike= GlyphType.Strike,
@@ -66,14 +67,14 @@ public enum GlyphTypeForm{
     Down = GlyphType.Down,
     Invalid = GlyphType.Invalid,
 }
-public enum GlyphTypeStrength{
+public enum GlyphTypeStrength:byte{
     Low= GlyphType.Low,
     Medium = GlyphType.Medium,
     High= GlyphType.High,
     Ludicrous= GlyphType.Ludicrous,
     Invalid = GlyphType.Invalid,
 }
-public enum GlyphTypeStyle{
+public enum GlyphTypeStyle:byte{
     Sparkles = GlyphType.Sparkles,
     Strobe = GlyphType.Strobe,
     Glowing = GlyphType.Glowing,

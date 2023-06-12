@@ -62,7 +62,12 @@ public class SpellEvaluationTree : ScriptableObject
         
         EvaluationNode lastEval = null;
         bool deadEnd=false;
+        int loops=0;
+        int limit = 100;
         while (!deadEnd){
+            loops++;
+            if (loops>limit)
+                break;
             if (currentNode.result!=null)
                 lastEval = currentNode.result;
             bool found = false;
@@ -80,7 +85,9 @@ public class SpellEvaluationTree : ScriptableObject
                 deadEnd=true;
             }
         }            
-
+        if (lastEval==null)
+            return new Evaluation();
+            
         return lastEval.GetEvaluation();
     }
 

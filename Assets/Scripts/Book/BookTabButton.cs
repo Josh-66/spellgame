@@ -32,6 +32,8 @@ public class BookTabButton : MonoBehaviour,IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button!=PointerEventData.InputButton.Left)
+            return;
         bc.GoToPage(page);
     }
 }

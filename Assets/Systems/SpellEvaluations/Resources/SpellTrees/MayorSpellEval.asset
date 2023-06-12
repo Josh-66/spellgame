@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 4b2554829a50063418ccca666411e36e
-  position: {x: 1362.3995, y: -26.400051}
+  position: {x: 1389.6002, y: -864.2}
   next: []
   result: {fileID: 0}
   evaluationKey: Strong
   returns: 0
   starRating: 5
-  review: Was a very potent spell and cleaned the city's water very quickly.
+  review: Was a very potent spell and cleaned the city's water very quickly. #ProblemSolved
 --- !u!114 &-8070019722811897590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,13 +33,36 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 8d2624d571a3d5e4fba0d71742c5d7c3
-  position: {x: 1362.3999, y: 360.8}
+  position: {x: 1435.2, y: -465.6}
   next: []
   result: {fileID: 0}
   evaluationKey: Ludicrous
   returns: 0
   starRating: 5
-  review: Was an extremely potent spell and cleaned the city's water almost instantly.
+  review: Was an extremely potent spell and cleaned our city's water almost instantly.
+    #ProblemSolved
+--- !u!114 &-7867622343992243908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: da22aa5d66fe0fa4f97c51f41c85530b
+  position: {x: 1264, y: 595.19995}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: ElectricityStrong
+  returns: 1
+  starRating: 2
+  review: After I casted a spell meant to clean our reservoir, a bunch of fish started
+    floating to the surface. Join us downtown for an all you can eat fish buffet.
+    #SilverLining
 --- !u!114 &-5059711224849379023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,13 +76,13 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 319a33274d3cedf42b04ff9c17bce4a2
-  position: {x: -97.857574, y: 498.40005}
+  position: {x: -87.8, y: 280.59998}
   next: []
   result: {fileID: 0}
   evaluationKey: Broken
   returns: 0
   starRating: 1
-  review: Nothing happened.
+  review: Don't come here. The spells are all fake!
 --- !u!114 &-4923973076780049115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +96,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 330c16cded5b66b4a8fb64e2bd8c3103
-  position: {x: 1032.7999, y: -121.600075}
+  position: {x: 1059.9998, y: -917.4215}
   next:
   - {fileID: -4235205090728123301}
   result: {fileID: -8937006602950452419}
@@ -96,8 +119,11 @@ MonoBehaviour:
   - {fileID: 4982595459853249895}
   - {fileID: -883930313818676410}
   - {fileID: -562290778294652122}
-  result: {fileID: 0}
-  bonusNext: []
+  - {fileID: -5059711224849379023}
+  - {fileID: -2531304114706646112}
+  result: {fileID: -5059711224849379023}
+  bonusNext:
+  - {fileID: -2300493318454200564}
 --- !u!114 &-4235205090728123301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +137,7 @@ MonoBehaviour:
   m_Name: StyleFilterNode
   m_EditorClassIdentifier: 
   guid: 887a246cdb62d5a4a8901920bddb5507
-  position: {x: 1660.4468, y: -71.55311}
+  position: {x: 1794.0564, y: -969.59985}
   next: []
   result: {fileID: 7114329324042215924}
   filterTypes: 16000000
@@ -128,14 +154,49 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: d9412071d7aae1147a4ba82e2ee471d7
-  position: {x: 590.4, y: 1066.7699}
+  position: {x: 685.35, y: 265.19998}
   next: []
   result: {fileID: 0}
   evaluationKey: Explosion
   returns: 1
   starRating: 0
-  review: I was given a spell that exploded and damaged the city's dam. Be prepared
-    to evacuate.
+  review: I was given a spell that exploded and damaged our city's dam. Be prepared
+    to evacuate. #RedAlert
+--- !u!114 &-2531304114706646112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54453b40f5c31254d8e6a6845a247137, type: 3}
+  m_Name: ElementFilterNode
+  m_EditorClassIdentifier: 
+  guid: e0899664aa7f51e44a07290c269a3e2e
+  position: {x: 362.84705, y: 540.7999}
+  next:
+  - {fileID: -1594325468805859353}
+  result: {fileID: 5726893770499848414}
+  filterTypes: 04000000
+--- !u!114 &-2300493318454200564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c9d682861f583478df3fe4828bdd2b, type: 3}
+  m_Name: BonusFilterNode
+  m_EditorClassIdentifier: 
+  guid: 159edcb260b2bf145a93d2ecdae3d258
+  position: {x: 171.57806, y: 854.39996}
+  next: []
+  result: {fileID: 4829940679256143295}
+  filterTypes: 0300000007000000
 --- !u!114 &-2263202909943581352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,13 +210,30 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 4685e41f5427d33479e577d9bbbcf855
-  position: {x: 1362.3999, y: -396.80002}
+  position: {x: 1389.5997, y: -1192.6215}
   next: []
   result: {fileID: 0}
   evaluationKey: Weak
   returns: 0
   starRating: 3
-  review: Was alright, but it seemed really slow and weak.
+  review: Was alright, but the spell seemed really slow and weak.  #OneSmallStep
+--- !u!114 &-1594325468805859353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd7231f9bf9024f963ca41f784bd14, type: 3}
+  m_Name: StrengthFilterNode
+  m_EditorClassIdentifier: 
+  guid: d837e5ccbd8922147807e92cbdb85528
+  position: {x: 929.60004, y: 595.19995}
+  next: []
+  result: {fileID: -7867622343992243908}
+  filterTypes: 1400000015000000
 --- !u!114 &-1138686927290388856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +247,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: cfa7fa0525c97bd4594be3a83ec4d30d
-  position: {x: 1066.8, y: 163.19994}
+  position: {x: 1145.6, y: -551.2}
   next:
   - {fileID: 2483037022690240884}
   result: {fileID: -8070019722811897590}
@@ -187,7 +265,7 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: d6f328be92f09d04abed54971a375c8d
-  position: {x: 680.44006, y: 773.6}
+  position: {x: 658.9451, y: 16.096657}
   next: []
   result: {fileID: 8085484313906685898}
   filterTypes: 15000000
@@ -204,7 +282,7 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: a445039034091f142955c2228aaa524d
-  position: {x: 346.40002, y: 215.40396}
+  position: {x: 373.6, y: -498.785}
   next: []
   result: {fileID: 4544795985080926796}
   filterTypes: 07000000
@@ -221,7 +299,7 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: 3c8feea1e3642924a865da9e026a89cd
-  position: {x: 318.6276, y: 786.8143}
+  position: {x: 323.23538, y: 0.000015258789}
   next:
   - {fileID: -1002629000393216585}
   result: {fileID: -3194597331529384069}
@@ -239,7 +317,7 @@ MonoBehaviour:
   m_Name: FormFilterNode
   m_EditorClassIdentifier: 
   guid: d8993e0dbd7fbbf43bf3c4cb6403120a
-  position: {x: 653.4, y: -108.14641}
+  position: {x: 680.7999, y: -903.8215}
   next:
   - {fileID: 4796207433491521776}
   - {fileID: -4923973076780049115}
@@ -281,6 +359,12 @@ MonoBehaviour:
   - {fileID: -3194597331529384069}
   - {fileID: -1002629000393216585}
   - {fileID: 8085484313906685898}
+  - {fileID: -2531304114706646112}
+  - {fileID: -7867622343992243908}
+  - {fileID: -2300493318454200564}
+  - {fileID: 4829940679256143295}
+  - {fileID: -1594325468805859353}
+  - {fileID: 5726893770499848414}
 --- !u!114 &2483037022690240884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +378,7 @@ MonoBehaviour:
   m_Name: StyleFilterNode
   m_EditorClassIdentifier: 
   guid: 355dd768fb46efd4181f47da13d1e687
-  position: {x: 1693.0253, y: 267.19998}
+  position: {x: 1826.8563, y: -630.3999}
   next: []
   result: {fileID: 4063364785112966331}
   filterTypes: 16000000
@@ -311,13 +395,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: ffd3522452f389e41b731015079069c1
-  position: {x: 945.19995, y: 438.40002}
+  position: {x: 867, y: -648.4}
   next: []
   result: {fileID: 0}
   evaluationKey: Good
   returns: 0
   starRating: 4
-  review: Worked pretty well for purifying the reservoir! Could be stronger though.
+  review: Worked pretty well for purifying our city's reservoir! Could be stronger
+    though. #Progress
 --- !u!114 &4063364785112966331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,14 +416,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 0d3ba960b1233a34cba9efada451213e
-  position: {x: 1997.4525, y: 321.06}
+  position: {x: 2130.8564, y: -576.7998}
   next: []
   result: {fileID: 0}
   evaluationKey: Perfect
   returns: 1
   starRating: 6
   review: Got an extremely strong and fast acting spell to clean the water supply
-    and make it sparkle. Perfect!
+    and make it sparkle. Perfect! #ISolveProblems #SuperMayor
 --- !u!114 &4544795985080926796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,14 +437,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: bf107ae8360fe114188109cd0978afbb
-  position: {x: 617, y: 386.40002}
+  position: {x: 643.6501, y: -346.4001}
   next: []
   result: {fileID: 0}
   evaluationKey: Blood
   returns: 1
   starRating: 0
   review: If you taste blood in your water, blame this shop! The wrong spell was
-    given to me.
+    given to me. #NotMyFault
 --- !u!114 &4796207433491521776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,10 +458,31 @@ MonoBehaviour:
   m_Name: StrengthFilterNode
   m_EditorClassIdentifier: 
   guid: 099bfa20aa99b924392d82a6e03be4d2
-  position: {x: 1032.6001, y: -396.4}
+  position: {x: 1059.9998, y: -1192.6215}
   next: []
   result: {fileID: -2263202909943581352}
   filterTypes: 12000000
+--- !u!114 &4829940679256143295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 1052e687bea7c3645822a3a9ea39c891
+  position: {x: 458.59998, y: 911.2}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: WaterBlood
+  returns: 1
+  starRating: 0
+  review: This shop and their incompetence is why your sinks dispense blood. #IWillNotLetThisStand
+    #CancelMagic
 --- !u!114 &4982595459853249895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,11 +496,32 @@ MonoBehaviour:
   m_Name: ElementFilterNode
   m_EditorClassIdentifier: 
   guid: 6df2482c37cfaaa46b8d441e59fef8c0
-  position: {x: 345.80002, y: -45.600006}
+  position: {x: 373.5999, y: -841.4215}
   next:
   - {fileID: -422956188419686132}
   result: {fileID: 0}
   filterTypes: 03000000
+--- !u!114 &5726893770499848414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c19909fbf4b404ea3c37a6b84f3b0b, type: 3}
+  m_Name: EvaluationNode
+  m_EditorClassIdentifier: 
+  guid: 9f7f496bfaca1a2469af275952bf5d0f
+  position: {x: 929.60004, y: 862}
+  next: []
+  result: {fileID: 0}
+  evaluationKey: ElectricityWeak
+  returns: 0
+  starRating: 1
+  review: This shop made me kill fish in our beautiful reservoir. I got a warning
+    from the Department of Fish and Game. #Oops #IDidntMeanTo
 --- !u!114 &7114329324042215924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,14 +535,14 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: c92a726e77802c1488ac90182edf5cbe
-  position: {x: 1955.741, y: -72.000015}
+  position: {x: 2088.4507, y: -969.60016}
   next: []
   result: {fileID: 0}
   evaluationKey: StrongSparkle
   returns: 0
-  starRating: 0
-  review: Was a very potent spell and cleaned the city's water very quickly. Also
-    it sparkles now!
+  starRating: 5
+  review: Was a very potent spell and cleaned our  city's water very quickly. Also
+    it sparkles now! ect! #ISolveProblems #SuperMayor
 --- !u!114 &8085484313906685898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,10 +556,11 @@ MonoBehaviour:
   m_Name: EvaluationNode
   m_EditorClassIdentifier: 
   guid: 128bd32a1e2e979439c97d9da394703a
-  position: {x: 1001.9425, y: 1066.4}
+  position: {x: 997.4, y: 36.999985}
   next: []
   result: {fileID: 0}
   evaluationKey: ExplosionLudicrous
   returns: 1
   starRating: 0
   review: The dam is projected to crumble by tomorrow morning. Would not recommend.
+    #Evacuate

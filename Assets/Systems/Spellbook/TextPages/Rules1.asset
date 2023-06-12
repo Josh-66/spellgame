@@ -13,23 +13,25 @@ MonoBehaviour:
   m_Name: Rules1
   m_EditorClassIdentifier: 
   tab: 0
-  titleL: '<b>Rules</b>  '
-  textL: '-Every spell takes at most one glyph from each category
+  titleL: Rules
+  textL: '-Every spell takes, at most, one glyph from each category
 
 
-    -Every spell
-    must be stamped by the author
+    -Every
+    spell must be stamped by the author
 
 
-'
+    -It is possible to force invalid spells
+    on the page, but this often breaks the spell.'
   titleR: Ethics
-  textR: '-Be nice, please.
+  textR: '-Be nice, please, these people trust you.
 
 
-    -These people trust you
+    -They also cannot tell
+    what a spell is before they use it.
 
 
-    -They also cannot
-    tell what a spell is before they use it.
+    -If you miss their request, just do
+    your best to guess what they want.
 
 '

@@ -10,23 +10,25 @@ public class DialogueController : MonoBehaviour
     public TextMeshProUGUI playerText,customerText; 
     public AudioSource playerAS,customerAS;
     public static DialogueController instance;
-    public static Action OnComplete;
+    public static Action OnComplete {get{return instance._onComplete;}set{instance._onComplete=value;}}
+    Action _onComplete=null;
+    public static bool playing {get{return instance._playing;}set{instance._playing=value;}}
     public Dialogue dialogue;
-    public static bool playing = false;
+    bool _playing = false;
     public int lineIndex= -1;
     public float charIndex=0;
     public float soundTimer = .1f;
     float soundCD = .10f;
 
-
+    public Image playerPrompt,customerPrompt;
     GameObject targetWindow,otherWindow;
     AudioSource targetAS,otherAS;
     TextMeshProUGUI targetText,otherText;
     bool lineInitialized=false;
+    Line line = null;
     void Awake()
     {    
         instance=this;
-        
         SetWindowsVisible(false);
     }
 
@@ -34,14 +36,16 @@ public class DialogueController : MonoBehaviour
     void Update()
     {
         if (playing){
-
-            Line line = dialogue[lineIndex];
-            while (line.isAction){
+            line = dialogue[lineIndex];
+            if (line==null){
+                EndDialogue();
+                return;
+            }
+            while (line.type!=Line.Type.text){
                 PerformLineAction(line);
                 lineIndex++;
-                if (lineIndex>=dialogue.lines.Length){
-                    playing=false;
-                    SetWindowsVisible(false);
+                if (lineIndex>=dialogue.lines.Count){
+                    EndDialogue();
                     return;
                 }
                 line = dialogue[lineIndex];
@@ -53,6 +57,8 @@ public class DialogueController : MonoBehaviour
             charIndex+=Time.deltaTime * 10 * TextSpeed.textSpeed;
             targetText.text=line.text.Substring(0,Mathf.FloorToInt(Mathf.Min(charIndex,line.text.Length)));
             
+            playerPrompt.enabled = customerPrompt.enabled = charIndex>=line.text.Length;
+
             if (charIndex<line.text.Length){
                 soundTimer-=Time.deltaTime;
                 if (soundTimer<0){
@@ -60,20 +66,15 @@ public class DialogueController : MonoBehaviour
                     targetAS.Play();
                 }
             }
-
-            if (charIndex>line.text.Length+10){
+            if (charIndex>=line.text.Length && TimescaleController.isFastForward && TimescaleController.isDialogue){
                 lineIndex++;
                 lineInitialized=false;
                 charIndex=0;
-                if (lineIndex>=dialogue.lines.Length){
-                    playing=false;
-                    SetWindowsVisible(false);
-                    if (OnComplete!=null){
-                        OnComplete();
-                        OnComplete=null;
-                    }
+                if (lineIndex>=dialogue.lines.Count){
+                    EndDialogue();
                 }
             }
+            
         }
     }
     public static void PlayDialogue(Character character, string dialogueKey){
@@ -113,10 +114,36 @@ public class DialogueController : MonoBehaviour
         soundTimer=0;
     }
     public void PerformLineAction(Line line){
-        switch (line.actionType){
-            case 1:
-                CustomerController.instance.spriteRenderer.sprite=CustomerController.instance.character.GetSprite(line.expression);
+        switch (line.type){
+            case Line.Type.portrait:
+                CustomerController.instance.spriteRenderer.sprite=CustomerController.instance.character.GetSprite((Expression)line.value);
                 break;
         }
+    }
+
+    public void Clicked(){
+        if (line!=null){
+            if (charIndex>=line.text.Length){
+                    lineIndex++;
+                    lineInitialized=false;
+                    charIndex=0;
+                    if (lineIndex>=dialogue.lines.Count){
+                        EndDialogue();
+                    }
+            }
+            else{
+                charIndex=line.text.Length;
+            }
+        }
+    }
+    void EndDialogue(){
+        
+        playing=false;
+        SetWindowsVisible(false);
+        if (OnComplete!=null){
+            OnComplete();
+            OnComplete=null;
+        }
+        TimescaleController.isDialogue=false;
     }
 }

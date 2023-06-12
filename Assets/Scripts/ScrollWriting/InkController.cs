@@ -41,7 +41,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     public float particleTimer=1;
     new RectTransform transform {get{return (RectTransform)base.transform;}}
 
-    public AudioClip[] shortStrokes,longStrokes;
+    public AudioClip[] shortStrokes,longStrokes,shortErasing,longErasing;
+    public AudioClip stampSound;
     public AudioSource audioSource;
     public float audioCooldown = 0;
 
@@ -67,8 +68,10 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         ControlDrag();
         if (erasing){
             EraseSpot();
-            if (MyInput.clickUp)
+            if (MyInput.clickUp){
                 erasing=false;
+                audioSource.Stop();
+            }
         }
         if (activeStroke==null)
             brushTilt=0;
@@ -148,6 +151,8 @@ public class InkController : MonoBehaviour,IPointerDownHandler
         s.CalculateBoxes(false);
         s.ChangeColor(inkColor);
         stamped=true;
+        audioSource.clip=stampSound;
+        audioSource.Play();
         return s;
 
     }
@@ -238,7 +243,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
                 //     <50f => shortStrokes.RandomElement<AudioClip>(),
                 //     _ => longStrokes.RandomElement<AudioClip>(),
                 // };
-                audioSource.clip=longStrokes.RandomElement<AudioClip>();
+                audioSource.clip=longStrokes.RandomElement();
                 audioCooldown=Random.Range(.25f,.75f);
                 audioSource.Play();
             }
@@ -300,6 +305,11 @@ public class InkController : MonoBehaviour,IPointerDownHandler
     void EraseSpot(){
         Vector2Int localMousePosition = Vector2Int.FloorToInt(mousePos);
 
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayRand((lastMousePos-localMousePosition).magnitude>5 ? shortErasing:longErasing);
+
+        }
         List<Stroke> strokesToRemove = new List<Stroke>();
         foreach (Stroke s in strokes){
             if (s.texture.GetPixel(localMousePosition.x,localMousePosition.y).a!=0){
@@ -312,6 +322,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             DeleteStroke(strokesToRemove[i],true);
             lastGlyph=GlyphType.Invalid;
         } 
+        lastMousePos=localMousePosition;
     }
     void DeleteStroke(Stroke stroke, bool changeSpell = false){
         stroke.Disappear();
@@ -461,12 +472,14 @@ public class InkController : MonoBehaviour,IPointerDownHandler
 
 
     public void OnPointerDown(PointerEventData ped){
+        if (ped.button!=PointerEventData.InputButton.Left)
+            return;
         GetClickInputs();
     }
     void GetClickInputs(){
         Vector2 scrollMousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform.parent,MyInput.mousePosition,Camera.main,out scrollMousePos);
-
+        
         if (tool == Tool.None && ((RectTransform)transform.parent).rect.Contains(scrollMousePos)){
             if (MyInput.click)
             {
@@ -496,6 +509,7 @@ public class InkController : MonoBehaviour,IPointerDownHandler
             }
             else if (tool == Tool.Eraser){
                 if (MyInput.click){
+                    lastMousePos=mousePos;
                     erasing=true;
                 }
             }

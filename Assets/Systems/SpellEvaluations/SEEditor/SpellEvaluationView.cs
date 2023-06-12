@@ -63,7 +63,7 @@ public class SpellEvaluationView : GraphView
                         Edge edge = parentView.output2.ConnectTo(childView.input);
                         AddElement(edge);
                     }
-                    if (parentView.node is SERootNode && childView.node is BonusFilterNode){
+                    else if (parentView.node is SERootNode && childView.node is BonusFilterNode){
                         Edge edge = parentView.output3.ConnectTo(childView.input);
                         AddElement(edge);
                     }

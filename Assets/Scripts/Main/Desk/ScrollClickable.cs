@@ -10,10 +10,13 @@ public class ScrollClickable : DeskObject
     public Sprite open,rolled;
     public int baseSortingOrder;
     public bool beingGiven;
+    AudioSource audioSource;
+    public AudioClip rolledSound,unrolledSound;
     public override void Awake(){
         base.Awake();
         instance=this;
         baseSortingOrder=spriteRenderer.sortingOrder;
+        audioSource=GetComponent<AudioSource>();
     }
     public override void Update(){
         base.Update();
@@ -23,6 +26,10 @@ public class ScrollClickable : DeskObject
             if (spriteRenderer.sprite!=rolled){
                 ScrollController.CloseScroll();
                 spriteRenderer.sprite=rolled;
+                
+                audioSource.clip=rolledSound;
+                audioSource.Play();
+
                 foreach(Transform child in transform){
                     child.gameObject.SetActive(false);
                 }
@@ -36,7 +43,10 @@ public class ScrollClickable : DeskObject
                 foreach(Transform child in transform){
                     child.gameObject.SetActive(true);
                 }
-                spriteRenderer.sprite=open;
+                
+                audioSource.clip=unrolledSound;
+                audioSource.Play();
+
                 GameObject.Destroy(GetComponent<PolygonCollider2D>());
                 gameObject.AddComponent<PolygonCollider2D>();
             }
@@ -45,10 +55,21 @@ public class ScrollClickable : DeskObject
             foreach(Collider2D col in GetComponents<Collider2D>()){
                 col.enabled=false;
             }
+            rigidbody2D.velocity=rigidbody2D.velocity.normalized*.5f;
             spriteRenderer.sortingOrder=-1;
             beingGiven=true;
             GameController.instance.SubmitSpell(ScrollController.instance.inkController.spell);
             ScrollController.instance.inkController.HardClearStrokes();
+        }
+        if (transform.position.y<-5){
+            beingGiven=false;
+            foreach(Collider2D col in GetComponents<Collider2D>()){
+                col.enabled=true;
+            }
+            spriteRenderer.sortingOrder=baseSortingOrder;
+            CustomerController.instance.ExitScrollDropped();
+
+            Respawn();
         }
     }
     public GameObject AddStroke(Sprite s){
@@ -70,9 +91,9 @@ public class ScrollClickable : DeskObject
         mr.material=scrollInkMaterial;
         mr.material.mainTexture=s.texture;
         mr.sortingLayerID=spriteRenderer.sortingLayerID;
-        mr.sortingOrder=spriteRenderer.sortingOrder;
+        mr.sortingOrder=spriteRenderer.sortingOrder+1;
         
-        stroke.transform.localPosition=Vector3.back*.05f;
+        stroke.transform.localPosition=Vector3.zero;
         stroke.transform.localRotation=Quaternion.identity;
 
         return stroke;
@@ -86,13 +107,6 @@ public class ScrollClickable : DeskObject
     public override void Respawn()
     {
         base.Respawn();
-        if (beingGiven){
-            beingGiven=false;
-            foreach(Collider2D col in GetComponents<Collider2D>()){
-                col.enabled=true;
-            }
-            spriteRenderer.sortingOrder=baseSortingOrder;
-
-        }
+        
     }
 }

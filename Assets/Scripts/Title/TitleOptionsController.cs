@@ -5,27 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class TitleOptionsController : MonoBehaviour
 {
+    public bool gameStarted;
+    public GameObject continueButton;
     // Start is called before the first frame update
     void Start()
     {
         AudioUtility.SetAllVolumes();
+        if (!SaveData.validSave)
+            continueButton.SetActive(false);
     }
     public void NewGame(){
-        GameController.loadData=false;
-        StampPaperController.stampTexture=null;
-        AsyncOperation ao = SceneManager.LoadSceneAsync("Shop");
-        ao.allowSceneActivation=false;
+        if (gameStarted)
+            return;
 
-        BlackFade.FadeInAndAcion(()=>{ao.allowSceneActivation=true;});
+        if (PlayerPrefs.GetInt("GamesFinished",0)>2){
+            GameSettingsWindow.instance.gameObject.SetActive(true);
+        }
+        else{
+            gameStarted=true;
+
+            GameController.PrepareBaseGame();
+
+
+            ReviewAppController.evaluations=null;
+            BedroomController.morning=true;
+            Utility.FadeToScene("Bedroom");
+        }
+        
     }   
     public void Continue(){
-        GameController.loadData=true;
-        AsyncOperation ao = SceneManager.LoadSceneAsync("Shop");
-        ao.allowSceneActivation=false;
-        BlackFade.FadeInAndAcion(()=>{ao.allowSceneActivation=true;});
+        if (gameStarted)
+            return;
+        gameStarted=true;
+        GameController.PrepareGame(GameController.GameType.load);
+        Utility.FadeToScene("Shop");
     }
     public void Options(){
         BookController.OpenOptions();
+    }
+    public void Editor(){
+        Utility.FadeToScene("CharacterEditor");
     }
     
 }

@@ -8,11 +8,12 @@ using System.Linq;
 public class StrengthFilterNode : SENode
 {
     public List<GlyphTypeStrength> filterTypes;
-    VisualElement customDataContainer;
 
     public override bool MatchSpell(Spell spell){
         bool match = false;
         foreach(GlyphTypeStrength g in filterTypes){
+            if((GlyphType)g==GlyphType.Invalid)
+                continue;
             if ((GlyphType)g==spell.strength)
             {
                 match=true;

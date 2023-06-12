@@ -9,7 +9,7 @@ public class BookController : WindowController
     public static BookController instance;
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
     public AudioSource pageSource;
-    public AudioClip pageTurn;
+    public AudioClip[] pageTurn;
 
     public int pageNumber{
         get{
@@ -57,13 +57,13 @@ public class BookController : WindowController
         instance=this;
         pageNumber=0;
         CloseBook(true);
+        settingsPageController.Activate();
     }
     
     void LoadPage(int number){
         bookInfo.pages[number].Activate(this);
         if (pageSource.isActiveAndEnabled){
-            pageSource.clip=pageTurn;
-            pageSource.Play();
+            pageSource.PlayRand(pageTurn);
         }
     }
     public void CloseButton(){

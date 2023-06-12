@@ -23,7 +23,8 @@ public class BlackFade : MonoBehaviour
             return;
         alpha = Mathf.MoveTowards(alpha,targFade,Time.deltaTime/2f);
         image.color = new Color(1,1,1,alpha);
-        musicPlayer.volume=1-alpha;
+        if (musicPlayer!=null)
+            musicPlayer.volume=1-alpha;
         if (alpha==targFade && OnReachTarg!=null){
             OnReachTarg();
             OnReachTarg=null;

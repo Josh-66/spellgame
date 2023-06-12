@@ -6,9 +6,14 @@ public class CustomerController : MonoBehaviour,Clickable
 {
     public Character character;
     public static CustomerController instance;
-    public static bool active;
-    public static bool isEntry = true;
-    public static string complaint = "NONE";
+    public static bool active {get{return instance._active;}set{instance._active=value;}}
+    public static bool isEntry {get{return instance._isEntry;}set{instance._isEntry=value;}}
+    public static int shouldExit {get{return instance._shouldExit;}set{instance._shouldExit=value;}}
+    public static string complaint {get{return instance._complaint;}set{instance._complaint=value;}}
+    bool _active = false;
+    bool _isEntry = true;
+    int _shouldExit = 0;
+    string _complaint = "NONE";
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public static Material outlined,regular;
@@ -24,6 +29,17 @@ public class CustomerController : MonoBehaviour,Clickable
         spriteRenderer.sprite=character.baseSprite;
         arrived=false;
         active=true;
+        shouldExit=0;
+    }
+    public void ExitDialogueDone(){
+        shouldExit++;
+        if (shouldExit==2)
+            Exit();
+    }
+    public void ExitScrollDropped(){
+        shouldExit++;
+        if (shouldExit==2)
+            Exit();
     }
     public void Exit(){
         CustomerController.instance.animator.SetTrigger("Exit");
@@ -40,6 +56,7 @@ public class CustomerController : MonoBehaviour,Clickable
                 Exit();
             };
         }
+        CustomerController.instance.animator.SetTrigger("Idle");
     }
     public void FinishedExiting(){
         active=false;
@@ -73,7 +90,7 @@ public class CustomerController : MonoBehaviour,Clickable
             return;
         //Chat
         if (!DialogueController.playing){
-            DialogueController.PlayDialogue(character,character.dialogue.chats.RandomElement<Dialogue>());
+            DialogueController.PlayDialogue(character,character.dialogue.chats.RandomElement());
         }
     }
 }

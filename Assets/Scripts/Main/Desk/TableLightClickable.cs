@@ -9,8 +9,15 @@ public class TableLightClickable : DeskObject
     public SpriteRenderer candleSprite;
     public Color color;
     public bool lit = true;
+    public AudioClip lightSound,extinguishSound;
+    AudioSource audioSource;
 
-    // Update is called once per frame
+    public override void Awake()
+    {
+        base.Awake();
+        audioSource=GetComponent<AudioSource>();
+    }
+
     public override void Update()
     {
         base.Update();
@@ -22,6 +29,8 @@ public class TableLightClickable : DeskObject
     }
     public override void Activate()
     {
+        audioSource.clip= lit ? extinguishSound:lightSound;
+        audioSource.Play();
         lit = !lit;
         candleLight.gameObject.SetActive(lit);
     }

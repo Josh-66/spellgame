@@ -65,7 +65,7 @@ Material:
     - _OutlineIntensity: 0.2
     - _OutlineScale: 0
     - _OutlineSpeed: 0
-    - _OutlineThickness: 7
+    - _OutlineThickness: 8
     - _StrokeNoiseScale: 6
     - _StrokeNoiseSpeed: 0.5
     - _StrokeNoiseVariance: 0.5

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PhoneController : WindowController
 {
-    public static PhoneController instance;
+    public static PhoneController instance=>FindObjectOfType<PhoneController>(true);
     public static bool isOpen {get{return instance.gameObject.activeSelf;}}
     public override void Activate()
     {
-        instance=this;
+    }
+    public void UpdateReviewApp(){
+        ReviewAppController rac = GetComponentInChildren<ReviewAppController>(true);
+        rac.UpdateReviews();
     }
 }

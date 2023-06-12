@@ -10,6 +10,13 @@ public class ToolController : DeskObject
     public Tool tool;
     public Sprite active,inactive;
     public bool clicked = false;
+    public AudioClip grab,place;
+    AudioSource audioSource;
+    public override void Awake()
+    {
+        base.Awake();
+        audioSource=GetComponent<AudioSource>();
+    }
 
     public override void Update(){
         base.Update();
@@ -31,17 +38,21 @@ public class ToolController : DeskObject
         if (activeToolController=this){
             activeToolController=null;
             activeTool=Tool.None;
+            audioSource.clip=place;
+            audioSource.Play();
         }
     }
     public override void Activate(){
         if (activeToolController==this){
-            activeToolController=null;
-            activeTool=Tool.None;
+            Deactivate();
             return;
         }
         if (activeToolController!=null){
             activeToolController.Deactivate();
         }
+        
+        audioSource.clip=grab;
+        audioSource.Play();
         activeToolController=this;
         activeTool=this.tool;
     }

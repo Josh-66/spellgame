@@ -8,12 +8,12 @@ using System.Linq;
 public class ElementFilterNode : SENode
 {
     public List<GlyphTypeElement> filterTypes;
-    VisualElement customDataContainer;
-
 
     public override bool MatchSpell(Spell spell){
         bool match = false;
         foreach(GlyphTypeElement g in filterTypes){
+            if((GlyphType)g==GlyphType.Invalid)
+                continue;
             if ((GlyphType)g==spell.element)
             {
                 match=true;

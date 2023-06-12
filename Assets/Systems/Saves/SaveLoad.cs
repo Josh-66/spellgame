@@ -11,6 +11,7 @@ using System.Collections.Generic;
 /// <typeparam name="T"></typeparam>
 public static class SaveLoad<T>
 {
+
     /// <summary>
     /// Save data to a file (overwrite completely)
     /// </summary>
@@ -96,6 +97,32 @@ public static class SaveLoad<T>
         // return the casted json object to use
         return (T)Convert.ChangeType(returnedData, typeof(T));
     }
+    public static void Delete(string folder, string file)
+    {
+        // get the data path of this save data
+        string dataPath = GetFilePath(folder, file);
+
+        // if the file path or name does not exist, return the default SO
+        if (!Directory.Exists(Path.GetDirectoryName(dataPath)))
+        {
+            // Debug.LogWarning("File or path does not exist! " + dataPath);
+            return;
+        }
+
+        try
+        {
+            File.Delete(dataPath);
+            Debug.Log("Deleted data");
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Failed to delete data: " + e.Message);
+            return;
+        }
+
+        return;
+
+    }
     
     /// <summary>
     /// Create file path for where a file is stored on the specific platform given a folder name and file name
@@ -103,33 +130,50 @@ public static class SaveLoad<T>
     /// <param name="FolderName"></param>
     /// <param name="FileName"></param>
     /// <returns></returns>
+    public static List<string> GetFolderContents(string FolderName){
+        string path = GetFilePath(FolderName);
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        string[] files = Directory.GetFiles(path);
+        for (int i = 0 ; i < files.Length ; i++){
+            files[i]=Path.GetFileName(files[i]);
+        }
+        return new List<string>(files);
+    }
     private static string GetFilePath(string FolderName, string FileName = "")
     {
-        string filePath;
+        string filePath="";
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         // mac
         filePath = Path.Combine(Application.streamingAssetsPath, ("data/" + FolderName));
 
         if (FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            filePath = Path.Combine(filePath, (FileName));
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         // windows
         filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
 
         if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            filePath = Path.Combine(filePath, (FileName));
 #elif UNITY_ANDROID
         // android
         filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
 
         if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            filePath = Path.Combine(filePath, (FileName));
 #elif UNITY_IOS
         // ios
         filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
 
         if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            filePath = Path.Combine(filePath, (FileName));
+#else
+        filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
+
+        if(FileName != "")
+            filePath = Path.Combine(filePath, (FileName));
 #endif
         return filePath;
     }

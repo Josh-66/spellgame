@@ -1,23 +1,38 @@
 
 using UnityEngine;
+using System.Collections.Generic;
 public static class AudioUtility{
 
     public static UnityEngine.Audio.AudioMixer mixer {get{return Resources.Load<UnityEngine.Audio.AudioMixer>("MainMixer");}}
-    public static float masterVol,soundVol,musicVol;
+    public static Dictionary<string,float> volume{get{
+        if (_volume==null){
+            _volume = new Dictionary<string, float>(){
+                {"MasterVol",PlayerPrefs.GetFloat("MasterVol",.8f)},
+                {"SoundVol",PlayerPrefs.GetFloat("SoundVol",.8f)},
+                {"MusicVol",PlayerPrefs.GetFloat("MusicVol",.8f)},
+            };
+        }
+        return _volume;
+    }}
+    private static Dictionary<string,float> _volume=null;
 
     //Channels are "MasterVol" "SoundVol" and "MusicVol"
     public static void SetChannelVolumeNormalized(string channel, float amount){
         mixer.SetFloat(channel,Mathf.Log10(amount)*20f);
+        volume[channel]=amount;
     }
     public static float GetChannelVolumeNormalized(string channel){
-        float val;
-        mixer.GetFloat(channel, out val);
-        return Mathf.Pow(10,val/20);
+        return volume[channel];
+        // float val;
+
+        // mixer.GetFloat(channel, out val);
+        // return Mathf.Pow(10,val/20);
+        // return GetChannelVolumeFromPrefs(channel);
     }
     public static void SetAllVolumes(){
-        SetChannelVolumeNormalized("MasterVol",GetChannelVolumeFromPrefs("MasterVol"));
-        SetChannelVolumeNormalized("SoundVol",GetChannelVolumeFromPrefs("SoundVol"));
-        SetChannelVolumeNormalized("MusicVol",GetChannelVolumeFromPrefs("MusicVol"));
+        SetChannelVolumeNormalized("MasterVol",volume["MasterVol"]);
+        SetChannelVolumeNormalized("SoundVol" ,volume["SoundVol"]);
+        SetChannelVolumeNormalized("MusicVol" ,volume["MusicVol"]);
 
     }
     public static void SaveToPrefs(){
@@ -25,7 +40,8 @@ public static class AudioUtility{
         PlayerPrefs.SetFloat("SoundVol",GetChannelVolumeNormalized("SoundVol"));
         PlayerPrefs.SetFloat("MasterVol",GetChannelVolumeNormalized("MasterVol"));
     }
-    public static float GetChannelVolumeFromPrefs(string channel){
-        return PlayerPrefs.GetFloat(channel,.8f);
+    public static void PlayRand(this AudioSource source,AudioClip[] clips){
+        source.clip=clips.RandomElement();
+        source.Play();
     }
 }   

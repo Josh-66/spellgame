@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public static bool loadData = false;
+    public Sprite testStamp;
     public Clickable hoveredObject{get{
         return _hoveredObject;
     }set{
@@ -18,8 +18,11 @@ public class GameController : MonoBehaviour
         }
     }}
     public Clickable _hoveredObject;
-    public List<CustomerSpawnRequest> customerQueue;
-    public List<Evaluation> evaluations;
+    public static float totalNumberOfCustomers=3;
+    public static float numberOfCustomers=0;
+    public static List<CustomerSpawnRequest> customerQueue;
+    public static List<Evaluation> evaluations;
+    public GameObject endTestButton;
     public float customerSpawnDelay=5f;
 
     public bool clickablesActive=true;
@@ -28,10 +31,14 @@ public class GameController : MonoBehaviour
     bool savedAlready=false;
     public bool doCustomerSpawning=false;
     public static bool submittable{
-        get{return CustomerController.instance.arrived && CustomerController.isEntry && !DialogueController.playing;}
+        get{
+            return CustomerController.instance.arrived && CustomerController.isEntry && !DialogueController.playing;
+        }
     }
 
-    public bool playOpening=false;
+    public static bool playOpening=false;
+
+    public DaylightController daylightController;    
 
     // Start is called before the first frame update
     void Awake()
@@ -44,23 +51,30 @@ public class GameController : MonoBehaviour
         
 
 
-        if (loadData){
-            SaveData.Load();
-            playOpening=false;
+        if (gameType==GameType.load){
+            daylightController.targetTime=numberOfCustomers/totalNumberOfCustomers;
+            daylightController.time=numberOfCustomers/totalNumberOfCustomers;
+            SaveData.Load();//Sets Evaluations and CustomerQueue
+            GameController.numberOfCustomers=GameController.evaluations.Count;
             Delayer.DelayAction(3,()=>{
                 doCustomerSpawning=true;
                 DeskController.instance.ActivateAllObjects();
                 MusicPlayer.Start();
             });    
         }
-        else{
-            evaluations=new List<Evaluation>();
-            customerQueue=new List<CustomerSpawnRequest>();
-            customerQueue.Add(new CustomerSpawnRequest("Florist"));
-            customerQueue.Add(new CustomerSpawnRequest("Mayor"));
-            customerQueue.Add(new CustomerSpawnRequest("Prankster"));
-            playOpening=true;
+        else if (gameType==GameType.test){
+            
+            StampPaperController.stampTexture=testStamp.texture;
+            StampPaperController.stampSprite=testStamp;
+            StampPaperController.instance.UpdatePreview();
+            
+            doCustomerSpawning=true;    
+            DeskController.instance.ActivateAllObjects();
+            MusicPlayer.Start();
+
         }
+        
+        endTestButton.SetActive(gameType==GameType.test);
         
     }
     // Update is called once per frame
@@ -83,10 +97,12 @@ public class GameController : MonoBehaviour
     void ManageCustomer(){
         if (!CustomerController.active && customerQueue.Count>0)
         {
-            if (!savedAlready){
+            if (!savedAlready && gameType!=GameType.test){
                 SaveData.Save();
                 savedAlready=true;
             }
+            if (gameType==GameType.test)
+                customerSpawnDelay=0;
             customerSpawnDelay-=Time.deltaTime;
             if (customerSpawnDelay<0){
                 CustomerSpawnRequest csr = customerQueue[0];
@@ -104,7 +120,19 @@ public class GameController : MonoBehaviour
             if (customerSpawnDelay>0){
                 customerSpawnDelay-=Time.deltaTime;
                 if (customerSpawnDelay<0){
+                    #if UNITY_STANDALONE_WIN || UNITY_EDITOR
+                    if (gameType==GameType.test){
+                        ReviewAppController.evaluations=evaluations;
+                        PhoneController.instance.Open();
+                        PhoneController.instance.UpdateReviewApp();
+                        customerQueue.Add(new CustomerSpawnRequest(evaluations[0].name));
+                        evaluations= new List<Evaluation>();
+                        return;
+                    }
+                    #endif
                     StartExitSequence();
+
+                 
                 }
             }
         }
@@ -113,7 +141,7 @@ public class GameController : MonoBehaviour
         CustomerController.instance.character=c;
         if (key=="Entry"){
             CustomerController.isEntry=true;
-        }
+        } 
         else{
             CustomerController.isEntry=false;
             CustomerController.complaint=key;
@@ -121,12 +149,18 @@ public class GameController : MonoBehaviour
         CustomerController.instance.Enter();
     }
     public void LeaveCustomer(bool fromComplaint=false){
+        if (!CustomerController.instance.arrived)
+            return;
         customerQueue.RemoveAt(0);
-
+        CustomerController.instance.arrived=false;
         if(!fromComplaint){
             DialogueController.PlayDialogue(CustomerController.instance.character,CustomerController.instance.character.dialogue.exit);
-            CustomerController.instance.arrived=false;
-            DialogueController.OnComplete = ()=>{CustomerController.instance.Exit();};
+            DialogueController.OnComplete = ()=>{
+                CustomerController.instance.ExitDialogueDone();
+                numberOfCustomers++;
+                daylightController.targetTime=numberOfCustomers/totalNumberOfCustomers;
+            };
+
         }
     }
     void UpdateHovered(){
@@ -158,12 +192,14 @@ public class GameController : MonoBehaviour
             hoveredObject.OnClick();
     }
     public void SubmitSpell(Spell s){
+        if (!CustomerController.instance.arrived)
+            return;
         Evaluation eval = CustomerController.instance.character.GetEvaluation(s);
         eval.name=CustomerController.instance.character.name;
         evaluations.Add(eval);
         LeaveCustomer();
         if (eval.returns){
-            customerQueue.Add(new CustomerSpawnRequest(CustomerController.instance.character.name,eval.evaluationKey));
+            customerQueue.Add(new CustomerSpawnRequest(CustomerController.instance.character,eval.evaluationKey));
         }
     }
 
@@ -175,11 +211,8 @@ public class GameController : MonoBehaviour
                     DialogueController.OnComplete=()=>{
                         CameraController.instance.UnArrive();
                         Delayer.DelayAction(1,()=>{
-                            AsyncOperation ao = SceneManager.LoadSceneAsync("Bedroom");
-                            ao.allowSceneActivation=false;
-                            BlackFade.FadeInAndAcion(()=>{
-                                ao.allowSceneActivation=true;
-                            });
+                            Utility.FadeToScene("Bedroom");
+                            BedroomController.morning=false;
                             ReviewAppController.evaluations=evaluations;
                         });   
                     };
@@ -189,11 +222,15 @@ public class GameController : MonoBehaviour
         });
         
     }
-
+    public void EndTestMode(){
+        #if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        Utility.FadeToScene("CharacterEditor");
+        #endif
+    }
 
     public void Opening(){
         MusicPlayer.Stop();
-        Delayer.DelayAction(2,()=>{
+        Delayer.DelayAction(3.5f,()=>{
             OwlController.Appear(()=>{
                 Delayer.DelayAction(1,()=>{
                     DialogueController.PlayDialogue(OwlController.instance.character,OwlController.OpeningDialogue());
@@ -217,7 +254,49 @@ public class GameController : MonoBehaviour
                     });
                 };
         });
-        
-        
+
     }
+    
+    public enum GameType{
+        start,
+        load,
+        test
+    }
+    public static GameType gameType;
+    public static void PrepareGame(GameType gameType, params CustomerSpawnRequest[] customerSpawnRequests){
+        GameController.gameType=gameType;
+
+        if (gameType==GameType.load){
+            //Load is called in GC Start
+            GameController.playOpening=false;
+        }
+        else if (gameType==GameType.start){
+            GameController.evaluations=new List<Evaluation>();
+            GameController.customerQueue=new List<CustomerSpawnRequest>();
+            GameController.customerQueue.AddRange(customerSpawnRequests);
+            GameController.playOpening=true;
+
+            GameController.numberOfCustomers=0;
+            GameController.totalNumberOfCustomers=customerSpawnRequests.Length;
+            StampPaperController.stampTexture=null;
+        }
+        else if (gameType==GameType.test){
+            
+            GameController.evaluations=new List<Evaluation>();
+            GameController.customerQueue=new List<CustomerSpawnRequest>();
+            GameController.customerQueue.AddRange(customerSpawnRequests);
+            GameController.playOpening=false;
+
+            GameController.numberOfCustomers=0;
+            GameController.totalNumberOfCustomers=customerSpawnRequests.Length;
+        }
+    }
+    public static void PrepareBaseGame(){
+        List<CustomerSpawnRequest> csrs = new List<CustomerSpawnRequest>();
+        foreach (string s in CharacterStorage.baseCharacterNames){
+            csrs.Add (new CustomerSpawnRequest(s));
+        }
+        PrepareGame(GameType.start,csrs.ToArray());
+    }
+    
 }

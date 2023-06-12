@@ -1,14 +1,16 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 
 
 public enum Expression{
     Normal,
     Happy,
     Angry,
-    Special
+    Special,
+    Icon
 }
 
+[System.Serializable]
 [CreateAssetMenu()]
 public class Character : ScriptableObject{
     new public string name;
@@ -17,9 +19,9 @@ public class Character : ScriptableObject{
     public SpellEvaluationTree spellEvalTree;
     public Sprite baseSprite,happy,angry,special;
     public Sprite profileIcon;
-    public CharacterDialouge dialogue{
+    public CharacterDialogue dialogue{
         get{
-            if (_characterDialogue==null){
+            if (_characterDialogue==null || _characterDialogue.entry.lines.Count==0){
                 _characterDialogue = name switch{
                     "Florist"=>PremadeDialogues.Florist(),
                     "Mayor"=>PremadeDialogues.Mayor(),
@@ -29,8 +31,11 @@ public class Character : ScriptableObject{
             }
             return _characterDialogue;
         }
+        set{
+            _characterDialogue=value;
+        }
     }
-    private CharacterDialouge _characterDialogue;
+    private CharacterDialogue _characterDialogue=null;
 
     public Sprite GetSprite(Expression expression) => expression switch{
         Expression.Normal=>baseSprite,

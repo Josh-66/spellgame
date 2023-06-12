@@ -31,10 +31,14 @@ public class SettingsPageController : MonoBehaviour
         Toggle activeSpeedToggle = TextSpeed.textSpeed switch{
             1=>slow,
             2=>med,
-            3=>fast,
+            4=>fast,
             _=>med
         };
         activeSpeedToggle.isOn=true;
+    }
+    public void Activate(){
+        SetToggles();
+        SetSliders();
     }
     void Update(){
 
