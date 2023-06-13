@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     public bool shake=true;
     public bool rotate= true;
     public bool arrived {get{return transform.position.x>-1;}}
+    public Vector3 lastPosition;
+    //public float highestDT,highestUDT;
     void Awake(){
         instance=this;
     }
@@ -24,10 +26,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (shake && Time.timeScale!=0)
-            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.localPosition,Time.unscaledDeltaTime*.35f);
-            transform.localPosition+=Time.unscaledDeltaTime*velocity;
+        //highestDT=Mathf.Max(highestDT,Time.deltaTime);
+        //highestUDT=Mathf.Max(highestUDT,Time.unscaledDeltaTime);
+        
+        if (shake)
+            velocity = Vector3.Lerp(velocity,targPosition+targShake-transform.localPosition,Time.deltaTime/Time.timeScale*.35f);
+            transform.localPosition+=Time.deltaTime/Time.timeScale*velocity;
             if (Vector3.Distance(transform.localPosition-targPosition,targShake)<.1f){
                 targPosition=Random.insideUnitCircle*.2f;
                 targPosition.z=0;
@@ -37,7 +41,7 @@ public class CameraController : MonoBehaviour
         }
         if (rotate){
             transform.rotation=Quaternion.Euler(0,0,Mathf.Sin(t)/2);
-            t+=Time.unscaledDeltaTime*.2f;
+            t+=Time.deltaTime/Time.timeScale*.2f;
             t %=2 * Mathf.PI;
         }
     }

@@ -1,4 +1,4 @@
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +6,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using SFB;
 using System.IO;
-public class EditorImageLoadHandler : MonoBehaviour ,IDropHandler,IPointerClickHandler
+public class EditorImageLoadHandler : MonoBehaviour
 {
     public Image normal,happy,angry,special,icon;
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<Image>() != null)
-        {
-            normal.sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
-        }
-    }
+    //public void OnDrop(PointerEventData eventData)
+    //{
+    //    if (eventData.pointerDrag.GetComponent<Image>() != null)
+    //    {
+    //        normal.sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
+    //    }
+    //}
     public void UpdateImages(){
 
         normal.sprite = CharacterEditor.currentCharacter.GetSprite(Expression.Normal);
@@ -47,31 +47,8 @@ public class EditorImageLoadHandler : MonoBehaviour ,IDropHandler,IPointerClickH
         (i.transform as RectTransform).sizeDelta = sizeDelta;
 
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-
-        // Open the file browser dialog and wait for the user to select a file
-        Expression expression;
-        GameObject pressedObject = eventData.rawPointerPress.transform.parent.gameObject;
-        if (pressedObject==normal.gameObject){
-            expression=Expression.Normal;
-        }
-        else if (pressedObject==happy.gameObject){
-            expression=Expression.Happy;
-        }
-        else if (pressedObject==angry.gameObject){
-            expression=Expression.Angry;
-        }
-        else if (pressedObject==special.gameObject){
-            expression=Expression.Special;
-        }
-        else if (pressedObject==icon.gameObject){
-            expression=Expression.Icon;
-        }
-        else{
-            return;
-        }
-
+    public void UpdateExpression(int i){
+        Expression expression = (Expression)i;
         ExtensionFilter[] filters = new[] {
             new ExtensionFilter("Texture2D files", "png", "jpg", "jpeg", "bmp", "tga"),
             new ExtensionFilter("All files", "*"),

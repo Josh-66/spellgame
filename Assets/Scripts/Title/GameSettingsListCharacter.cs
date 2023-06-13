@@ -8,6 +8,7 @@ public class GameSettingsListCharacter : MonoBehaviour
     public Image icon;
     public TextMeshProUGUI nameText;
     public Toggle toggle;
+    public string workshopID="";
     void Start()
     {
         

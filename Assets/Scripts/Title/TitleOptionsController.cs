@@ -6,33 +6,43 @@ using UnityEngine.SceneManagement;
 public class TitleOptionsController : MonoBehaviour
 {
     public bool gameStarted;
-    public GameObject continueButton;
+    public GameObject continueButton,editorButton,exitButton,customGameButton;
     // Start is called before the first frame update
     void Start()
     {
         AudioUtility.SetAllVolumes();
         if (!SaveData.validSave)
             continueButton.SetActive(false);
+        
+        #if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
+        editorButton.SetActive(true);
+        if (PlayerPrefs.GetInt("GamesFinished",0)>=2){
+            customGameButton.SetActive(true);
+            editorButton.SetActive(true);
+        }
+        #else
+        exitButton.SetActive(false);
+        editorButton.SetActive(false);      
+        #endif
     }
     public void NewGame(){
         if (gameStarted)
             return;
 
-        if (PlayerPrefs.GetInt("GamesFinished",0)>2){
-            GameSettingsWindow.instance.gameObject.SetActive(true);
-        }
-        else{
-            gameStarted=true;
+        gameStarted=true;
 
-            GameController.PrepareBaseGame();
+        GameController.PrepareBaseGame();
 
 
-            ReviewAppController.evaluations=null;
-            BedroomController.morning=true;
-            Utility.FadeToScene("Bedroom");
-        }
+        ReviewAppController.evaluations=null;
+        BedroomController.morning=true;
+
+        Utility.FadeToScene("Bedroom");
         
     }   
+    public void CustomGame(){
+        GameSettingsWindow.instance.gameObject.SetActive(true);
+    }
     public void Continue(){
         if (gameStarted)
             return;
@@ -45,6 +55,9 @@ public class TitleOptionsController : MonoBehaviour
     }
     public void Editor(){
         Utility.FadeToScene("CharacterEditor");
+    }
+    public void Exit(){
+        Application.Quit();
     }
     
 }

@@ -1,4 +1,4 @@
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +10,7 @@ public class CharacterEditorInfoPanel : MonoBehaviour
 {
     static CharacterEditorInfoPanel instance;
     public EditorImageLoadHandler imageLoadHandler;
+    public EditorWorkshopInfoPanel workshopInfoPanel;
     public TMP_InputField nameInputField;
     public GameObject infoStuff;
 
@@ -46,6 +47,11 @@ public class CharacterEditorInfoPanel : MonoBehaviour
         }
         
     }
+    public void ResetTextSound(){
+        CharacterEditor.currentCharacter.textSound = CustomCharacter.defaultSound;
+        CharacterEditor.currentCharacter.textSoundName="default.ogg";
+        UpdateCharacterInfo();
+    }
     public void PlayAudioClip(){
         if (textSoundSource.clip!=null)
             textSoundSource.Play();
@@ -58,6 +64,7 @@ public class CharacterEditorInfoPanel : MonoBehaviour
         instance.textSoundName.text = CharacterEditor.currentCharacter.textSoundName;
         instance.textSoundSource.clip=CharacterEditor.currentCharacter.GetTextSound();
 
+        instance.workshopInfoPanel.UpdateInfo();
     }
 
     public static Color selectedColor{

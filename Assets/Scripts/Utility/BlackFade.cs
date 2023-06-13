@@ -18,6 +18,12 @@ public class BlackFade : MonoBehaviour
         image.enabled=true;
     }
     void Update(){
+        if (targFade==1){
+            image.raycastTarget=true;
+        }else{
+            image.raycastTarget=false;
+        }
+
         float alpha = image.color.a;
         if (alpha==targFade)
             return;

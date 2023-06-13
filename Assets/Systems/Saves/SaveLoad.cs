@@ -56,6 +56,47 @@ public static class SaveLoad<T>
     /// <param name="folder"></param>
     /// <param name="file"></param>
     /// <returns></returns>
+    public static T LoadFullPath(string path){
+        // get the data path of this save data
+        string dataPath = path;
+
+        // if the file path or name does not exist, return the default SO
+        if (!Directory.Exists(Path.GetDirectoryName(dataPath)))
+        {
+            // Debug.LogWarning("File or path does not exist! " + dataPath);
+            return default(T);
+        }
+
+        // load in the save data as byte array
+        byte[] jsonDataAsBytes = null;
+
+        try
+        {
+            jsonDataAsBytes = File.ReadAllBytes(dataPath);
+            Debug.Log("Loaded data");
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Failed to load data: " + e.Message);
+            return default(T);
+        }
+
+        if (jsonDataAsBytes == null)
+            return default(T);
+
+        // convert the byte array to json
+        string jsonData;
+
+        // convert the byte array to json
+        jsonData = Encoding.ASCII.GetString(jsonDataAsBytes);
+
+        // convert to the specified object type
+        T returnedData = JsonUtility.FromJson<T>(jsonData);
+
+        // return the casted json object to use
+        return (T)Convert.ChangeType(returnedData, typeof(T));
+    }
+    
     public static T Load(string folder, string file)
     {
         // get the data path of this save data
@@ -142,7 +183,7 @@ public static class SaveLoad<T>
         }
         return new List<string>(files);
     }
-    private static string GetFilePath(string FolderName, string FileName = "")
+    public static string GetFilePath(string FolderName, string FileName = "")
     {
         string filePath="";
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
@@ -154,7 +195,10 @@ public static class SaveLoad<T>
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         // windows
         filePath = Path.Combine(Application.persistentDataPath, ("data/" + FolderName));
-
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
         if(FileName != "")
             filePath = Path.Combine(filePath, (FileName));
 #elif UNITY_ANDROID

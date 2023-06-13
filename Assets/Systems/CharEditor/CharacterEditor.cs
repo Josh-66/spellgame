@@ -1,5 +1,6 @@
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -55,18 +56,33 @@ public class CharacterEditor : MonoBehaviour
                 buttons.Add(newButton);
                 i++;
                 
-                if (currentCharacter!=null)
+                if (currentCharacter!=null){
                     if (newButton.GetComponentInChildren<TextMeshProUGUI>().text==currentCharacter.name){
                         lastListFrame=newButton.transform.GetChild(1).GetComponent<Image>();
                         lastListFrame.enabled=true;
                     }
-
+                }
             }
             catch {
+                Debug.Log("here");
                 GameObject.Destroy(newButton);
             }
 
         }
+    }
+    public void CreateNewCharacter(){
+        CustomCharacter newChar = new CustomCharacter();
+        newChar.textSound=CustomCharacter.defaultSound;
+        newChar.textSoundName="default.ogg";
+        characters = SaveLoad<CustomCharacter>.GetFolderContents("characters").Select(c=>c.ToLower()).ToList();
+        newChar.name="NewCharacter";
+        int i = 1;
+        while(characters.Contains(newChar.name.ToLower()+".ch")){
+            i++;
+            newChar.name="NewCharacter"+i;
+        }
+        SaveCharacter(newChar,false);
+        UpdateList();
     }
     public void UpdateCharacterName(string s){
         if (s == currentCharacter.name)
@@ -74,18 +90,16 @@ public class CharacterEditor : MonoBehaviour
         string oldName = currentCharacter.name;
         string newName = s;
         int i = 1;
-        characters = SaveLoad<CustomCharacter>.GetFolderContents("characters");
-        foreach(string st in characters){
-            Debug.Log(st);
-        }
-        characters.Remove(currentCharacter.name);
-        while(characters.Contains(newName+".ch")){
+        characters = SaveLoad<CustomCharacter>.GetFolderContents("characters").Select(c=>c.ToLower()).Where(c=>c.ToLower()!=oldName.ToLower()).ToList();
+  
+        
+        while(characters.Contains(newName.ToLower()+".ch")){
             i++;
             newName=s+i;
         }
         currentCharacter.name=newName;
-        SaveCharacter(currentCharacter);
         DeleteCharacter(oldName);
+        SaveCharacter(currentCharacter);
         UpdateList();
         CharacterEditorInfoPanel.UpdateCharacterInfo();
     }
@@ -110,26 +124,16 @@ public class CharacterEditor : MonoBehaviour
             UpdateList();
         }
     }
-    public void CreateNewCharacter(){
-        CustomCharacter newChar = new CustomCharacter();
-
-        characters = SaveLoad<CustomCharacter>.GetFolderContents("characters");
-        
-        newChar.name="NewCharacter";
-        int i = 1;
-        while(characters.Contains(newChar.name+".ch")){
-            i++;
-            newChar.name="NewCharacter"+i;
-        }
-        SaveCharacter(newChar,false);
-        UpdateList();
-    }
+    
 
     void SaveCharacter(CustomCharacter character,bool saveTree= true){
         if (saveTree){
             character.spellEvalTree=EvaluationEditor.GetTree();
             character.dialogue=DialogueEditor.GetDialogue();
         }
+        SaveLoad<CustomCharacter>.Save(character,"characters",character.name+".ch");
+    }
+    public static void StaticSaveCharacter(CustomCharacter character){
         SaveLoad<CustomCharacter>.Save(character,"characters",character.name+".ch");
     }
     public void SaveCharacter(){
@@ -160,11 +164,14 @@ public class CharacterEditor : MonoBehaviour
         if (currentCharacter==null)
             return;
         SaveCharacter();
-        GameController.PrepareGame(GameController.GameType.test,new CustomerSpawnRequest(currentCharacter.GetCharacter()));
+        GameController.PrepareGame(GameController.GameType.test,new CustomerSpawnRequest(currentCharacter.GetCharacter(CharType.custom)));
         Utility.FadeToScene("Shop");
     }
     public void ReturnToMainMenu(){
         Utility.FadeToScene("Title");
+    }
+    public void UploadToWorkshop(){
+        SteamWorkshopUpload.SumbitToWorkshop(currentCharacter);
     }
 }
 #endif

@@ -46,8 +46,10 @@ public class ReviewAppController : MonoBehaviour,IPointerDownHandler
             newReview.rectTransform.anchoredPosition=new Vector2(0,topY-evalNum*newReview.rectTransform.sizeDelta.y);
             newReview.evaluation=eval;
             newReview.rectTransform.localScale=Vector3.one;
-
-            Character reviewer = CharacterStorage.GetCharacter(eval.name);
+            Debug.Log("----");
+            Debug.Log(eval.name);
+            Debug.Log(eval.type);
+            Character reviewer = CharacterStorage.GetCharacter(eval.name,eval.type);
             if (reviewer!=null)
                 newReview.reviewer.sprite=reviewer.profileIcon;
 

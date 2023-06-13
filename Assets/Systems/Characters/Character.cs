@@ -9,6 +9,9 @@ public enum Expression{
     Special,
     Icon
 }
+public enum CharType{
+    baseGame,custom,workshop
+}
 
 [System.Serializable]
 [CreateAssetMenu()]
@@ -19,16 +22,19 @@ public class Character : ScriptableObject{
     public SpellEvaluationTree spellEvalTree;
     public Sprite baseSprite,happy,angry,special;
     public Sprite profileIcon;
+    public CharType type=CharType.baseGame;
+    #if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
+    public string workshopID;
+    #endif
+    public string GetSaveName(){
+        #if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
+        if (type==CharType.workshop)
+            return workshopID;
+        #endif
+        return name;
+    }
     public CharacterDialogue dialogue{
         get{
-            if (_characterDialogue==null || _characterDialogue.entry.lines.Count==0){
-                _characterDialogue = name switch{
-                    "Florist"=>PremadeDialogues.Florist(),
-                    "Mayor"=>PremadeDialogues.Mayor(),
-                    "Prankster"=>PremadeDialogues.Prankster(),
-                    _=>throw new System.Exception("Invalid Character Name"),
-                };
-            }
             return _characterDialogue;
         }
         set{

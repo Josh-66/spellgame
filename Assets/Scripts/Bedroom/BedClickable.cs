@@ -14,7 +14,7 @@ public class BedClickable : BedroomObject
     {
         if (!inactive){
             if (Utility.FadeToScene("Title")){
-                PlayerPrefs.SetInt("GamesFinished",PlayerPrefs.GetInt("GamesFinished",0)+1);
+                Preferences.gamesFinished++;
                 SaveData.validSave=false;
             }
             

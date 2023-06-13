@@ -120,12 +120,12 @@ public class GameController : MonoBehaviour
             if (customerSpawnDelay>0){
                 customerSpawnDelay-=Time.deltaTime;
                 if (customerSpawnDelay<0){
-                    #if UNITY_STANDALONE_WIN || UNITY_EDITOR
+                    #if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
                     if (gameType==GameType.test){
                         ReviewAppController.evaluations=evaluations;
                         PhoneController.instance.Open();
                         PhoneController.instance.UpdateReviewApp();
-                        customerQueue.Add(new CustomerSpawnRequest(evaluations[0].name));
+                        customerQueue.Add(new CustomerSpawnRequest(evaluations[0].name,CharType.custom));
                         evaluations= new List<Evaluation>();
                         return;
                     }
@@ -195,7 +195,8 @@ public class GameController : MonoBehaviour
         if (!CustomerController.instance.arrived)
             return;
         Evaluation eval = CustomerController.instance.character.GetEvaluation(s);
-        eval.name=CustomerController.instance.character.name;
+        eval.name=CustomerController.instance.character.GetSaveName();
+        eval.type=CustomerController.instance.character.type;
         evaluations.Add(eval);
         LeaveCustomer();
         if (eval.returns){
@@ -223,7 +224,7 @@ public class GameController : MonoBehaviour
         
     }
     public void EndTestMode(){
-        #if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        #if UNITY_STANDALONE_WIN || (UNITY_EDITOR && !UNITY_WEBGL)
         Utility.FadeToScene("CharacterEditor");
         #endif
     }
@@ -294,7 +295,7 @@ public class GameController : MonoBehaviour
     public static void PrepareBaseGame(){
         List<CustomerSpawnRequest> csrs = new List<CustomerSpawnRequest>();
         foreach (string s in CharacterStorage.baseCharacterNames){
-            csrs.Add (new CustomerSpawnRequest(s));
+            csrs.Add (new CustomerSpawnRequest(s,CharType.baseGame));
         }
         PrepareGame(GameType.start,csrs.ToArray());
     }

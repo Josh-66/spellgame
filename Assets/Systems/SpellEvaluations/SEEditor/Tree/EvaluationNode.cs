@@ -13,6 +13,7 @@ public class EvaluationNode : SENode
     public float starRating;
     [TextArea(3,5)]
     public string review;
+    
 
     public override Color GetColor()
     {
@@ -35,7 +36,7 @@ public class Evaluation{
     public string review;
     public bool returns;
     public string name;
-
+    public CharType type;
     public Evaluation(string e,float s, string rv,bool rt ){
         evaluationKey=e;
         starRating=s;
